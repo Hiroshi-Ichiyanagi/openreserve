@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openreserve"
+version = "0.1.0"
+description = "Deterministic, offline-verifiable proof-of-reserves and a tamper-evident audit chain for TradFi (no on-chain oracle)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Hiroshi Ichiyanagi", email = "280297311+Hiroshi-Ichiyanagi@users.noreply.github.com" },
+]
+keywords = ["proof-of-reserves", "audit-log", "merkle", "solvency", "transparency"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Office/Business :: Financial",
+]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["openreserve*"]
