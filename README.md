@@ -1,6 +1,7 @@
 # openreserve
 
 [![CI](https://github.com/Hiroshi-Ichiyanagi/openreserve/actions/workflows/ci.yml/badge.svg)](https://github.com/Hiroshi-Ichiyanagi/openreserve/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/openreserve)](https://pypi.org/project/openreserve/)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Python: 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](pyproject.toml)
 
@@ -133,7 +134,12 @@ with on-chain PoR oracles (e.g. Chainlink). There is no blockchain dependency; t
 - Test dependency: `pytest` (via the `test` extra).
 
 ```bash
-pip install -e .            # editable install
+pip install openreserve
+```
+
+From source (for development):
+
+```bash
 pip install -e ".[test]"    # editable install + pytest
 python -m pytest -q         # run the suite
 ```
