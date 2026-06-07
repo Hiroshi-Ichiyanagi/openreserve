@@ -1,6 +1,8 @@
 # openreserve
 
 [![CI](https://github.com/Hiroshi-Ichiyanagi/openreserve/actions/workflows/ci.yml/badge.svg)](https://github.com/Hiroshi-Ichiyanagi/openreserve/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Python: 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](pyproject.toml)
 
 A small, self-contained **verification core** for deterministic, offline-verifiable
 proof-of-reserves and a tamper-evident audit chain. It is early and has **no production
@@ -147,6 +149,14 @@ openreserve/
   providers/      abstract provider interface (ProviderCategory only; no implementations)
 tests/            unit tests + determinism guard
 ```
+
+## Project
+
+- [Architecture](docs/ARCHITECTURE.md) — modules, dependency graph, trust model, extension points
+- [Verifying a proof](docs/VERIFYING.md) — re-verify a published proof offline ("verify me")
+- [Examples](examples/) — runnable scripts (proof-of-reserves, offline verify, tamper detection, reproducibility)
+- [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md)
+- [Roadmap](ROADMAP.md) — directions (exploratory, not promises) · [Changelog](CHANGELOG.md)
 
 ## License
 
