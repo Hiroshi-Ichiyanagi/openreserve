@@ -10,6 +10,20 @@ APIs may change while the project is pre-1.0.
 
 _No unreleased changes yet._
 
+## [0.1.1] - 2026-06-07
+
+First release published to PyPI. No runtime behavior changes from 0.1.0.
+
+### Added
+- PyPI packaging metadata (expanded classifiers, keywords, project URLs).
+- Community health files (CONTRIBUTING, CODE_OF_CONDUCT, SECURITY), issue/PR templates,
+  editorconfig, and Dependabot for GitHub Actions.
+- Documentation (ARCHITECTURE, verification guide) and runnable examples.
+- ROADMAP.
+
+### Changed
+- Version bump to 0.1.1.
+
 ## [0.1.0] - 2026-06-07
 
 Initial public release. Early and unproven; no production adoption.
@@ -26,5 +40,6 @@ Initial public release. Early and unproven; no production adoption.
 - Packaging (PEP 621, standard-library-only runtime) and CI (Python 3.11–3.13 + build
   check).
 
-[Unreleased]: https://github.com/Hiroshi-Ichiyanagi/openreserve/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Hiroshi-Ichiyanagi/openreserve/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Hiroshi-Ichiyanagi/openreserve/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Hiroshi-Ichiyanagi/openreserve/releases/tag/v0.1.0
