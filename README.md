@@ -1,5 +1,7 @@
 # openreserve
 
+[![CI](https://github.com/Hiroshi-Ichiyanagi/openreserve/actions/workflows/ci.yml/badge.svg)](https://github.com/Hiroshi-Ichiyanagi/openreserve/actions/workflows/ci.yml)
+
 A small, self-contained **verification core** for deterministic, offline-verifiable
 proof-of-reserves and a tamper-evident audit chain. It is early and has **no production
 adoption** yet — see [Status](#status).

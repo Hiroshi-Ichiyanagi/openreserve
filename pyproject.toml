@@ -26,5 +26,10 @@ dependencies = []
 [project.optional-dependencies]
 test = ["pytest"]
 
+[project.urls]
+Homepage = "https://github.com/Hiroshi-Ichiyanagi/openreserve"
+Repository = "https://github.com/Hiroshi-Ichiyanagi/openreserve"
+Issues = "https://github.com/Hiroshi-Ichiyanagi/openreserve/issues"
+
 [tool.setuptools.packages.find]
 include = ["openreserve*"]
