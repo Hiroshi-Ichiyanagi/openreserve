@@ -8,7 +8,10 @@ APIs may change while the project is pre-1.0.
 
 ## [Unreleased]
 
-_No unreleased changes yet._
+### Added
+- Documentation: README "Use cases", "Proof of Reserves vs Proof of Solvency",
+  a verification-flow diagram, and a "Limitations" section; the same verification-flow
+  diagram in `docs/VERIFYING.md` and a PoR-vs-PoS note in `docs/ARCHITECTURE.md`.
 
 ## [0.1.1] - 2026-06-07
 

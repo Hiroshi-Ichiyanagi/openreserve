@@ -7,7 +7,7 @@
 
 A small, self-contained **verification core** for deterministic, offline-verifiable
 proof-of-reserves and a tamper-evident audit chain. It is early and has **no production
-adoption** yet — see [Status](#status).
+adoption** yet — see [Limitations](#limitations).
 
 ## What it does
 
@@ -31,6 +31,30 @@ offline** by a third party using this library — e.g. fetch the JSON with `curl
 re-run the Merkle / chain verification locally. **This core does not ship an HTTP
 serving layer**; exposing an endpoint is left to the integrator.
 
+## Use cases (who it's for)
+
+It targets operators whose ledger is off-chain and whose auditors, regulators, or
+counterparties are off-chain too — i.e. where an on-chain oracle is the wrong shape.
+
+- **E-money / prepaid-balance issuers** — show that stored balances are backed.
+- **Payment processors (PSPs)** — prove safeguarded customer funds against liabilities.
+- **Custodians** — including a crypto exchange's off-chain customer ledger (the CEX
+  proof-of-reserves case), on the bookkeeping side rather than the on-chain side.
+- **Stablecoin issuers** — attestation of the off-chain reserve side (not the on-chain token).
+- **Loyalty-point / closed-loop wallet operators** — prove outstanding point/credit
+  balances are covered.
+
+## Proof of Reserves vs Proof of Solvency
+
+- **Proof of Reserves** — evidence that the reserve assets exist (and, here, a
+  Merkle-committed view of the liabilities they back).
+- **Proof of Solvency** — evidence that `assets >= liabilities`, i.e. that the reserves
+  actually cover what is owed.
+
+openreserve provides both: a Merkle-committed reserve proof plus a per-currency solvency
+check. The solvency result is only as complete as the set of liabilities you include in
+the ledger — see [Limitations](#limitations).
+
 ## Determinism is the core property
 
 Proof generation takes the as-of / event time as an **explicit input** and never reads
@@ -48,6 +72,31 @@ python -m pytest tests/test_determinism_guard.py -v
 It asserts (a) the same ledger state + same `snapshot_at` reproduces the same Merkle
 root and audit hash, and (b) with `datetime.now` patched to raise, generation with an
 explicit time still succeeds (the wall clock is never touched).
+
+### Verification flow
+
+```
+OPERATOR SIDE
+  ledger state + explicit as-of time
+        |
+        v
+  generate proof            (deterministic: same state + time -> same hashes)
+        |
+        v
+  publish proof as JSON     (static URL or file)
+        |
+========|=====================================================
+        v
+VERIFIER SIDE  (auditor / user / regulator -- offline, no trust in operator)
+  fetch proof JSON
+        |
+        +--> recompute Merkle root
+        +--> verify audit chain   (prev_hash -> event_hash)
+        +--> check solvency       (reserves >= liabilities)
+        +--> (a user) verify own balance is included via Merkle proof
+```
+
+See [docs/VERIFYING.md](docs/VERIFYING.md) for the step-by-step verifier guide.
 
 Run the full suite:
 
@@ -111,21 +160,28 @@ the primary use case.
 
 It is **not** an on-chain proof-of-reserves system and is **not** positioned to compete
 with on-chain PoR oracles (e.g. Chainlink). There is no blockchain dependency; the
-"chain" here is a local hash-linked audit log, not a distributed ledger.
+"chain" here is a local hash-linked audit log, not a distributed ledger. It is also
+**not a compliance product** (no claim to satisfy any regulation; nothing here is legal
+or financial advice) and **not novel cryptography** — it is a clean assembly of standard
+primitives (Merkle trees, hash chains) under a determinism discipline.
 
-## What it does NOT do
+## Limitations
 
-- No HTTP server / public endpoint (artifacts are data; serving is the integrator's job).
-- No payment, payout, FX-conversion, KYC, or business-application orchestration logic.
-- No external network or cloud dependency at runtime (SQLite + standard library only).
-- No on-chain anchoring or third-party attestation (could be layered on top).
-
-## Status
-
-- **Early / unproven.** No production deployments. APIs may change.
-- Identifiers (`transaction_id`, `account_id`) are currently UUID-based, so they vary
-  across independent runs; determinism guarantees here cover the **time axis** (fixed
-  ledger state + fixed time → identical artifacts), not identifier stability.
+- **Determinism is on the time axis.** Identifiers (`transaction_id`, `account_id`) are
+  UUID-based, so they vary across independent runs; the guarantee is that a fixed ledger
+  state at a fixed time produces identical artifacts, not identifier stability across
+  rebuilds. Content-addressed identifiers are a [roadmap](ROADMAP.md) item.
+- **Liabilities completeness.** A solvency check only covers the liabilities present in
+  the ledger. Per-user Merkle inclusion raises the cost of omitting a liability (an
+  omitted user cannot find their balance), but it is not an attestation that the ledger
+  contains *every* liability.
+- **No HTTP / serving layer.** Artifacts are data; publishing an endpoint is the
+  integrator's job.
+- **No on-chain anchoring.** Nothing is committed to a blockchain; this can be layered on
+  top if an external anchor is wanted.
+- **No payment/payout/FX/KYC/business logic** and no external network or cloud dependency
+  at runtime (SQLite + standard library only).
+- **Early and unproven.** v0.1.1, no production adoption, APIs may change.
 
 ## Install / requirements
 

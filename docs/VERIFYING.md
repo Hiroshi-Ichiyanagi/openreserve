@@ -3,6 +3,27 @@
 openreserve's point is that you don't have to trust the operator's dashboard — you can
 re-verify a published proof yourself, offline. This guide shows how.
 
+```
+OPERATOR SIDE
+  ledger state + explicit as-of time
+        |
+        v
+  generate proof            (deterministic: same state + time -> same hashes)
+        |
+        v
+  publish proof as JSON     (static URL or file)
+        |
+========|=====================================================
+        v
+VERIFIER SIDE  (auditor / user / regulator -- offline, no trust in operator)
+  fetch proof JSON
+        |
+        +--> recompute Merkle root
+        +--> verify audit chain   (prev_hash -> event_hash)
+        +--> check solvency       (reserves >= liabilities)
+        +--> (a user) verify own balance is included via Merkle proof
+```
+
 There are two independent things a third party can check:
 
 1. **Solvency arithmetic** — from the public summary alone.

@@ -59,6 +59,17 @@ running system is required. See [VERIFYING.md](VERIFYING.md).
 The audit log is tamper-evident: each event hashes the previous event's hash, so editing
 a past event invalidates every subsequent hash. `AuditLog.verify_chain()` detects this.
 
+## Proof of Reserves vs Proof of Solvency
+
+These are distinct claims. **Proof of Reserves** is evidence that the reserve assets
+exist, together with a Merkle-committed view of the liabilities they back
+(`ProofOfReservesGenerator`). **Proof of Solvency** is evidence that
+`assets >= liabilities` — that the reserves actually cover what is owed
+(`ProofOfSolvencyGenerator`, aggregating per-currency reserve proofs with the audit-chain
+commitment). A solvency result is only as complete as the liabilities recorded in the
+ledger; per-user Merkle inclusion raises the cost of omission but is not a completeness
+attestation. See the README "Use cases" and "Limitations" sections.
+
 ## Determinism
 
 Proof and audit generation take the as-of / event time as an explicit, required input
