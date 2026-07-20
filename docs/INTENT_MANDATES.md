@@ -42,6 +42,33 @@ exceeded, without trusting the operator.
 Denial reason codes: `OUTSIDE_WINDOW`, `PURPOSE_NOT_ALLOWED`, `PER_TX_LIMIT_EXCEEDED`,
 `BUDGET_EXCEEDED`, `DUPLICATE_INTENT`, `NON_POSITIVE_AMOUNT`, `CURRENCY_MISMATCH`.
 
+## Super-rich capabilities
+
+Beyond the single fixed budget, a mandate composes:
+
+- **Spend policy** (`SpendPolicy`) — per-payee allowlist, per-purpose sub-budgets, min/max
+  per-tx, and **velocity / spend caps per deterministic epoch** (`EpochSpec`, integer
+  microseconds — no wall clock) and per rolling window.
+- **Session keys / sub-mandates** — a parent delegates a bounded sub-budget to a
+  sub-agent; every ancestor's budget is re-derived from the ledger on each settlement, so
+  combined descendant spend can never exceed the parent (`PARENT_BUDGET_EXCEEDED`).
+  Aggregation is by set-membership on ids, so `a` and `ab` never collide.
+- **Replay & monotonic time** — optional per-mandate-node nonces (a re-signed intent with a
+  fresh id is still caught), and settlement time must be non-decreasing per mandate so a
+  backdated `at` can't scatter spend across epochs to evade a cap.
+- **Batch settlement** — many intents in one atomic transaction (all-or-nothing).
+- **Lifecycle** — `pause` / `resume` / `revoke` / `top_up` / expiry, each an audit event;
+  state (and effective cap after top-ups) is re-derived from the chain, never stored.
+- **Best-execution bridge** — `settle_via_auction` routes an intent through a solver
+  auction and recaptures the price-improvement surplus, all provable, with every budget
+  invariant preserved (**INV-9**). See [EXECUTION_RECAPTURE.md](EXECUTION_RECAPTURE.md).
+- **Enriched + portfolio proofs** — `ProofOfMandate` carries per-epoch spend, remaining
+  velocity, the session-tree commitment, and lifecycle state; `MandatePortfolioProof`
+  proves a whole fleet is within budget and collateralized (shared escrow counted once).
+
+The denial ladder is a pinned canonical order (`DENIAL_ORDER`) so the first failing rule
+always wins and is hash-committed to the audit chain.
+
 ## Usage
 
 ```python

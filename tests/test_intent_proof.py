@@ -172,6 +172,8 @@ class TestProofCatchesViolations:
     def test_out_of_band_overspend_flagged_not_within_budget(self):
         # エンジンを経由せず、直接 escrow から INTENT_SETTLEMENT を偽装して
         # budget_cap を超える流出を作る → proof.is_within_budget が False になる。
+        # （well-formed な settlement tag を付けた「枠超過」— 構造リーダーは受理し、
+        #  予算不変条件の破れは is_within_budget=False として検出される。）
         env = _build()
         ledger, escrow, payee = env["ledger"], env["escrow"], env["payee_a"]
         b = TransactionBuilder("API_CALL", "rogue", initiated_at=T)
@@ -179,6 +181,8 @@ class TestProofCatchesViolations:
         b.with_metadata("transaction_type", "INTENT_SETTLEMENT")
         b.with_metadata("mandate_id", "m1")
         b.with_metadata("intent_id", "rogue-1")
+        b.with_metadata("escrow_account_id", escrow.account_id)
+        b.with_metadata("payee_account_id", payee.account_id)
         # escrow を先に補填しておく（残高不足で balance が負になるのを避け、超過だけを示す）
         topup = TransactionBuilder("DEPOSIT", "ops", initiated_at=T)
         topup.transfer(env["platform"].account_id, escrow.account_id, usdc(60))

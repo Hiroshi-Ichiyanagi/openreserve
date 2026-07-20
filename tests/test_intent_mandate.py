@@ -202,11 +202,18 @@ class TestDenials:
         r = eng.settle_intent(mandate_id="m1", intent_id="i1", payee_account_id=env["payee_a"].account_id, amount=usdc(10), purpose="GAMBLING", at=T)
         assert r.reason == "PURPOSE_NOT_ALLOWED"
 
-    def test_outside_window_denied(self, env):
+    def test_before_window_denied(self, env):
+        eng = env["engine"]
+        self._m(env)
+        r = eng.settle_intent(mandate_id="m1", intent_id="i1", payee_account_id=env["payee_a"].account_id, amount=usdc(10), purpose="API_CALL", at=T - timedelta(seconds=1))
+        assert r.reason == "OUTSIDE_WINDOW"
+
+    def test_after_window_is_expired(self, env):
+        # 有効期限超過はライフサイクル状態 EXPIRED として却下される（OUTSIDE_WINDOW より優先）
         eng = env["engine"]
         self._m(env)
         r = eng.settle_intent(mandate_id="m1", intent_id="i1", payee_account_id=env["payee_a"].account_id, amount=usdc(10), purpose="API_CALL", at=WINDOW_END + timedelta(seconds=1))
-        assert r.reason == "OUTSIDE_WINDOW"
+        assert r.reason == "MANDATE_EXPIRED"
 
     def test_duplicate_intent_denied(self, env):
         eng = env["engine"]
