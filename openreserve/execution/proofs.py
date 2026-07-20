@@ -21,7 +21,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Sequence
 
-from openreserve.execution.auction import AuctionOutcome
+from openreserve.execution.auction import OBJ_MAX_OUT, AuctionOutcome
 from openreserve.execution.surplus import SplitAllocation, SurplusSplitPolicy, compute_split
 from openreserve.transparency.audit_log import AuditLog
 from openreserve.transparency.audit_query import audit_root_as_of
@@ -110,19 +110,26 @@ class ProofOfBestExecutionGenerator:
         snapshot_at: datetime,
         mandate_id: str | None = None,
     ) -> tuple[ProofOfBestExecution, MerkleTree]:
-        # 開示された全候補（勝者 + 敗者 + 無効入札）で Merkle をコミット
-        disclosed: dict[str, int] = {}
+        # 開示された全候補（勝者 + 敗者 + 無効入札）で Merkle をコミット。
+        # no-worse は auction.objective に沿った軸で判定する（MIN_COST はコスト支配、
+        # MAX_OUT は出力支配）。軸を取り違えると MAX_OUT の勝者をコストで誤判定する。
         winner = auction.winner
         candidates = list(auction.losers) + list(auction.invalid)
         if winner is not None:
             candidates.append(winner)
-        for b in candidates:
-            disclosed[b.solver_id] = b.fill_cost_cents
-        tree = _merkle_over(disclosed, in_currency_code, "bid:")
+        valid_bids = ([winner] if winner else []) + list(auction.losers)
 
-        valid_costs = [b.fill_cost_cents for b in ([winner] if winner else []) + list(auction.losers)]
-        # 執行コストが開示済みの全有効入札に対して no-worse であること
-        no_worse = bool(valid_costs) and all(executed_cost_cents <= c for c in valid_costs)
+        if auction.objective == OBJ_MAX_OUT:
+            disclosed = {b.solver_id: b.quoted_out_cents for b in candidates}
+            no_worse = winner is not None and all(
+                winner.quoted_out_cents >= b.quoted_out_cents for b in valid_bids
+            )
+        else:  # MIN_COST
+            disclosed = {b.solver_id: b.fill_cost_cents for b in candidates}
+            no_worse = bool(valid_bids) and all(
+                executed_cost_cents <= b.fill_cost_cents for b in valid_bids
+            )
+        tree = _merkle_over(disclosed, in_currency_code, "bid:")
         within_limit = executed_cost_cents <= user_limit_cents
 
         recomputed = compute_split(surplus_cents, split_policy)

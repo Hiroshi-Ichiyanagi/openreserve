@@ -119,6 +119,23 @@ class TestModelACrown:
         res = eng.settle_via_auction(mandate_id="m", intent_id="i1", user_limit=usdc(100), purpose="NOT_ALLOWED", at=T, auction=_auc([usdc(90).cents]), split_policy=SurplusSplitPolicy(user_rebate_bps=10000, operator_margin_bps=0), accounts=accts)
         assert res.reason == "PURPOSE_NOT_ALLOWED"
 
+    def test_zero_cost_execution_denied_ledger_stays_readable(self):
+        # executed_cost 0 は payee credit 0 になり構造リーダーを永久に fail-closed に
+        # する。非正の執行は却下し、元帳は読めるまま。
+        ledger, audit, eng, escrow, *_rest, accts = _model_a()
+        before = sum(1 for _ in ledger.iter_all_transactions())
+        res = eng.settle_via_auction(mandate_id="m", intent_id="i1", user_limit=usdc(100), purpose="SWAP", at=T, auction=_auc([0]), split_policy=SurplusSplitPolicy(user_rebate_bps=10000, operator_margin_bps=0), accounts=accts)
+        assert res.reason == "NON_POSITIVE_EXECUTION"
+        assert sum(1 for _ in ledger.iter_all_transactions()) == before
+        assert eng.remaining_cents("m", T) == usdc(1000).cents  # ledger still readable
+
+    def test_payee_aliasing_rejected(self):
+        from openreserve.intent.errors import MandateError
+        ledger, audit, eng, escrow, payee, rebate, margin, gas, accts = _model_a()
+        bad = ExecutionAccounts(payee_account_id=rebate.account_id, user_rebate_account_id=rebate.account_id, operator_margin_account_id=margin.account_id, gas_account_id=gas.account_id)
+        with pytest.raises(MandateError):
+            eng.settle_via_auction(mandate_id="m", intent_id="i1", user_limit=usdc(100), purpose="SWAP", at=T, auction=_auc([usdc(90).cents]), split_policy=SurplusSplitPolicy(user_rebate_bps=7000, operator_margin_bps=3000), accounts=bad)
+
 
 class TestModelB:
     def _setup(self):
@@ -185,3 +202,13 @@ class TestBatchViaAuction:
         assert usdc(1000).cents - ledger.balance(escrow.account_id, as_of=T).cents == usdc(180).cents
         # payee got executed costs 90 + 70 = 160
         assert ledger.balance(payee.account_id, as_of=T).cents == usdc(160).cents
+
+    def test_cross_currency_leg_denied_no_write(self):
+        # バッチ最良執行は Model A のみ。クロス通貨レグは fail-closed で却下し、何も書かない。
+        ledger, audit, eng, escrow, payee, rebate, margin, gas, accts = _model_a()
+        before = sum(1 for _ in ledger.iter_all_transactions())
+        legs = [(IntentRequest("i1", payee.account_id, usdc(100), "SWAP"), _auc([usdc(90).cents]), Money(cents=14000, currency=Currency.JPY))]
+        result, bx, sp = eng.settle_batch_via_auction(mandate_id="m", legs=legs, split_policy=SurplusSplitPolicy(user_rebate_bps=7000, operator_margin_bps=3000), accounts=accts, at=T)
+        assert result.decision == "DENIED"
+        assert "CROSS_CURRENCY_NOT_SUPPORTED_IN_BATCH" in result.reason
+        assert sum(1 for _ in ledger.iter_all_transactions()) == before

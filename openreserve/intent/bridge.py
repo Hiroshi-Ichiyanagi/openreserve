@@ -111,6 +111,10 @@ def _feasibility(user_limit: Money, auction: AuctionOutcome, split_policy, quote
         # Model B
         c_out = quoted_user_out.currency
         executed_out = winner.quoted_out_cents
+        # payee は quoted_user_out を受け取る。0 以下だと構造リーダーが正の credit を
+        # 見つけられず、以降 fail-closed になる。非正の執行は却下する。
+        if quoted_user_out.cents <= 0:
+            return False, "NON_POSITIVE_EXECUTION", winner.fill_cost_cents, None, c_out, executed_out
         if executed_out < quoted_user_out.cents:
             return False, "EXECUTION_ABOVE_LIMIT", winner.fill_cost_cents, None, c_out, executed_out
         surplus = executed_out - quoted_user_out.cents
@@ -119,6 +123,10 @@ def _feasibility(user_limit: Money, auction: AuctionOutcome, split_policy, quote
         return True, "OK", winner.fill_cost_cents, surplus, c_out, executed_out
     # Model A
     executed_cost = winner.fill_cost_cents
+    # payee は executed_cost を受け取る。0 以下だと構造リーダーが正の credit を
+    # 見つけられず、以降 fail-closed になる。非正の執行は却下する。
+    if executed_cost <= 0:
+        return False, "NON_POSITIVE_EXECUTION", executed_cost, None, c_in, None
     if executed_cost > user_limit.cents:
         return False, "EXECUTION_ABOVE_LIMIT", executed_cost, None, c_in, None
     surplus = user_limit.cents - executed_cost
@@ -176,6 +184,18 @@ def settle_via_auction(
             "Model B (cross-currency) requires venue_clearing_account_id (C_in) "
             "and venue_clearing_out_account_id (C_out)"
         )
+
+    # payee は分配先口座と別でなければならない（同一だと payee に複数の正 credit が
+    # 付き、構造リーダーが len != 1 で fail-closed になる）。
+    split_accts = {
+        accounts.user_rebate_account_id,
+        accounts.operator_margin_account_id,
+        accounts.gas_account_id,
+    }
+    if accounts.referrer_account_id is not None:
+        split_accts.add(accounts.referrer_account_id)
+    if accounts.payee_account_id in split_accts:
+        raise MandateError("payee_account_id must be distinct from split/rebate accounts")
 
     # 3. 分配
     alloc = compute_split(surplus, split_policy)
@@ -343,6 +363,10 @@ def settle_batch_via_auction(
             mandate_id, req.intent_id, req.amount, req.purpose, req.payee_account_id, at, req.nonce,
             extra_records=accepted,
         )
+        # バッチ最良執行は Model A（C_in == C_out）のみ。クロス通貨レグは fail-closed で
+        # 却下する（Model-A 前提で posting すると不均衡 tx になるため）。
+        if ok and quoted_user_out is not None and quoted_user_out.currency != req.amount.currency:
+            ok, reason = False, "CROSS_CURRENCY_NOT_SUPPORTED_IN_BATCH"
         if ok:
             feas_ok, freason, executed_cost, surplus, c_out, _eo = _feasibility(
                 req.amount, auction, split_policy, quoted_user_out

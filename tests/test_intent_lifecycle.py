@@ -81,6 +81,15 @@ class TestLifecycle:
         assert eng.effective_cap_cents("m", T + timedelta(hours=3)) == usdc(150).cents
         assert _settle(eng, pa, "i2", 30, T + timedelta(hours=3)).decision == "SETTLED"
 
+    def test_backdated_resume_does_not_defeat_pause(self):
+        # pause(ts=T+20) の後に resume(ts=T+10) をバックデートで追記しても、時刻順で
+        # pause が「時間的に最後」なので T+25 の状態は PAUSED のまま（順序ガード）。
+        _l, _p, _e, pa, eng = _engine()
+        eng.pause_mandate("m", at=T + timedelta(hours=20), reason="risk")
+        eng.resume_mandate("m", at=T + timedelta(hours=10))  # backdated before the pause
+        assert eng.mandate_state("m", T + timedelta(hours=25)).state == MandateState.PAUSED
+        assert _settle(eng, pa, "i1", 10, T + timedelta(hours=25)).reason == "MANDATE_PAUSED"
+
     def test_state_rederived_at_various_times(self):
         _l, _p, _e, pa, eng = _engine()
         eng.pause_mandate("m", at=T + timedelta(hours=5), reason="x")

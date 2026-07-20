@@ -19,6 +19,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from typing import Any, Sequence
 
+from openreserve.intent.errors import MandateError
 from openreserve.intent.mandate import IntentSettlementEngine
 from openreserve.intent.settlement import iter_settlement_records
 from openreserve.intent.submandate import descendant_ids
@@ -254,9 +255,19 @@ class MandatePortfolioProofGenerator:
         total_cap = total_settled = total_remaining = 0
         within: list[tuple[str, bool]] = []
         remaining_items: list[tuple[str, int, str]] = []
-        escrow_seen: dict[str, int] = {}
+        # escrow_account_id ごとに balance（1 回）と remaining の合計を持つ。
+        # 独立した escrow を横断してネットすると、空になった個別 escrow を過剰資金の
+        # 別 escrow が覆い隠してしまう（担保証明の意味が壊れる）。escrow グループ単位で
+        # 個別に担保を判定する。
+        escrow_balance: dict[str, int] = {}
+        escrow_remaining: dict[str, int] = {}
 
         for mid in mandate_ids:
+            m = eng.get_mandate(mid)
+            if m.currency != currency:
+                raise MandateError(
+                    f"portfolio currency {currency.code} != mandate {mid} currency {m.currency.code}"
+                )
             cap = eng.effective_cap_cents(mid, snapshot_at)
             settled = eng.subtree_settled_cents(mid, snapshot_at)
             remaining = cap - settled
@@ -265,11 +276,16 @@ class MandatePortfolioProofGenerator:
             total_remaining += remaining
             within.append((mid, remaining >= 0))
             remaining_items.append(("mandate:" + mid, remaining, currency.code))
-            escrow_id = eng.get_mandate(mid).escrow_account_id
-            if escrow_id not in escrow_seen:
-                escrow_seen[escrow_id] = eng.escrow_balance_cents(mid, snapshot_at)
+            eid = m.escrow_account_id
+            escrow_remaining[eid] = escrow_remaining.get(eid, 0) + remaining
+            if eid not in escrow_balance:
+                escrow_balance[eid] = eng.escrow_balance_cents(mid, snapshot_at)
 
-        total_escrow = sum(escrow_seen.values())
+        total_escrow = sum(escrow_balance.values())
+        # すべての escrow グループが個別に担保されていること（AND）。
+        is_collateralized = all(
+            escrow_balance[eid] >= escrow_remaining[eid] for eid in escrow_remaining
+        )
         remaining_items.sort()
         tree = _tree_from(remaining_items)
         within.sort()
@@ -284,7 +300,7 @@ class MandatePortfolioProofGenerator:
             total_remaining_cents=total_remaining,
             total_escrow_balance_cents=total_escrow,
             all_within_budget=all(b for _m, b in within),
-            is_collateralized=total_escrow >= total_remaining,
+            is_collateralized=is_collateralized,
             per_mandate_within_budget=tuple(within),
             audit_log_root_hash=audit_root_as_of(eng.audit_log, snapshot_at),
         )

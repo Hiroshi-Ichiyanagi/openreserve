@@ -92,6 +92,34 @@ class TestPortfolio:
         assert proof.is_collateralized is False  # escrow 40 < remaining 100
         assert proof.all_within_budget is True  # budget itself not exceeded
 
+    def test_independent_escrows_not_netted(self):
+        # M1 escrow drained to 0 (remaining 100); M2 overfunded to 200 (remaining 100).
+        # A global net (200 >= 200) would falsely say collateralized; per-escrow must not.
+        ledger = Ledger(SQLiteLedgerStorage(":memory:"))
+        plat = ledger.open_account(OwnerType.PLATFORM, Currency.USDC, "plat")
+        e1 = ledger.open_account(OwnerType.PLATFORM, Currency.USDC, "e1")
+        e2 = ledger.open_account(OwnerType.PLATFORM, Currency.USDC, "e2")
+        _fund(ledger, plat, e1, usdc(100))
+        _fund(ledger, plat, e2, usdc(100))
+        eng = IntentSettlementEngine(ledger, audit_log=AuditLog(":memory:"))
+        eng.create_mandate(mandate_id="m1", principal_id="p", escrow_account_id=e1.account_id, budget_cap=usdc(100), allowed_purposes=frozenset(["A"]), valid_from=T, valid_until=END, created_at=T)
+        eng.create_mandate(mandate_id="m2", principal_id="p", escrow_account_id=e2.account_id, budget_cap=usdc(100), allowed_purposes=frozenset(["A"]), valid_from=T, valid_until=END, created_at=T)
+        # drain e1 -> 0, overfund e2 -> 200
+        d = TransactionBuilder("WITHDRAW", "ops", initiated_at=T)
+        d.transfer(e1.account_id, plat.account_id, usdc(100))
+        ledger.post(d.build())
+        ledger.settle(d.transaction_id, settled_at=T)
+        _fund(ledger, plat, e2, usdc(100))
+        proof, _ = MandatePortfolioProofGenerator(eng).generate(["m1", "m2"], snapshot_at=T, currency=Currency.USDC)
+        assert proof.total_escrow_balance_cents == usdc(200).cents
+        assert proof.total_remaining_cents == usdc(200).cents
+        assert proof.is_collateralized is False  # e1 (0) cannot back m1 (100), despite the global net
+
+    def test_currency_mismatch_rejected(self):
+        ledger, eng, e1, e2, pa = self._two_mandates()
+        with pytest.raises(Exception):
+            MandatePortfolioProofGenerator(eng).generate(["m1", "m2"], snapshot_at=T, currency=Currency.JPY)
+
 
 # ---------- audit_root_as_of ----------
 

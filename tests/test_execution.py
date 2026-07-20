@@ -223,6 +223,28 @@ class TestExecutionProofs:
         )
         assert proof.split_matches_policy is False
 
+    def test_best_execution_honors_max_out_objective(self):
+        # MAX_OUT: 勝者は出力最大。出力の低い入札を勝者と偽ると no_worse=False。
+        from openreserve.execution.auction import AuctionOutcome
+        bids = [SolverBid("sA", "i1", 50, 100, 0), SolverBid("sB", "i1", 40, 90, 0)]
+        auc = run_auction(bids, objective="MAX_OUT")  # honest winner sA (output 100)
+        pol = SurplusSplitPolicy(user_rebate_bps=10000, operator_margin_bps=0)
+        alloc = compute_split(0, pol)
+        honest, _ = ProofOfBestExecutionGenerator().generate(
+            intent_id="i1", auction=auc, executed_cost_cents=50, user_limit_cents=100,
+            in_currency_code="USDC", out_currency_code="JPY", split_policy=pol,
+            posted_allocation=alloc, surplus_cents=0, snapshot_at=T,
+        )
+        assert honest.user_no_worse_than_best_disclosed is True
+        # tamper: name sB (lower output) the winner
+        tampered = AuctionOutcome(intent_id="i1", objective="MAX_OUT", winner=bids[1], reference=bids[0], losers=(bids[0],), invalid=())
+        bad, _ = ProofOfBestExecutionGenerator().generate(
+            intent_id="i1", auction=tampered, executed_cost_cents=40, user_limit_cents=100,
+            in_currency_code="USDC", out_currency_code="JPY", split_policy=pol,
+            posted_allocation=alloc, surplus_cents=0, snapshot_at=T,
+        )
+        assert bad.user_no_worse_than_best_disclosed is False
+
     def test_surplus_proof_totals_and_tamper(self):
         pol = SurplusSplitPolicy(user_rebate_bps=7000, operator_margin_bps=3000)
         good = compute_split(10, pol)

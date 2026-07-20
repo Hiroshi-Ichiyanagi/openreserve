@@ -51,11 +51,18 @@ def fold_lifecycle(
     effective_cap = base_budget_cap_cents
     last_seq: int | None = None
 
-    for ev in events:
-        if ev.timestamp > at:
-            continue
-        if ev.payload.get(KEY_MANDATE_ID) != mandate_id:
-            continue
+    # AuditLog.append は呼び出し側の timestamp を強制しない（settlement と違い単調性
+    # チェックが無い）。sequence 順に畳むと、バックデートした resume が後から pause を
+    # 打ち消してしまう。時刻順（同時刻は sequence 順）に畳んで「時間的に最後」を勝たせる。
+    relevant = sorted(
+        (
+            e
+            for e in events
+            if e.timestamp <= at and e.payload.get(KEY_MANDATE_ID) == mandate_id
+        ),
+        key=lambda e: (e.timestamp, e.sequence),
+    )
+    for ev in relevant:
         if ev.event_type == EVT_REVOKED:
             revoked = True
             last_seq = ev.sequence
