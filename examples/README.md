@@ -8,6 +8,7 @@ python examples/proof_of_reserves.py        # generate a proof; a user verifies 
 python examples/publish_and_verify_offline.py  # publish JSON, then verify it offline
 python examples/tamper_detection.py         # the audit chain detects a tampered event
 python examples/reproducibility.py          # same inputs + same time -> same hash
+python examples/intent_mandate_settlement.py   # autonomous budget-bounded settlement + proof
 ```
 
 | Script | Shows |
@@ -16,6 +17,7 @@ python examples/reproducibility.py          # same inputs + same time -> same ha
 | `publish_and_verify_offline.py` | Serialize a proof and a user's Merkle proof to JSON, then re-verify solvency and inclusion in a step that reads only the JSON. |
 | `tamper_detection.py` | Build a hash-linked audit log, edit a stored event directly in the database, and show `verify_chain()` catches it. |
 | `reproducibility.py` | The same ledger state and the same `snapshot_at` produce identical hashes; the timestamp is required (no wall-clock fallback). |
+| `intent_mandate_settlement.py` | Grant a pre-funded mandate (budget, allowed purposes, window, per-tx cap), settle M2M intents autonomously with every accept/deny on a tamper-evident audit chain, then produce a `ProofOfMandate` proving the agent never exceeded budget — and let a payee verify its own receipts' inclusion. |
 
 See [../docs/VERIFYING.md](../docs/VERIFYING.md) for the verification model these
 examples demonstrate.

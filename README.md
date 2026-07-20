@@ -208,6 +208,7 @@ openreserve/
   core/           append-only double-entry ledger + types + SQLite storage
   transparency/   merkle tree, hash-chain audit log, proof generators
   regulatory/     point-in-time reserve / deposit calculation
+  intent/         mandate-based autonomous settlement + proof of mandate
   providers/      abstract provider interface (ProviderCategory only; no implementations)
 tests/            unit tests + determinism guard
 ```
@@ -215,6 +216,7 @@ tests/            unit tests + determinism guard
 ## Project
 
 - [Architecture](docs/ARCHITECTURE.md) — modules, dependency graph, trust model, extension points
+- [Intent-based mandates](docs/INTENT_MANDATES.md) — prove an autonomous agent stayed within a pre-funded budget
 - [Verifying a proof](docs/VERIFYING.md) — re-verify a published proof offline ("verify me")
 - [Examples](examples/) — runnable scripts (proof-of-reserves, offline verify, tamper detection, reproducibility)
 - [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md)

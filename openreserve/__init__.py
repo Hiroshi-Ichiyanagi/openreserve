@@ -17,6 +17,14 @@ from openreserve.core import (
     TransactionBuilder,
     TransactionStatus,
 )
+from openreserve.intent import (
+    IntentSettlementEngine,
+    IntentSettlementResult,
+    Mandate,
+    MandateError,
+    ProofOfMandate,
+    ProofOfMandateGenerator,
+)
 from openreserve.providers import ProviderCategory
 from openreserve.regulatory import (
     FundRetentionAnalysis,
@@ -71,6 +79,13 @@ __all__ = [
     "ProofOfSolvency",
     "ProofOfSolvencyGenerator",
     "verify_proof_with_node_prefix",
+    # intent: mandate-based autonomous settlement + proof
+    "IntentSettlementEngine",
+    "IntentSettlementResult",
+    "Mandate",
+    "MandateError",
+    "ProofOfMandate",
+    "ProofOfMandateGenerator",
     # regulatory: reserve / deposit calculation
     "FundRetentionAnalysis",
     "PaymentServicesActCompliance",

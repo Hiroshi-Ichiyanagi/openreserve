@@ -10,6 +10,7 @@ openreserve/
   core/           append-only double-entry ledger + value types + SQLite storage
   transparency/   Merkle tree, hash-linked audit log, proof generators
   regulatory/     point-in-time reserve / deposit calculation
+  intent/         mandate-based autonomous settlement + proof of mandate
   providers/      abstract provider interface (ProviderCategory only; no implementations)
 ```
 
@@ -22,6 +23,11 @@ openreserve/
 - **regulatory** — `PaymentServicesActCompliance`, which computes a point-in-time
   required reserve (settled user balances plus in-flight obligations, negative balances
   excluded) and returns structured results.
+- **intent** — `Mandate`, `IntentSettlementEngine`, and `ProofOfMandateGenerator`. A
+  mandate is a pre-funded, budget-bounded authorization for an autonomous agent; the
+  engine settles machine-to-machine intents within it (posting to the `Ledger`, logging
+  every accept/deny to the `AuditLog`), and the proof lets a third party verify offline
+  that the budget was never exceeded. See [INTENT_MANDATES.md](INTENT_MANDATES.md).
 - **providers** — `ProviderCategory` and the abstract `LicensedProvider` interface. No
   concrete providers ship here; integrators supply their own.
 
@@ -32,6 +38,7 @@ business layer:
 
 ```
 proofs ─┐
+intent ─┤
         ├─> core.ledger ─> core.storage ─> core.types
 PSA ────┘
 merkle      (standalone, standard library only)
@@ -39,9 +46,10 @@ audit_log   (standalone, standard library only)
 ```
 
 `transparency.merkle` and `transparency.audit_log` have no internal dependencies.
-`transparency.proofs` and `regulatory.payment_services_act` read from a `Ledger`. The
-`Ledger` reads from a `LedgerStorage`. There are no cycles, and there is no dependency
-on any serving layer or external service.
+`transparency.proofs`, `regulatory.payment_services_act`, and `intent.mandate` read from
+a `Ledger`; `intent` also writes to it (settlements) and appends to an `AuditLog`, and
+`intent.proofs` reuses `transparency.merkle`. The `Ledger` reads from a `LedgerStorage`.
+There are no cycles, and there is no dependency on any serving layer or external service.
 
 ## Trust model
 
