@@ -10,6 +10,9 @@ openreserve/
   core/           append-only double-entry ledger + value types + SQLite storage
   transparency/   Merkle tree, hash-linked audit log, proof generators
   regulatory/     point-in-time reserve / deposit calculation
+  intent/         mandate-based autonomous settlement (+ policy, session keys, batch,
+                  lifecycle, best-execution bridge) + proof of mandate / portfolio
+  execution/      solver auction, surplus recapture, arbitrage attribution + proofs
   providers/      abstract provider interface (ProviderCategory only; no implementations)
 ```
 
@@ -22,6 +25,20 @@ openreserve/
 - **regulatory** — `PaymentServicesActCompliance`, which computes a point-in-time
   required reserve (settled user balances plus in-flight obligations, negative balances
   excluded) and returns structured results.
+- **intent** — `Mandate`, `IntentSettlementEngine`, and the proof generators. A mandate is
+  a pre-funded, budget-bounded authorization for an autonomous agent; the engine settles
+  machine-to-machine intents within it (posting to the `Ledger`, logging every accept/deny
+  to the `AuditLog`) and re-derives all cumulative state structurally from the ledger. It
+  composes spend policy (`SpendPolicy`, `EpochSpec`), session-key sub-mandates, atomic
+  batches, lifecycle (pause/resume/revoke/top-up), replay/monotonic-time protection, and a
+  best-execution bridge. `ProofOfMandateGenerator` / `MandatePortfolioProofGenerator` let a
+  third party verify offline that the budget was never exceeded.
+  See [INTENT_MANDATES.md](INTENT_MANDATES.md).
+- **execution** — standalone (imports nothing from `intent`): `select_best_route`,
+  `run_auction`, `compute_split` (integer-exact surplus split), `find_best_arbitrage_cycle`
+  (memo-only attribution), and `ProofOfBestExecution` / `ProofOfSurplusRecapture`. The
+  bridge (`intent/bridge.py`) is the only place the two meet, one direction only.
+  See [EXECUTION_RECAPTURE.md](EXECUTION_RECAPTURE.md).
 - **providers** — `ProviderCategory` and the abstract `LicensedProvider` interface. No
   concrete providers ship here; integrators supply their own.
 
@@ -31,17 +48,23 @@ The dependency graph is a one-way DAG; nothing in the core depends on an applica
 business layer:
 
 ```
-proofs ─┐
-        ├─> core.ledger ─> core.storage ─> core.types
-PSA ────┘
-merkle      (standalone, standard library only)
-audit_log   (standalone, standard library only)
+proofs ────┐
+intent ────┤
+execution ─┤─> core.ledger ─> core.storage ─> core.types
+PSA ───────┘
+intent.bridge ─> execution                 (one direction only; execution ⊄ intent)
+merkle       (standalone, standard library only)
+audit_log    (standalone, standard library only)
+audit_query  (audit_log only; shared as-of commitment for intent + execution proofs)
 ```
 
 `transparency.merkle` and `transparency.audit_log` have no internal dependencies.
-`transparency.proofs` and `regulatory.payment_services_act` read from a `Ledger`. The
-`Ledger` reads from a `LedgerStorage`. There are no cycles, and there is no dependency
-on any serving layer or external service.
+`transparency.proofs`, `regulatory.payment_services_act`, `intent.mandate`, and
+`execution` read from a `Ledger`; `intent` also writes to it (settlements) and appends to
+an `AuditLog`, and the proof modules reuse `transparency.merkle`. The `execution` package
+imports nothing from `intent` — the `intent.bridge` module is the single, one-directional
+seam (a test enforces this). The `Ledger` reads from a `LedgerStorage`. There are no
+cycles, and there is no dependency on any serving layer or external service.
 
 ## Trust model
 
