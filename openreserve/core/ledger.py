@@ -16,6 +16,7 @@ from dataclasses import replace
 from datetime import datetime, timezone
 from typing import Callable, Iterable
 
+from openreserve.core.exact import require_aware
 from openreserve.core.storage import LedgerStorage
 from openreserve.core.types import (
     Account,
@@ -45,6 +46,8 @@ class TransactionBuilder:
         initiator_id: str,
         initiated_at: datetime | None = None,
     ) -> None:
+        if initiated_at is not None:
+            require_aware(initiated_at, "initiated_at")
         self._transaction_id = new_transaction_id()
         self._purpose_code = purpose_code
         self._initiator_id = initiator_id
@@ -89,20 +92,23 @@ class TransactionBuilder:
         from_amount: Money,
         to_account_id: str,
         to_amount: Money,
-        fx_gain_loss_account_id: str,
+        *,
+        from_clearing_account_id: str,
+        to_clearing_account_id: str,
     ) -> TransactionBuilder:
         """為替変換。
 
         from_account から from_amount が減り、to_account に to_amount が増える。
-        通貨が異なるため、各通貨ごとに貸借を合わせる必要がある。
-        FX口座が両通貨でバッファとして機能する。
 
-        実装上は：
-          from通貨側: from_account -from_amount, fx_gain_loss +from_amount
-          to通貨側:   fx_gain_loss -to_amount, to_account +to_amount
+        Every account has one currency, and every currency journal of a transaction must
+        sum to zero. The two legs therefore meet in two clearing accounts, one per currency:
 
-        この設計により、fx_gain_loss口座は両通貨の残高を保持し、
-        その差額が為替差損益として可視化される。
+          from currency: from_account -from_amount, from_clearing_account +from_amount
+          to currency:   to_clearing_account -to_amount, to_account +to_amount
+
+        Both legs are in one transaction, so they are stored together or not at all. This
+        method has no rate logic: the caller states both amounts. For a conversion at a
+        declared rate and rounding rule use ``openreserve.conversion.post_conversion``.
         """
         if from_amount.currency == to_amount.currency:
             raise ValueError(
@@ -112,8 +118,8 @@ class TransactionBuilder:
             raise ValueError("FX amounts must be positive")
 
         self.add_entry(from_account_id, -from_amount)
-        self.add_entry(fx_gain_loss_account_id, from_amount)
-        self.add_entry(fx_gain_loss_account_id, -to_amount)
+        self.add_entry(from_clearing_account_id, from_amount)
+        self.add_entry(to_clearing_account_id, -to_amount)
         self.add_entry(to_account_id, to_amount)
         return self
 
@@ -137,6 +143,8 @@ class TransactionBuilder:
     ) -> Transaction:
         if not self._entries:
             raise ValueError("Transaction must have at least one entry")
+        if settled_at is not None:
+            require_aware(settled_at, "settled_at")
         return Transaction(
             transaction_id=self._transaction_id,
             entries=tuple(self._entries),
@@ -198,6 +206,11 @@ class Ledger:
         この時点で複式簿記の制約は Transaction.__post_init__ で検証済み。
         ここでは追加で口座の存在確認と通貨整合性を確認する。
         """
+        # Every instant must be timezone-aware: a naive one cannot be compared with a cut-off.
+        require_aware(transaction.initiated_at, "initiated_at")
+        if transaction.settled_at is not None:
+            require_aware(transaction.settled_at, "settled_at")
+
         # 口座の存在確認と通貨整合性
         for entry in transaction.entries:
             account = self._storage.load_account(entry.account_id)
@@ -222,6 +235,8 @@ class Ledger:
 
     def settle(self, transaction_id: str, settled_at: datetime | None = None) -> Transaction:
         """PENDING状態のトランザクションをSETTLEDに遷移させる。"""
+        if settled_at is not None:
+            require_aware(settled_at, "settled_at")
         tx = self._storage.load_transaction(transaction_id)
         if tx.status != TransactionStatus.PENDING:
             raise ValueError(
@@ -264,22 +279,34 @@ class Ledger:
         transaction_id: str,
         reason: str,
         initiator_id: str,
+        *,
+        reversed_at: datetime | None = None,
     ) -> Transaction:
         """既存トランザクションの反対仕訳を生成し、新トランザクションとして記録する。
 
         元のトランザクションは変更しない。Append-only原則の徹底。
+
+        ``reversed_at``: when given, the reversal is initiated and settled at that instant,
+        so the same call on the same ledger state gives the same times. Without it the wall
+        clock is used, as for the other ledger operations.
         """
+        if reversed_at is not None:
+            require_aware(reversed_at, "reversed_at")
         original = self._storage.load_transaction(transaction_id)
         builder = TransactionBuilder(
             purpose_code=f"REVERSAL_OF:{original.purpose_code}",
             initiator_id=initiator_id,
+            initiated_at=reversed_at,
         )
         for entry in original.entries:
             builder.add_entry(entry.account_id, -entry.amount)
         builder.with_metadata("reversal_of", transaction_id)
         builder.with_metadata("reversal_reason", reason)
 
-        reversal_tx = builder.build(status=TransactionStatus.SETTLED, settled_at=datetime.now(timezone.utc))
+        reversal_tx = builder.build(
+            status=TransactionStatus.SETTLED,
+            settled_at=reversed_at if reversed_at is not None else datetime.now(timezone.utc),
+        )
         self._storage.save_transaction(reversal_tx)
         self._emit(
             "transaction_reversed",
@@ -305,7 +332,13 @@ class Ledger:
         """口座の残高を、指定時点の SETTLED 済みトランザクションから計算する。
 
         as_of=None の場合は現時点。include_pending=True の場合は PENDING も含める。
+
+        A settled entry counts when its settlement instant is at or before ``as_of``
+        (inclusive). The comparison is made on instants, so the offset in which ``as_of`` is
+        written does not matter. A naive ``as_of`` raises ``NaiveDatetimeError``.
         """
+        if as_of is not None:
+            require_aware(as_of, "as_of")
         account = self._storage.load_account(account_id)
         as_of = as_of or datetime.now(timezone.utc)
 
@@ -323,12 +356,38 @@ class Ledger:
 
         return Money(cents=total_cents, currency=account.currency)
 
+    def account_entries(
+        self,
+        account_id: str,
+        *,
+        as_of: datetime,
+        include_pending: bool = False,
+    ) -> tuple[Entry, ...]:
+        """The entries that ``balance()`` adds up for the same arguments.
+
+        Settled entries with a settlement instant at or before ``as_of`` and, when
+        ``include_pending`` is set, pending ones started at or before it. ``as_of`` is
+        explicit here; pass ``openreserve.core.exact.INSTANT_MAX`` for "over all time".
+        """
+        require_aware(as_of, "as_of")
+        self._storage.load_account(account_id)  # raises IntegrityError for an unknown account
+        statuses = (
+            (TransactionStatus.SETTLED, TransactionStatus.PENDING)
+            if include_pending
+            else (TransactionStatus.SETTLED,)
+        )
+        return tuple(
+            self._storage.iter_entries_for_account(account_id=account_id, as_of=as_of, statuses=statuses)
+        )
+
     def all_balances_snapshot(
         self,
         as_of: datetime | None = None,
         include_pending: bool = False,
     ) -> dict[str, Money]:
         """全口座の残高を一括で取得する。Proof of Reservesなどの基礎データ。"""
+        if as_of is not None:
+            require_aware(as_of, "as_of")
         as_of = as_of or datetime.now(timezone.utc)
         result: dict[str, Money] = {}
         for account in self._storage.list_accounts():
@@ -344,6 +403,8 @@ class Ledger:
         as_of: datetime | None = None,
     ) -> Money:
         """指定 owner_type / currency の総和。利用者負債合計などに使う。"""
+        if as_of is not None:
+            require_aware(as_of, "as_of")
         as_of = as_of or datetime.now(timezone.utc)
         total = Money.zero(currency)
         for account in self._storage.list_accounts(owner_type=owner_type):
