@@ -83,7 +83,9 @@ from outside the ledger and publication evidence are stage B.
 Measured on 2026-11-17 with Python 3.14.9, pytest 9.0.3 and SQLite 3.54.1, on a private copy of
 the code as it was before this change set (the last commit of `main`, `4049d82`, plus the tests
 file with the five pinned defects). The reference code and the test vectors were also run on
-Python 3.11.17, the oldest supported version; the suite itself was not run there.
+Python 3.11.17, the oldest supported version; the suite was not run there at design time. The
+suite of this change set was run later on Python 3.11.17 and on 3.14.9, with no failure and one
+expected failure on both.
 
 | # | What was measured | Result |
 |---|---|---|
@@ -107,9 +109,10 @@ Python 3.11.17, the oldest supported version; the suite itself was not run there
 | M18 | Reference verifiers under mutation | 33,500 mutated proofs, manifests, bundles and exports: no exception, and no altered document accepted. Two holes found this way were closed in the specification (exact key sets everywhere; the whole document must fit the canonical value profile before any other check) |
 | M19 | Snapshot rules on the ledger | the rules of section 7, run against the trial copy of the ledger with the reference tree, give the pinned values: summary hash `c981cf21...d4ed` for the fixed-id ledger (also with accounts created in another order, a pending transfer and a zero-balance account present; also for the cut-off given as `+09:00`; also when regenerated after a later account and later transfers), coverage summary hash `a15cf45f...b678`, and for the overdraft ledger liabilities 100, receivables 60 and a negative verdict |
 
-Not measured: the suite on Python 3.11 to 3.13 (the CI matrix); generation time on a large
-ledger (one balance query per account); whether the package on the package index equals the tag
-`v0.1.1`; any external system.
+Not measured: the suite on Python 3.12 and 3.13 (the CI matrix also has 3.11, on which the suite
+of this change set was run later, see above); generation time on a large ledger (one balance
+query per account); whether the package on the package index equals the tag `v0.1.1`; any
+external system.
 
 ## 2. Sources
 
@@ -1798,8 +1801,9 @@ sentence in the verification guide is known to be inaccurate.
 
 Not measured:
 
-- the suite on Python 3.11, 3.12 and 3.13 (the CI matrix); at design time it ran on 3.14.9 only.
-  The reference code and the vectors were run on 3.11.17;
+- the suite on Python 3.12 and 3.13 (the rest of the CI matrix). At design time the suite ran on
+  3.14.9 only, and the reference code and the vectors were also run on 3.11.17; the suite of
+  this change set ran later on 3.11.17 and 3.14.9, with no failure and one expected failure;
 - snapshot generation and conversion on a large ledger (one balance query per account; the tree
   itself was measured, M17);
 - whether the published package of version 0.1.1 equals the tag `v0.1.1` (the tag and the
