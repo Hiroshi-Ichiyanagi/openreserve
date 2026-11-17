@@ -38,7 +38,11 @@ ratio — but **not** individual user balances. An operator can publish this at 
 URL; anyone can fetch it (e.g. with `curl`) and check it.
 
 For inclusion, an individual account holder is given their own `MerkleProof` (leaf +
-sibling steps + root). That proof reveals only their own leaf, not other balances.
+sibling steps + root). That proof does not list other balances, but it is not private: the leaves of this
+legacy tree carry no secret, so anyone who knows another account's id can use a sibling hash from
+the proof to test guesses of that account's balance. The newer Merkle-sum tree uses salted
+leaves; what its proofs disclose is described in section 6.7 of
+[the design notes](hypothetical/W_CHANGEOVER_DESIGN.md).
 
 ## 1. Re-check solvency from the summary
 
