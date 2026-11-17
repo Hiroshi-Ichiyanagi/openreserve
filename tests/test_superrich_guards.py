@@ -191,13 +191,115 @@ NEW_MODULES = [
     "openreserve/transparency/audit_query.py",
 ]
 
+# Modules of the exact-arithmetic and proof core: no clock, no random source, no network, no float.
+EXACT_CORE_MODULES = [
+    "openreserve/core/exact.py",
+    "openreserve/core/currencies.py",
+    "openreserve/transparency/sumtree.py",
+    "openreserve/transparency/snapshot.py",
+    "openreserve/conversion.py",
+    "openreserve/conversion_evidence.py",
+    "openreserve/transparency/coverage.py",
+]
+
+# The store and its migration: no clock, no random source, no network, no float. They use
+# sqlite3 and os, so the standard-library allow-list of the exact core does not apply.
+STORAGE_MODULES = [
+    "openreserve/core/storage.py",
+    "openreserve/core/migration.py",
+]
+
+FORBIDDEN_CALLS = {"now", "total_seconds", "today", "utcnow", "urandom", "uuid4", "token_bytes", "float"}
+FORBIDDEN_IMPORTS = {"random", "secrets", "time", "uuid", "socket", "ssl", "http", "urllib"}
+
+
+def _called_names(path: Path) -> set[str]:
+    """Names of everything that is called: ``x.name(...)`` and ``name(...)``."""
+    names: set[str] = set()
+    for node in ast.walk(ast.parse(path.read_text())):
+        if isinstance(node, ast.Call):
+            if isinstance(node.func, ast.Attribute):
+                names.add(node.func.attr)
+            elif isinstance(node.func, ast.Name):
+                names.add(node.func.id)
+    return names
+
+
+def _imported_modules(path: Path) -> set[str]:
+    """Top-level names of every imported module."""
+    modules: set[str] = set()
+    for node in ast.walk(ast.parse(path.read_text())):
+        if isinstance(node, ast.Import):
+            modules.update(alias.name.split(".")[0] for alias in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.module and node.level == 0:
+            modules.add(node.module.split(".")[0])
+    return modules
+
 
 class TestNoWallClockStatic:
     def test_no_now_or_total_seconds_calls(self):
-        for rel in NEW_MODULES:
+        for rel in NEW_MODULES + EXACT_CORE_MODULES:
             called = _called_attrs(REPO / rel)
             assert "now" not in called, f"{rel} calls .now() (wall-clock leak)"
             assert "total_seconds" not in called, f"{rel} calls .total_seconds() (float)"
+
+
+class TestExactCoreStatic:
+    """The exact-arithmetic and proof core reads no clock, no random source and no network,
+    and never builds a float."""
+
+    def test_modules_exist(self):
+        for rel in EXACT_CORE_MODULES:
+            assert (REPO / rel).is_file(), rel
+
+    def test_no_forbidden_calls(self):
+        for rel in EXACT_CORE_MODULES:
+            offending = _called_names(REPO / rel) & FORBIDDEN_CALLS
+            assert not offending, f"{rel} calls {sorted(offending)}"
+
+    def test_no_forbidden_imports(self):
+        for rel in EXACT_CORE_MODULES:
+            offending = _imported_modules(REPO / rel) & FORBIDDEN_IMPORTS
+            assert not offending, f"{rel} imports {sorted(offending)}"
+
+    def test_only_the_standard_library_and_the_package_are_imported(self):
+        allowed = {"__future__", "dataclasses", "datetime", "fractions", "hashlib", "hmac", "json", "re", "typing", "openreserve"}
+        for rel in EXACT_CORE_MODULES:
+            extra = _imported_modules(REPO / rel) - allowed
+            assert not extra, f"{rel} imports {sorted(extra)}"
+
+    def test_no_float_literals(self):
+        for rel in EXACT_CORE_MODULES:
+            tree = ast.parse((REPO / rel).read_text())
+            floats = [n.value for n in ast.walk(tree) if isinstance(n, ast.Constant) and isinstance(n.value, float)]
+            assert not floats, f"{rel} contains float literals {floats}"
+
+    def test_storage_and_migration_read_no_clock_and_build_no_float(self):
+        for rel in STORAGE_MODULES:
+            assert (REPO / rel).is_file(), rel
+            offending = _called_names(REPO / rel) & FORBIDDEN_CALLS
+            assert not offending, f"{rel} calls {sorted(offending)}"
+            offending = _imported_modules(REPO / rel) & FORBIDDEN_IMPORTS
+            assert not offending, f"{rel} imports {sorted(offending)}"
+            tree = ast.parse((REPO / rel).read_text())
+            floats = [n.value for n in ast.walk(tree) if isinstance(n, ast.Constant) and isinstance(n.value, float)]
+            assert not floats, f"{rel} contains float literals {floats}"
+
+    def test_legacy_reserve_artifact_builds_no_float(self):
+        rel = "openreserve/transparency/proofs.py"
+        assert "float" not in _called_names(REPO / rel), f"{rel} calls float()"
+        tree = ast.parse((REPO / rel).read_text())
+        floats = [n.value for n in ast.walk(tree) if isinstance(n, ast.Constant) and isinstance(n.value, float)]
+        assert not floats, f"{rel} contains float literals {floats}"
+
+    def test_the_guard_helpers_see_what_they_should(self, tmp_path):
+        sample = tmp_path / "sample.py"
+        sample.write_text(
+            "import time\nimport urllib.request\nfrom secrets import token_bytes\nfrom . import sibling\n"
+            "x = float('1')\ny = datetime.now()\nz = os.urandom(8)\n"
+        )
+        assert _called_names(sample) >= {"float", "now", "urandom"}
+        assert _imported_modules(sample) == {"time", "urllib", "secrets"}
 
 
 # ---------- Determinism + no-wall-clock runtime guard ----------

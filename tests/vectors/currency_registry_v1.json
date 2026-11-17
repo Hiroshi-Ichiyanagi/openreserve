@@ -1,0 +1,132 @@
+{
+ "codes_invalid": [
+  "",
+  "jpy",
+  "1JPY",
+  "_JPY",
+  "JP-Y",
+  "JP Y",
+  "JPY\n",
+  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "Ｊ",
+  "W.",
+  "FICTIONAL_"
+ ],
+ "codes_valid": [
+  "JPY",
+  "USDC",
+  "PROGMAT_JPY",
+  "A",
+  "A1",
+  "FICTIONAL_W",
+  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+ ],
+ "default_plus_fictional_w": {
+  "document": {
+   "currencies": [
+    {
+     "code": "EUR",
+     "fictional": false,
+     "minor_units": "2"
+    },
+    {
+     "code": "FICTIONAL_W",
+     "fictional": true,
+     "minor_units": "2"
+    },
+    {
+     "code": "GBP",
+     "fictional": false,
+     "minor_units": "2"
+    },
+    {
+     "code": "JPY",
+     "fictional": false,
+     "minor_units": "0"
+    },
+    {
+     "code": "JPYC",
+     "fictional": false,
+     "minor_units": "18"
+    },
+    {
+     "code": "PROGMAT_JPY",
+     "fictional": false,
+     "minor_units": "0"
+    },
+    {
+     "code": "USD",
+     "fictional": false,
+     "minor_units": "2"
+    },
+    {
+     "code": "USDC",
+     "fictional": false,
+     "minor_units": "6"
+    },
+    {
+     "code": "USDT",
+     "fictional": false,
+     "minor_units": "6"
+    }
+   ],
+   "format": "openreserve.currency-registry/1"
+  },
+  "registry_hash": "2ab8443ffc04d3f6e651c6e7c5a6cd22f8a5b2d6293c482344219ba353dc87c2"
+ },
+ "default_registry": {
+  "canonical_utf8": "{\"currencies\":[{\"code\":\"EUR\",\"fictional\":false,\"minor_units\":\"2\"},{\"code\":\"GBP\",\"fictional\":false,\"minor_units\":\"2\"},{\"code\":\"JPY\",\"fictional\":false,\"minor_units\":\"0\"},{\"code\":\"JPYC\",\"fictional\":false,\"minor_units\":\"18\"},{\"code\":\"PROGMAT_JPY\",\"fictional\":false,\"minor_units\":\"0\"},{\"code\":\"USD\",\"fictional\":false,\"minor_units\":\"2\"},{\"code\":\"USDC\",\"fictional\":false,\"minor_units\":\"6\"},{\"code\":\"USDT\",\"fictional\":false,\"minor_units\":\"6\"}],\"format\":\"openreserve.currency-registry/1\"}",
+  "document": {
+   "currencies": [
+    {
+     "code": "EUR",
+     "fictional": false,
+     "minor_units": "2"
+    },
+    {
+     "code": "GBP",
+     "fictional": false,
+     "minor_units": "2"
+    },
+    {
+     "code": "JPY",
+     "fictional": false,
+     "minor_units": "0"
+    },
+    {
+     "code": "JPYC",
+     "fictional": false,
+     "minor_units": "18"
+    },
+    {
+     "code": "PROGMAT_JPY",
+     "fictional": false,
+     "minor_units": "0"
+    },
+    {
+     "code": "USD",
+     "fictional": false,
+     "minor_units": "2"
+    },
+    {
+     "code": "USDC",
+     "fictional": false,
+     "minor_units": "6"
+    },
+    {
+     "code": "USDT",
+     "fictional": false,
+     "minor_units": "6"
+    }
+   ],
+   "format": "openreserve.currency-registry/1"
+  },
+  "registry_hash": "a6c8eb8df071e723925179a222c3341d5a0b687020b3c79746d20fc580bf823f"
+ },
+ "rules": [
+  "a code matches [A-Z][A-Z0-9_]{0,31}",
+  "a fictional entry has a code that starts with FICTIONAL_ followed by at least one character, and only fictional entries may use that prefix",
+  "minor_units is an integer from 0 to 30",
+  "adding a code that is already present is refused, also when the entry is identical"
+ ]
+}

@@ -1,0 +1,2290 @@
+{
+ "examples": [
+  {
+   "accounts": {
+    "clearing_source": "acct-clearing-jpy",
+    "clearing_target": "acct-clearing-w",
+    "residue": "acct-residue-w"
+   },
+   "auditor_export": {
+    "format": "openreserve.conversion.export/1",
+    "liabilities": {
+     "conversion": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "conversion-liabilities",
+       "minor_units": "2"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "203735",
+        "payload": "{\"source_amount\":\"300000\",\"target_slot_id\":\"acct-alice-w\"}",
+        "salt": "90f52090fcfd756fd60147970ed487b0f3e442043c1883847e430f60420af53f",
+        "slot_id": "acct-alice"
+       },
+       {
+        "amount": "37351",
+        "payload": "{\"source_amount\":\"55000\",\"target_slot_id\":\"acct-carol-w\"}",
+        "salt": "beb3eac172771e1ea2ffb327eaf37eb710d858e7905cdbe7dbfb9de3c70604ea",
+        "slot_id": "acct-carol"
+       },
+       {
+        "amount": "81494",
+        "payload": "{\"source_amount\":\"120000\",\"target_slot_id\":\"acct-bob-w\"}",
+        "salt": "d35536d34bcc9aaf32453087105e45b0d48fb6bb15c150e6e36f710a0dbcf9c6",
+        "slot_id": "acct-bob"
+       }
+      ]
+     },
+     "post": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "2"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "81494",
+        "payload": "",
+        "salt": "2f9fe6acc97985ea1925ef3fc5e61b7ab48d66acc95ca10311d57dc69bea1c77",
+        "slot_id": "acct-bob-w"
+       },
+       {
+        "amount": "37351",
+        "payload": "",
+        "salt": "367f52b586895de7ea879456b5be9f4cedfacdf23511d4ccacd9aa449792fe1e",
+        "slot_id": "acct-carol-w"
+       },
+       {
+        "amount": "203735",
+        "payload": "",
+        "salt": "f8b836e2b18d1b4eed5719fa13f88852f9746df9086514616e4eb936a3a061f8",
+        "slot_id": "acct-alice-w"
+       }
+      ]
+     },
+     "pre": {
+      "context": {
+       "as_of": "2099-12-31T15:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "120000",
+        "payload": "",
+        "salt": "88d152b674c79535ecac48cf4e152e98085ea70b836dda8afc87484f42b720b0",
+        "slot_id": "acct-bob"
+       },
+       {
+        "amount": "55000",
+        "payload": "",
+        "salt": "8212b2ab797d00eae1173f915aa8024333dd54fad1032c36c80d1581c3ea853f",
+        "slot_id": "acct-carol"
+       },
+       {
+        "amount": "300000",
+        "payload": "",
+        "salt": "e83af2650ecd9c70c553abeeb764bff72cd58a587da05e924b88f440cf796584",
+        "slot_id": "acct-alice"
+       }
+      ]
+     }
+    },
+    "manifest": {
+     "accounts": {
+      "clearing_source": "acct-clearing-jpy",
+      "clearing_target": "acct-clearing-w",
+      "residue": "acct-residue-w"
+     },
+     "declaration": {
+      "cutoff_at": "2099-12-31T15:00:00.000000Z",
+      "declaration_id": "fictional-changeover/JPY",
+      "format": "openreserve.conversion.declaration/1",
+      "rate": {
+       "quotation": "SOURCE_PER_TARGET",
+       "text": "147.25"
+      },
+      "rate_significant_figures": null,
+      "reference_document_sha256": null,
+      "rounding": {
+       "level": "ACCOUNT",
+       "mode": "HALF_AWAY_FROM_ZERO",
+       "quantum_minor_units": "1"
+      },
+      "source": {
+       "code": "JPY",
+       "minor_units": "0"
+      },
+      "target": {
+       "code": "FICTIONAL_W",
+       "minor_units": "2"
+      }
+     },
+     "declaration_hash": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+     "effective_at": "2099-12-31T15:00:01.000000Z",
+     "format": "openreserve.conversion.manifest/1",
+     "institution_id": "example-institution",
+     "ledger_closing": {
+      "bearer": "INSTITUTION",
+      "residue_account_change": "1"
+     },
+     "liabilities": {
+      "conversion": {
+       "leaf_count": "3",
+       "root": "02ba270d7dc739372c0449c10663d5aaadde5033b8721e2a142c3adb9f046129",
+       "total": "322580"
+      },
+      "converted_nonzero_count": "3",
+      "exact_total": {
+       "den": "31",
+       "num": "10000000"
+      },
+      "pre": {
+       "leaf_count": "3",
+       "root": "e101d897cc7370034604b7af37dd8513c369c5b3c4f107b5e8c4fb2e8973fbc4",
+       "total": "475000"
+      },
+      "reconciliation_difference": "-1",
+      "rounded_exact_total": "322581",
+      "sum_of_residues": {
+       "den": "31",
+       "num": "-20"
+      }
+     },
+     "post": {
+      "liabilities": {
+       "leaf_count": "3",
+       "root": "27ae6064088839cb71bf716a16ab4ed17ea0e08ab0b081e559561ff2ba78a9f7",
+       "total": "322580"
+      },
+      "receivables": {
+       "leaf_count": "1",
+       "root": "3305c90e7231d1db005275db8df2ef52586d9ec739e031967859d61d7a453fe7",
+       "total": "41"
+      },
+      "scope": "CONVERSION_ONLY"
+     },
+     "receivables": {
+      "conversion": {
+       "leaf_count": "1",
+       "root": "8a6107760f6ec8fadc3c8d6a273f3610760a99eabc6a5378632ade889b4e2b55",
+       "total": "41"
+      },
+      "converted_nonzero_count": "1",
+      "exact_total": {
+       "den": "589",
+       "num": "24000"
+      },
+      "pre": {
+       "leaf_count": "1",
+       "root": "7061e60fc176d30dd7ad2370a0f424e8934180b24d91aab522abbb74b0e08105",
+       "total": "60"
+      },
+      "reconciliation_difference": "0",
+      "rounded_exact_total": "41",
+      "sum_of_residues": {
+       "den": "589",
+       "num": "149"
+      }
+     }
+    },
+    "receivables": {
+     "conversion": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "conversion-receivables",
+       "minor_units": "2"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "41",
+        "payload": "{\"source_amount\":\"60\",\"target_slot_id\":\"acct-dave-w\"}",
+        "salt": "3c2bd7408878011389f6aa75bb555db8c951430aae1f893a653a6f472e9aa1e3",
+        "slot_id": "acct-dave"
+       }
+      ]
+     },
+     "post": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "receivables",
+       "minor_units": "2"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "41",
+        "payload": "",
+        "salt": "928e913ba68a7722fe5b3f3c2d5d3358eb03ebbc0934768a8aa91f5f90810725",
+        "slot_id": "acct-dave-w"
+       }
+      ]
+     },
+     "pre": {
+      "context": {
+       "as_of": "2099-12-31T15:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "receivables",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "60",
+        "payload": "",
+        "salt": "5474f13c2e314b7bc79896382b671a88101cf977139f261c670b4fa38ba97be2",
+        "slot_id": "acct-dave"
+       }
+      ]
+     }
+    }
+   },
+   "conversion_transaction_ids": {
+    "acct-alice": "conv_521d0bde74960d0104c2258c01efcc96ec8fe80c6ac286422cbb28d9addea986",
+    "acct-bob": "conv_3c642461e0828f6667ee7cf1315b952702f47e9da48bb9c2e194a53b20839dc1",
+    "acct-carol": "conv_89a1d7b0195e4d47fb15b63fdd0ab997031fed58a453e7e243655cd5b44f3951",
+    "acct-dave": "conv_4e2e409e12da12f44b7d917c9c03b2f8b8d13d10c3d87f1a2a392c5d092f552c"
+   },
+   "effective_at": "2099-12-31T15:00:01.000000Z",
+   "holder_bundles": [
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "fe594a86cad764efbec91e827646da25850ef76014a96d4749a73598d9678ac0",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "203735",
+        "payload": "",
+        "salt": "f8b836e2b18d1b4eed5719fa13f88852f9746df9086514616e4eb936a3a061f8",
+        "slot_id": "acct-alice-w"
+       },
+       "leaf_count": "3",
+       "leaf_index": "2",
+       "path": [
+        {
+         "hash": "ff15b8cfa421f21840fb429493cb5c1bf33dfa938075ffff1d336fc470d390c2",
+         "sum": "118845"
+        }
+       ]
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "300000",
+        "payload": "",
+        "salt": "e83af2650ecd9c70c553abeeb764bff72cd58a587da05e924b88f440cf796584",
+        "slot_id": "acct-alice"
+       },
+       "leaf_count": "3",
+       "leaf_index": "2",
+       "path": [
+        {
+         "hash": "42307302dea8840e9f9a87239a72997595ae2661ec0becf3959995ac75c0a13d",
+         "sum": "175000"
+        }
+       ]
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "203735",
+        "payload": "{\"source_amount\":\"300000\",\"target_slot_id\":\"acct-alice-w\"}",
+        "salt": "90f52090fcfd756fd60147970ed487b0f3e442043c1883847e430f60420af53f",
+        "slot_id": "acct-alice"
+       },
+       "leaf_count": "3",
+       "leaf_index": "0",
+       "path": [
+        {
+         "hash": "a24f7442d3f870d9d64f129917df7ecd466e6007c443bbc078f9e41c5f583a8e",
+         "sum": "37351"
+        },
+        {
+         "hash": "d40c1df0e1470bd63287d51b411a5951a723bc3d02242bef45244071214c3275",
+         "sum": "81494"
+        }
+       ]
+      },
+      "side": "liabilities"
+     },
+     "expected": {
+      "converted_amount": "203735",
+      "exact": {
+       "den": "589",
+       "num": "120000000"
+      },
+      "residue": {
+       "den": "589",
+       "num": "-85"
+      },
+      "side": "liabilities",
+      "source_amount": "300000",
+      "target_slot_id": "acct-alice-w"
+     },
+     "source_slot_id": "acct-alice"
+    },
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "fe594a86cad764efbec91e827646da25850ef76014a96d4749a73598d9678ac0",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "81494",
+        "payload": "",
+        "salt": "2f9fe6acc97985ea1925ef3fc5e61b7ab48d66acc95ca10311d57dc69bea1c77",
+        "slot_id": "acct-bob-w"
+       },
+       "leaf_count": "3",
+       "leaf_index": "0",
+       "path": [
+        {
+         "hash": "4d0dba7c73e61ac2af05333ad100e387295c98f7cc919e4686d1f3ad760a6e33",
+         "sum": "37351"
+        },
+        {
+         "hash": "dd4845645238fee94b384c4d4a3c0054781d54b02b1b33cc0f5f15230e45cb18",
+         "sum": "203735"
+        }
+       ]
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "120000",
+        "payload": "",
+        "salt": "88d152b674c79535ecac48cf4e152e98085ea70b836dda8afc87484f42b720b0",
+        "slot_id": "acct-bob"
+       },
+       "leaf_count": "3",
+       "leaf_index": "0",
+       "path": [
+        {
+         "hash": "44df0682810e6207ffe5a924b0b108ab4c7363fa60e7e4cca831a3d261091879",
+         "sum": "55000"
+        },
+        {
+         "hash": "b99356f044fd5678055d3304a1fdad2403c1fc1910167b7fea1d74c6697d86b6",
+         "sum": "300000"
+        }
+       ]
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "81494",
+        "payload": "{\"source_amount\":\"120000\",\"target_slot_id\":\"acct-bob-w\"}",
+        "salt": "d35536d34bcc9aaf32453087105e45b0d48fb6bb15c150e6e36f710a0dbcf9c6",
+        "slot_id": "acct-bob"
+       },
+       "leaf_count": "3",
+       "leaf_index": "2",
+       "path": [
+        {
+         "hash": "2c7701063949ddb88e192fc32cdb997184fb583e8073584ded233831d02cd858",
+         "sum": "241086"
+        }
+       ]
+      },
+      "side": "liabilities"
+     },
+     "expected": {
+      "converted_amount": "81494",
+      "exact": {
+       "den": "589",
+       "num": "48000000"
+      },
+      "residue": {
+       "den": "589",
+       "num": "-34"
+      },
+      "side": "liabilities",
+      "source_amount": "120000",
+      "target_slot_id": "acct-bob-w"
+     },
+     "source_slot_id": "acct-bob"
+    },
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "fe594a86cad764efbec91e827646da25850ef76014a96d4749a73598d9678ac0",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "37351",
+        "payload": "",
+        "salt": "367f52b586895de7ea879456b5be9f4cedfacdf23511d4ccacd9aa449792fe1e",
+        "slot_id": "acct-carol-w"
+       },
+       "leaf_count": "3",
+       "leaf_index": "1",
+       "path": [
+        {
+         "hash": "1763c1698772053cc9dda3d66df18ccfeddd7dd80e1a0034dcb13371d194aea4",
+         "sum": "81494"
+        },
+        {
+         "hash": "dd4845645238fee94b384c4d4a3c0054781d54b02b1b33cc0f5f15230e45cb18",
+         "sum": "203735"
+        }
+       ]
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "55000",
+        "payload": "",
+        "salt": "8212b2ab797d00eae1173f915aa8024333dd54fad1032c36c80d1581c3ea853f",
+        "slot_id": "acct-carol"
+       },
+       "leaf_count": "3",
+       "leaf_index": "1",
+       "path": [
+        {
+         "hash": "1d67b64a549d64ca1d0f06517cf024599e1a141bffc30fa8df86977af55c011b",
+         "sum": "120000"
+        },
+        {
+         "hash": "b99356f044fd5678055d3304a1fdad2403c1fc1910167b7fea1d74c6697d86b6",
+         "sum": "300000"
+        }
+       ]
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "37351",
+        "payload": "{\"source_amount\":\"55000\",\"target_slot_id\":\"acct-carol-w\"}",
+        "salt": "beb3eac172771e1ea2ffb327eaf37eb710d858e7905cdbe7dbfb9de3c70604ea",
+        "slot_id": "acct-carol"
+       },
+       "leaf_count": "3",
+       "leaf_index": "1",
+       "path": [
+        {
+         "hash": "7bfdd8c97234580ee409d8b3cff5ebff217bfa2e9424113b89c37dd7a52b6593",
+         "sum": "203735"
+        },
+        {
+         "hash": "d40c1df0e1470bd63287d51b411a5951a723bc3d02242bef45244071214c3275",
+         "sum": "81494"
+        }
+       ]
+      },
+      "side": "liabilities"
+     },
+     "expected": {
+      "converted_amount": "37351",
+      "exact": {
+       "den": "589",
+       "num": "22000000"
+      },
+      "residue": {
+       "den": "589",
+       "num": "-261"
+      },
+      "side": "liabilities",
+      "source_amount": "55000",
+      "target_slot_id": "acct-carol-w"
+     },
+     "source_slot_id": "acct-carol"
+    },
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "fe594a86cad764efbec91e827646da25850ef76014a96d4749a73598d9678ac0",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "receivables",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "41",
+        "payload": "",
+        "salt": "928e913ba68a7722fe5b3f3c2d5d3358eb03ebbc0934768a8aa91f5f90810725",
+        "slot_id": "acct-dave-w"
+       },
+       "leaf_count": "1",
+       "leaf_index": "0",
+       "path": []
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "receivables",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "60",
+        "payload": "",
+        "salt": "5474f13c2e314b7bc79896382b671a88101cf977139f261c670b4fa38ba97be2",
+        "slot_id": "acct-dave"
+       },
+       "leaf_count": "1",
+       "leaf_index": "0",
+       "path": []
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-receivables",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "41",
+        "payload": "{\"source_amount\":\"60\",\"target_slot_id\":\"acct-dave-w\"}",
+        "salt": "3c2bd7408878011389f6aa75bb555db8c951430aae1f893a653a6f472e9aa1e3",
+        "slot_id": "acct-dave"
+       },
+       "leaf_count": "1",
+       "leaf_index": "0",
+       "path": []
+      },
+      "side": "receivables"
+     },
+     "expected": {
+      "converted_amount": "41",
+      "exact": {
+       "den": "589",
+       "num": "24000"
+      },
+      "residue": {
+       "den": "589",
+       "num": "149"
+      },
+      "side": "receivables",
+      "source_amount": "60",
+      "target_slot_id": "acct-dave-w"
+     },
+     "source_slot_id": "acct-dave"
+    }
+   ],
+   "holders": [
+    {
+     "signed_source_amount": "300000",
+     "source_slot_id": "acct-alice",
+     "target_slot_id": "acct-alice-w"
+    },
+    {
+     "signed_source_amount": "120000",
+     "source_slot_id": "acct-bob",
+     "target_slot_id": "acct-bob-w"
+    },
+    {
+     "signed_source_amount": "55000",
+     "source_slot_id": "acct-carol",
+     "target_slot_id": "acct-carol-w"
+    },
+    {
+     "signed_source_amount": "-60",
+     "source_slot_id": "acct-dave",
+     "target_slot_id": "acct-dave-w"
+    },
+    {
+     "signed_source_amount": "0",
+     "source_slot_id": "acct-erin",
+     "target_slot_id": "acct-erin-w"
+    }
+   ],
+   "institution_id": "example-institution",
+   "manifest": {
+    "accounts": {
+     "clearing_source": "acct-clearing-jpy",
+     "clearing_target": "acct-clearing-w",
+     "residue": "acct-residue-w"
+    },
+    "declaration": {
+     "cutoff_at": "2099-12-31T15:00:00.000000Z",
+     "declaration_id": "fictional-changeover/JPY",
+     "format": "openreserve.conversion.declaration/1",
+     "rate": {
+      "quotation": "SOURCE_PER_TARGET",
+      "text": "147.25"
+     },
+     "rate_significant_figures": null,
+     "reference_document_sha256": null,
+     "rounding": {
+      "level": "ACCOUNT",
+      "mode": "HALF_AWAY_FROM_ZERO",
+      "quantum_minor_units": "1"
+     },
+     "source": {
+      "code": "JPY",
+      "minor_units": "0"
+     },
+     "target": {
+      "code": "FICTIONAL_W",
+      "minor_units": "2"
+     }
+    },
+    "declaration_hash": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+    "effective_at": "2099-12-31T15:00:01.000000Z",
+    "format": "openreserve.conversion.manifest/1",
+    "institution_id": "example-institution",
+    "ledger_closing": {
+     "bearer": "INSTITUTION",
+     "residue_account_change": "1"
+    },
+    "liabilities": {
+     "conversion": {
+      "leaf_count": "3",
+      "root": "02ba270d7dc739372c0449c10663d5aaadde5033b8721e2a142c3adb9f046129",
+      "total": "322580"
+     },
+     "converted_nonzero_count": "3",
+     "exact_total": {
+      "den": "31",
+      "num": "10000000"
+     },
+     "pre": {
+      "leaf_count": "3",
+      "root": "e101d897cc7370034604b7af37dd8513c369c5b3c4f107b5e8c4fb2e8973fbc4",
+      "total": "475000"
+     },
+     "reconciliation_difference": "-1",
+     "rounded_exact_total": "322581",
+     "sum_of_residues": {
+      "den": "31",
+      "num": "-20"
+     }
+    },
+    "post": {
+     "liabilities": {
+      "leaf_count": "3",
+      "root": "27ae6064088839cb71bf716a16ab4ed17ea0e08ab0b081e559561ff2ba78a9f7",
+      "total": "322580"
+     },
+     "receivables": {
+      "leaf_count": "1",
+      "root": "3305c90e7231d1db005275db8df2ef52586d9ec739e031967859d61d7a453fe7",
+      "total": "41"
+     },
+     "scope": "CONVERSION_ONLY"
+    },
+    "receivables": {
+     "conversion": {
+      "leaf_count": "1",
+      "root": "8a6107760f6ec8fadc3c8d6a273f3610760a99eabc6a5378632ade889b4e2b55",
+      "total": "41"
+     },
+     "converted_nonzero_count": "1",
+     "exact_total": {
+      "den": "589",
+      "num": "24000"
+     },
+     "pre": {
+      "leaf_count": "1",
+      "root": "7061e60fc176d30dd7ad2370a0f424e8934180b24d91aab522abbb74b0e08105",
+      "total": "60"
+     },
+     "reconciliation_difference": "0",
+     "rounded_exact_total": "41",
+     "sum_of_residues": {
+      "den": "589",
+      "num": "149"
+     }
+    }
+   },
+   "manifest_canonical_utf8_hex": "7b226163636f756e7473223a7b22636c656172696e675f736f75726365223a22616363742d636c656172696e672d6a7079222c22636c656172696e675f746172676574223a22616363742d636c656172696e672d77222c2272657369647565223a22616363742d726573696475652d77227d2c226465636c61726174696f6e223a7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a2266696374696f6e616c2d6368616e67656f7665722f4a5059222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a22534f555243455f5045525f544152474554222c2274657874223a223134372e3235227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f415741595f46524f4d5f5a45524f222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a224a5059222c226d696e6f725f756e697473223a2230227d2c22746172676574223a7b22636f6465223a2246494354494f4e414c5f57222c226d696e6f725f756e697473223a2232227d7d2c226465636c61726174696f6e5f68617368223a2232393033666162373533383538653661613131613866323266343535333637396133353462373039663335326530633639323264383765346131343866376364222c226566666563746976655f6174223a22323039392d31322d33315431353a30303a30312e3030303030305a222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6d616e69666573742f31222c22696e737469747574696f6e5f6964223a226578616d706c652d696e737469747574696f6e222c226c65646765725f636c6f73696e67223a7b22626561726572223a22494e535449545554494f4e222c22726573696475655f6163636f756e745f6368616e6765223a2231227d2c226c696162696c6974696573223a7b22636f6e76657273696f6e223a7b226c6561665f636f756e74223a2233222c22726f6f74223a2230326261323730643764633733393337326330343439633130363633643561616164646535303333623837323165326131343263336164623966303436313239222c22746f74616c223a22333232353830227d2c22636f6e7665727465645f6e6f6e7a65726f5f636f756e74223a2233222c2265786163745f746f74616c223a7b2264656e223a223331222c226e756d223a223130303030303030227d2c22707265223a7b226c6561665f636f756e74223a2233222c22726f6f74223a2265313031643839376363373337303033343630346237616633376464383531336333363963356233633466313037623565386334666232653839373366626334222c22746f74616c223a22343735303030227d2c227265636f6e63696c696174696f6e5f646966666572656e6365223a222d31222c22726f756e6465645f65786163745f746f74616c223a22333232353831222c2273756d5f6f665f7265736964756573223a7b2264656e223a223331222c226e756d223a222d3230227d7d2c22706f7374223a7b226c696162696c6974696573223a7b226c6561665f636f756e74223a2233222c22726f6f74223a2232376165363036343038383833396362373162663731366131366162346564313765613065303861623062303831653535393536316666326261373861396637222c22746f74616c223a22333232353830227d2c2272656365697661626c6573223a7b226c6561665f636f756e74223a2231222c22726f6f74223a2233333035633930653732333164316462303035323735646238646632656635323538366439656337333965303331393637383539643631643761343533666537222c22746f74616c223a223431227d2c2273636f7065223a22434f4e56455253494f4e5f4f4e4c59227d2c2272656365697661626c6573223a7b22636f6e76657273696f6e223a7b226c6561665f636f756e74223a2231222c22726f6f74223a2238613631303737363066366563386661646333633864366132373366333631303736306139396561626336613533373836333261646538383962346532623535222c22746f74616c223a223431227d2c22636f6e7665727465645f6e6f6e7a65726f5f636f756e74223a2231222c2265786163745f746f74616c223a7b2264656e223a22353839222c226e756d223a223234303030227d2c22707265223a7b226c6561665f636f756e74223a2231222c22726f6f74223a2237303631653630666331373664333064643761643233373061306634323465383933343138306232346439316161623532326162626237346230653038313035222c22746f74616c223a223630227d2c227265636f6e63696c696174696f6e5f646966666572656e6365223a2230222c22726f756e6465645f65786163745f746f74616c223a223431222c2273756d5f6f665f7265736964756573223a7b2264656e223a22353839222c226e756d223a22313439227d7d7d",
+   "manifest_hash": "fe594a86cad764efbec91e827646da25850ef76014a96d4749a73598d9678ac0",
+   "name": "jpy-to-fictional-w2",
+   "note": "evidence-level example: the holder list and the ledger closing amount are inputs here; a ledger-level example is in conversion_ledger_fixture_v1.json",
+   "other_target_currency_balances": [],
+   "record_payloads": {
+    "acct-alice": "{\"source_amount\":\"300000\",\"target_slot_id\":\"acct-alice-w\"}",
+    "acct-bob": "{\"source_amount\":\"120000\",\"target_slot_id\":\"acct-bob-w\"}",
+    "acct-carol": "{\"source_amount\":\"55000\",\"target_slot_id\":\"acct-carol-w\"}",
+    "acct-dave": "{\"source_amount\":\"60\",\"target_slot_id\":\"acct-dave-w\"}"
+   },
+   "residue_account_change_input": "1",
+   "residue_transaction_id": "convres_23fb140b4b340b22224c3577f55c9e850ee5d77bd11f012fedc6c386f0192d85",
+   "salt_key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+  },
+  {
+   "accounts": {
+    "clearing_source": "acct-clearing-jpy",
+    "clearing_target": "acct-clearing-w",
+    "residue": "acct-residue-w"
+   },
+   "auditor_export": {
+    "format": "openreserve.conversion.export/1",
+    "liabilities": {
+     "conversion": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "834bd278322361757fa07ceb545969f64df837a8cfea81081d3b579d2955e4ab",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "conversion-liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "0",
+        "payload": "{\"source_amount\":\"73\",\"target_slot_id\":\"acct-zed-w\"}",
+        "salt": "ccc55a3f2fa7b168553cc3e1b3bd6a7597640305324b0b3b172394ed8866223e",
+        "slot_id": "acct-zed"
+       },
+       {
+        "amount": "1",
+        "payload": "{\"source_amount\":\"147\",\"target_slot_id\":\"acct-xi-w\"}",
+        "salt": "5f38b7264e06d9a8bd4075fbc311369d6abdc02e0c1435dbc4656e514dd111d8",
+        "slot_id": "acct-xi"
+       },
+       {
+        "amount": "1",
+        "payload": "{\"source_amount\":\"74\",\"target_slot_id\":\"acct-yan-w\"}",
+        "salt": "f4b940a93b0d6d69e247f8f72f495761add761fe64807063256ee807599e9511",
+        "slot_id": "acct-yan"
+       }
+      ]
+     },
+     "post": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "1",
+        "payload": "",
+        "salt": "715184f5c812a379d6074cd7b3d85077c9d13abe33cd7062aae3dbb8f169c8bd",
+        "slot_id": "acct-xi-w"
+       },
+       {
+        "amount": "1",
+        "payload": "",
+        "salt": "b30a6850740bef3e059ed71de6867f2ee47ebf4518f8738a0a701ed241c569e2",
+        "slot_id": "acct-yan-w"
+       }
+      ]
+     },
+     "pre": {
+      "context": {
+       "as_of": "2099-12-31T15:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "147",
+        "payload": "",
+        "salt": "d47751ac0e153452f99974ea9994d05ffe841d2e135214a4766b89041e524aec",
+        "slot_id": "acct-xi"
+       },
+       {
+        "amount": "74",
+        "payload": "",
+        "salt": "48ef8fe20d1466b768daebf4b9d6c177aa029f08839f65bf7894af2093c16c53",
+        "slot_id": "acct-yan"
+       },
+       {
+        "amount": "73",
+        "payload": "",
+        "salt": "dd8667ed6cbc14e72f648623913c6da46e89148a24bd762f642ee0187b3c63b1",
+        "slot_id": "acct-zed"
+       }
+      ]
+     }
+    },
+    "manifest": {
+     "accounts": {
+      "clearing_source": "acct-clearing-jpy",
+      "clearing_target": "acct-clearing-w",
+      "residue": "acct-residue-w"
+     },
+     "declaration": {
+      "cutoff_at": "2099-12-31T15:00:00.000000Z",
+      "declaration_id": "fictional-changeover/JPY-0",
+      "format": "openreserve.conversion.declaration/1",
+      "rate": {
+       "quotation": "SOURCE_PER_TARGET",
+       "text": "147.25"
+      },
+      "rate_significant_figures": null,
+      "reference_document_sha256": null,
+      "rounding": {
+       "level": "ACCOUNT",
+       "mode": "HALF_AWAY_FROM_ZERO",
+       "quantum_minor_units": "1"
+      },
+      "source": {
+       "code": "JPY",
+       "minor_units": "0"
+      },
+      "target": {
+       "code": "FICTIONAL_W",
+       "minor_units": "0"
+      }
+     },
+     "declaration_hash": "834bd278322361757fa07ceb545969f64df837a8cfea81081d3b579d2955e4ab",
+     "effective_at": "2099-12-31T15:00:01.000000Z",
+     "format": "openreserve.conversion.manifest/1",
+     "institution_id": "example-institution",
+     "ledger_closing": {
+      "bearer": "INSTITUTION",
+      "residue_account_change": "0"
+     },
+     "liabilities": {
+      "conversion": {
+       "leaf_count": "3",
+       "root": "b0f921dedc6a76aef41b322aec60722f2b68b79e4c7f5fb72d60c4a031e7d157",
+       "total": "2"
+      },
+      "converted_nonzero_count": "2",
+      "exact_total": {
+       "den": "589",
+       "num": "1176"
+      },
+      "pre": {
+       "leaf_count": "3",
+       "root": "c09fcc8cb0ca34d1e3105e24f0ef10c66f22745ee6cfd1547a506ddb7df7fdb9",
+       "total": "294"
+      },
+      "reconciliation_difference": "0",
+      "rounded_exact_total": "2",
+      "sum_of_residues": {
+       "den": "589",
+       "num": "2"
+      }
+     },
+     "post": {
+      "liabilities": {
+       "leaf_count": "2",
+       "root": "ab9ef1d1b4ab9237b33898ee42792bbb2d23c9fc4b1dc0bad0f41b2047981392",
+       "total": "2"
+      },
+      "receivables": {
+       "leaf_count": "0",
+       "root": "a288af934be4d73eba2c25f9fcd2b3422fb940992b761ee686651f040132c394",
+       "total": "0"
+      },
+      "scope": "CONVERSION_ONLY"
+     },
+     "receivables": {
+      "conversion": {
+       "leaf_count": "0",
+       "root": "ea40c74db8b1d7c6ef876b892a13c2bd7d373b8e0290696d11884b370c3a8625",
+       "total": "0"
+      },
+      "converted_nonzero_count": "0",
+      "exact_total": {
+       "den": "1",
+       "num": "0"
+      },
+      "pre": {
+       "leaf_count": "0",
+       "root": "03155b423bdf151882263c8d8460951d5f6ded99396ebcb0494d48452832bdb6",
+       "total": "0"
+      },
+      "reconciliation_difference": "0",
+      "rounded_exact_total": "0",
+      "sum_of_residues": {
+       "den": "1",
+       "num": "0"
+      }
+     }
+    },
+    "receivables": {
+     "conversion": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "834bd278322361757fa07ceb545969f64df837a8cfea81081d3b579d2955e4ab",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "conversion-receivables",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": []
+     },
+     "post": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "receivables",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": []
+     },
+     "pre": {
+      "context": {
+       "as_of": "2099-12-31T15:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "receivables",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": []
+     }
+    }
+   },
+   "conversion_transaction_ids": {
+    "acct-xi": "conv_b58525a2b0dc7755089cfbe8fa0604d90ea7729f2b04b01563bec328713ad6bb",
+    "acct-yan": "conv_0232de7f592b4b8984481cc9f2ea66b2c0d1644c060ece2f95fea3e09911d2ec",
+    "acct-zed": "conv_4a0714b518f5fe5228425e8da12b83c9530241c82a8bc61209721cd348426f4b"
+   },
+   "effective_at": "2099-12-31T15:00:01.000000Z",
+   "holder_bundles": [
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "dde3e7c0066f173a56a0530b77bf6e0f0eaf9dded6936f13299d0ab890de5d29",
+      "post_proof": null,
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "73",
+        "payload": "",
+        "salt": "dd8667ed6cbc14e72f648623913c6da46e89148a24bd762f642ee0187b3c63b1",
+        "slot_id": "acct-zed"
+       },
+       "leaf_count": "3",
+       "leaf_index": "2",
+       "path": [
+        {
+         "hash": "b436f32dd97a698c2d71962758b84c8c3fb37f656d368da854c150d6c2036df7",
+         "sum": "221"
+        }
+       ]
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "834bd278322361757fa07ceb545969f64df837a8cfea81081d3b579d2955e4ab",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "0",
+        "payload": "{\"source_amount\":\"73\",\"target_slot_id\":\"acct-zed-w\"}",
+        "salt": "ccc55a3f2fa7b168553cc3e1b3bd6a7597640305324b0b3b172394ed8866223e",
+        "slot_id": "acct-zed"
+       },
+       "leaf_count": "3",
+       "leaf_index": "0",
+       "path": [
+        {
+         "hash": "d015dfc6a8d694c778b6574f5d61d2a02b49bf4ea0f8b2f9ee173dbcd2f2c956",
+         "sum": "1"
+        },
+        {
+         "hash": "d5aac1373ead02cfce5dbfd1a7bc22a93edf0ff4b558176722df3533a69b3b23",
+         "sum": "1"
+        }
+       ]
+      },
+      "side": "liabilities"
+     },
+     "expected": {
+      "converted_amount": "0",
+      "exact": {
+       "den": "589",
+       "num": "292"
+      },
+      "residue": {
+       "den": "589",
+       "num": "-292"
+      },
+      "side": "liabilities",
+      "source_amount": "73",
+      "target_slot_id": "acct-zed-w"
+     },
+     "source_slot_id": "acct-zed"
+    },
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "dde3e7c0066f173a56a0530b77bf6e0f0eaf9dded6936f13299d0ab890de5d29",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "1",
+        "payload": "",
+        "salt": "b30a6850740bef3e059ed71de6867f2ee47ebf4518f8738a0a701ed241c569e2",
+        "slot_id": "acct-yan-w"
+       },
+       "leaf_count": "2",
+       "leaf_index": "1",
+       "path": [
+        {
+         "hash": "0c08be37740a16171ddd20f2152e8e25d819277e8e88bb4b4f9f8a62d44dc4f6",
+         "sum": "1"
+        }
+       ]
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "74",
+        "payload": "",
+        "salt": "48ef8fe20d1466b768daebf4b9d6c177aa029f08839f65bf7894af2093c16c53",
+        "slot_id": "acct-yan"
+       },
+       "leaf_count": "3",
+       "leaf_index": "1",
+       "path": [
+        {
+         "hash": "0cb8e72f3b728ce62f2ab731e92ddfc3415148cb918c6c73905a25332565313e",
+         "sum": "147"
+        },
+        {
+         "hash": "75254a3ab82df13031b7ea1d157e884c5f4ccfff098cf225263c98b784270e98",
+         "sum": "73"
+        }
+       ]
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "834bd278322361757fa07ceb545969f64df837a8cfea81081d3b579d2955e4ab",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "1",
+        "payload": "{\"source_amount\":\"74\",\"target_slot_id\":\"acct-yan-w\"}",
+        "salt": "f4b940a93b0d6d69e247f8f72f495761add761fe64807063256ee807599e9511",
+        "slot_id": "acct-yan"
+       },
+       "leaf_count": "3",
+       "leaf_index": "2",
+       "path": [
+        {
+         "hash": "f3d2d53c0513b54e790c69e9befc1b817ef3ae1a0bd7c051622b86ecd9741fad",
+         "sum": "1"
+        }
+       ]
+      },
+      "side": "liabilities"
+     },
+     "expected": {
+      "converted_amount": "1",
+      "exact": {
+       "den": "589",
+       "num": "296"
+      },
+      "residue": {
+       "den": "589",
+       "num": "293"
+      },
+      "side": "liabilities",
+      "source_amount": "74",
+      "target_slot_id": "acct-yan-w"
+     },
+     "source_slot_id": "acct-yan"
+    },
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "dde3e7c0066f173a56a0530b77bf6e0f0eaf9dded6936f13299d0ab890de5d29",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "1",
+        "payload": "",
+        "salt": "715184f5c812a379d6074cd7b3d85077c9d13abe33cd7062aae3dbb8f169c8bd",
+        "slot_id": "acct-xi-w"
+       },
+       "leaf_count": "2",
+       "leaf_index": "0",
+       "path": [
+        {
+         "hash": "bc0edb8a2286433442a0a9e0e97603a24ca3c631d7a71e6e2a05c434dd7f3535",
+         "sum": "1"
+        }
+       ]
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "147",
+        "payload": "",
+        "salt": "d47751ac0e153452f99974ea9994d05ffe841d2e135214a4766b89041e524aec",
+        "slot_id": "acct-xi"
+       },
+       "leaf_count": "3",
+       "leaf_index": "0",
+       "path": [
+        {
+         "hash": "4925f6de732613c7212206cf657e56d7d6c2b8b3542d00007efec78b73830a24",
+         "sum": "74"
+        },
+        {
+         "hash": "75254a3ab82df13031b7ea1d157e884c5f4ccfff098cf225263c98b784270e98",
+         "sum": "73"
+        }
+       ]
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "834bd278322361757fa07ceb545969f64df837a8cfea81081d3b579d2955e4ab",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "1",
+        "payload": "{\"source_amount\":\"147\",\"target_slot_id\":\"acct-xi-w\"}",
+        "salt": "5f38b7264e06d9a8bd4075fbc311369d6abdc02e0c1435dbc4656e514dd111d8",
+        "slot_id": "acct-xi"
+       },
+       "leaf_count": "3",
+       "leaf_index": "1",
+       "path": [
+        {
+         "hash": "90fb5bd72df40fc1668650ada329f96bf6958a36a202aacad6475f684e631c75",
+         "sum": "0"
+        },
+        {
+         "hash": "d5aac1373ead02cfce5dbfd1a7bc22a93edf0ff4b558176722df3533a69b3b23",
+         "sum": "1"
+        }
+       ]
+      },
+      "side": "liabilities"
+     },
+     "expected": {
+      "converted_amount": "1",
+      "exact": {
+       "den": "589",
+       "num": "588"
+      },
+      "residue": {
+       "den": "589",
+       "num": "1"
+      },
+      "side": "liabilities",
+      "source_amount": "147",
+      "target_slot_id": "acct-xi-w"
+     },
+     "source_slot_id": "acct-xi"
+    }
+   ],
+   "holders": [
+    {
+     "signed_source_amount": "73",
+     "source_slot_id": "acct-zed",
+     "target_slot_id": "acct-zed-w"
+    },
+    {
+     "signed_source_amount": "74",
+     "source_slot_id": "acct-yan",
+     "target_slot_id": "acct-yan-w"
+    },
+    {
+     "signed_source_amount": "147",
+     "source_slot_id": "acct-xi",
+     "target_slot_id": "acct-xi-w"
+    }
+   ],
+   "institution_id": "example-institution",
+   "manifest": {
+    "accounts": {
+     "clearing_source": "acct-clearing-jpy",
+     "clearing_target": "acct-clearing-w",
+     "residue": "acct-residue-w"
+    },
+    "declaration": {
+     "cutoff_at": "2099-12-31T15:00:00.000000Z",
+     "declaration_id": "fictional-changeover/JPY-0",
+     "format": "openreserve.conversion.declaration/1",
+     "rate": {
+      "quotation": "SOURCE_PER_TARGET",
+      "text": "147.25"
+     },
+     "rate_significant_figures": null,
+     "reference_document_sha256": null,
+     "rounding": {
+      "level": "ACCOUNT",
+      "mode": "HALF_AWAY_FROM_ZERO",
+      "quantum_minor_units": "1"
+     },
+     "source": {
+      "code": "JPY",
+      "minor_units": "0"
+     },
+     "target": {
+      "code": "FICTIONAL_W",
+      "minor_units": "0"
+     }
+    },
+    "declaration_hash": "834bd278322361757fa07ceb545969f64df837a8cfea81081d3b579d2955e4ab",
+    "effective_at": "2099-12-31T15:00:01.000000Z",
+    "format": "openreserve.conversion.manifest/1",
+    "institution_id": "example-institution",
+    "ledger_closing": {
+     "bearer": "INSTITUTION",
+     "residue_account_change": "0"
+    },
+    "liabilities": {
+     "conversion": {
+      "leaf_count": "3",
+      "root": "b0f921dedc6a76aef41b322aec60722f2b68b79e4c7f5fb72d60c4a031e7d157",
+      "total": "2"
+     },
+     "converted_nonzero_count": "2",
+     "exact_total": {
+      "den": "589",
+      "num": "1176"
+     },
+     "pre": {
+      "leaf_count": "3",
+      "root": "c09fcc8cb0ca34d1e3105e24f0ef10c66f22745ee6cfd1547a506ddb7df7fdb9",
+      "total": "294"
+     },
+     "reconciliation_difference": "0",
+     "rounded_exact_total": "2",
+     "sum_of_residues": {
+      "den": "589",
+      "num": "2"
+     }
+    },
+    "post": {
+     "liabilities": {
+      "leaf_count": "2",
+      "root": "ab9ef1d1b4ab9237b33898ee42792bbb2d23c9fc4b1dc0bad0f41b2047981392",
+      "total": "2"
+     },
+     "receivables": {
+      "leaf_count": "0",
+      "root": "a288af934be4d73eba2c25f9fcd2b3422fb940992b761ee686651f040132c394",
+      "total": "0"
+     },
+     "scope": "CONVERSION_ONLY"
+    },
+    "receivables": {
+     "conversion": {
+      "leaf_count": "0",
+      "root": "ea40c74db8b1d7c6ef876b892a13c2bd7d373b8e0290696d11884b370c3a8625",
+      "total": "0"
+     },
+     "converted_nonzero_count": "0",
+     "exact_total": {
+      "den": "1",
+      "num": "0"
+     },
+     "pre": {
+      "leaf_count": "0",
+      "root": "03155b423bdf151882263c8d8460951d5f6ded99396ebcb0494d48452832bdb6",
+      "total": "0"
+     },
+     "reconciliation_difference": "0",
+     "rounded_exact_total": "0",
+     "sum_of_residues": {
+      "den": "1",
+      "num": "0"
+     }
+    }
+   },
+   "manifest_canonical_utf8_hex": "7b226163636f756e7473223a7b22636c656172696e675f736f75726365223a22616363742d636c656172696e672d6a7079222c22636c656172696e675f746172676574223a22616363742d636c656172696e672d77222c2272657369647565223a22616363742d726573696475652d77227d2c226465636c61726174696f6e223a7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a2266696374696f6e616c2d6368616e67656f7665722f4a50592d30222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a22534f555243455f5045525f544152474554222c2274657874223a223134372e3235227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f415741595f46524f4d5f5a45524f222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a224a5059222c226d696e6f725f756e697473223a2230227d2c22746172676574223a7b22636f6465223a2246494354494f4e414c5f57222c226d696e6f725f756e697473223a2230227d7d2c226465636c61726174696f6e5f68617368223a2238333462643237383332323336313735376661303763656235343539363966363464663833376138636665613831303831643362353739643239353565346162222c226566666563746976655f6174223a22323039392d31322d33315431353a30303a30312e3030303030305a222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6d616e69666573742f31222c22696e737469747574696f6e5f6964223a226578616d706c652d696e737469747574696f6e222c226c65646765725f636c6f73696e67223a7b22626561726572223a22494e535449545554494f4e222c22726573696475655f6163636f756e745f6368616e6765223a2230227d2c226c696162696c6974696573223a7b22636f6e76657273696f6e223a7b226c6561665f636f756e74223a2233222c22726f6f74223a2262306639323164656463366137366165663431623332326165633630373232663262363862373965346337663566623732643630633461303331653764313537222c22746f74616c223a2232227d2c22636f6e7665727465645f6e6f6e7a65726f5f636f756e74223a2232222c2265786163745f746f74616c223a7b2264656e223a22353839222c226e756d223a2231313736227d2c22707265223a7b226c6561665f636f756e74223a2233222c22726f6f74223a2263303966636338636230636133346431653331303565323466306566313063363666323237343565653663666431353437613530366464623764663766646239222c22746f74616c223a22323934227d2c227265636f6e63696c696174696f6e5f646966666572656e6365223a2230222c22726f756e6465645f65786163745f746f74616c223a2232222c2273756d5f6f665f7265736964756573223a7b2264656e223a22353839222c226e756d223a2232227d7d2c22706f7374223a7b226c696162696c6974696573223a7b226c6561665f636f756e74223a2232222c22726f6f74223a2261623965663164316234616239323337623333383938656534323739326262623264323363396663346231646330626164306634316232303437393831333932222c22746f74616c223a2232227d2c2272656365697661626c6573223a7b226c6561665f636f756e74223a2230222c22726f6f74223a2261323838616639333462653464373365626132633235663966636432623334323266623934303939326237363165653638363635316630343031333263333934222c22746f74616c223a2230227d2c2273636f7065223a22434f4e56455253494f4e5f4f4e4c59227d2c2272656365697661626c6573223a7b22636f6e76657273696f6e223a7b226c6561665f636f756e74223a2230222c22726f6f74223a2265613430633734646238623164376336656638373662383932613133633262643764333733623865303239303639366431313838346233373063336138363235222c22746f74616c223a2230227d2c22636f6e7665727465645f6e6f6e7a65726f5f636f756e74223a2230222c2265786163745f746f74616c223a7b2264656e223a2231222c226e756d223a2230227d2c22707265223a7b226c6561665f636f756e74223a2230222c22726f6f74223a2230333135356234323362646631353138383232363363386438343630393531643566366465643939333936656263623034393464343834353238333262646236222c22746f74616c223a2230227d2c227265636f6e63696c696174696f6e5f646966666572656e6365223a2230222c22726f756e6465645f65786163745f746f74616c223a2230222c2273756d5f6f665f7265736964756573223a7b2264656e223a2231222c226e756d223a2230227d7d7d",
+   "manifest_hash": "dde3e7c0066f173a56a0530b77bf6e0f0eaf9dded6936f13299d0ab890de5d29",
+   "name": "jpy-to-fictional-w0-with-a-zero-result",
+   "note": "evidence-level example: the holder list and the ledger closing amount are inputs here; a ledger-level example is in conversion_ledger_fixture_v1.json",
+   "other_target_currency_balances": [],
+   "record_payloads": {
+    "acct-xi": "{\"source_amount\":\"147\",\"target_slot_id\":\"acct-xi-w\"}",
+    "acct-yan": "{\"source_amount\":\"74\",\"target_slot_id\":\"acct-yan-w\"}",
+    "acct-zed": "{\"source_amount\":\"73\",\"target_slot_id\":\"acct-zed-w\"}"
+   },
+   "residue_account_change_input": "0",
+   "residue_transaction_id": "convres_d2b6ebd3b7f6ed53f934a3c4315ccecae13b043f53d4b067b4717b4ebeeedb12",
+   "salt_key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+  },
+  {
+   "accounts": {
+    "clearing_source": "acct-clearing-jpy",
+    "clearing_target": "acct-clearing-w",
+    "residue": "acct-residue-w"
+   },
+   "auditor_export": {
+    "format": "openreserve.conversion.export/1",
+    "liabilities": {
+     "conversion": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "conversion-liabilities",
+       "minor_units": "2"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "203735",
+        "payload": "{\"source_amount\":\"300000\",\"target_slot_id\":\"acct-alice-w\"}",
+        "salt": "90f52090fcfd756fd60147970ed487b0f3e442043c1883847e430f60420af53f",
+        "slot_id": "acct-alice"
+       },
+       {
+        "amount": "37351",
+        "payload": "{\"source_amount\":\"55000\",\"target_slot_id\":\"acct-carol-w\"}",
+        "salt": "beb3eac172771e1ea2ffb327eaf37eb710d858e7905cdbe7dbfb9de3c70604ea",
+        "slot_id": "acct-carol"
+       },
+       {
+        "amount": "81494",
+        "payload": "{\"source_amount\":\"120000\",\"target_slot_id\":\"acct-bob-w\"}",
+        "salt": "d35536d34bcc9aaf32453087105e45b0d48fb6bb15c150e6e36f710a0dbcf9c6",
+        "slot_id": "acct-bob"
+       }
+      ]
+     },
+     "post": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "2"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "81494",
+        "payload": "",
+        "salt": "2f9fe6acc97985ea1925ef3fc5e61b7ab48d66acc95ca10311d57dc69bea1c77",
+        "slot_id": "acct-bob-w"
+       },
+       {
+        "amount": "37351",
+        "payload": "",
+        "salt": "367f52b586895de7ea879456b5be9f4cedfacdf23511d4ccacd9aa449792fe1e",
+        "slot_id": "acct-carol-w"
+       },
+       {
+        "amount": "500",
+        "payload": "",
+        "salt": "909aa4862292890fb83b743614a7e966cb0c9c4ebeb9cfad3633b7407bf80334",
+        "slot_id": "acct-other-w"
+       },
+       {
+        "amount": "203735",
+        "payload": "",
+        "salt": "f8b836e2b18d1b4eed5719fa13f88852f9746df9086514616e4eb936a3a061f8",
+        "slot_id": "acct-alice-w"
+       }
+      ]
+     },
+     "pre": {
+      "context": {
+       "as_of": "2099-12-31T15:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "120000",
+        "payload": "",
+        "salt": "88d152b674c79535ecac48cf4e152e98085ea70b836dda8afc87484f42b720b0",
+        "slot_id": "acct-bob"
+       },
+       {
+        "amount": "55000",
+        "payload": "",
+        "salt": "8212b2ab797d00eae1173f915aa8024333dd54fad1032c36c80d1581c3ea853f",
+        "slot_id": "acct-carol"
+       },
+       {
+        "amount": "300000",
+        "payload": "",
+        "salt": "e83af2650ecd9c70c553abeeb764bff72cd58a587da05e924b88f440cf796584",
+        "slot_id": "acct-alice"
+       }
+      ]
+     }
+    },
+    "manifest": {
+     "accounts": {
+      "clearing_source": "acct-clearing-jpy",
+      "clearing_target": "acct-clearing-w",
+      "residue": "acct-residue-w"
+     },
+     "declaration": {
+      "cutoff_at": "2099-12-31T15:00:00.000000Z",
+      "declaration_id": "fictional-changeover/JPY",
+      "format": "openreserve.conversion.declaration/1",
+      "rate": {
+       "quotation": "SOURCE_PER_TARGET",
+       "text": "147.25"
+      },
+      "rate_significant_figures": null,
+      "reference_document_sha256": null,
+      "rounding": {
+       "level": "ACCOUNT",
+       "mode": "HALF_AWAY_FROM_ZERO",
+       "quantum_minor_units": "1"
+      },
+      "source": {
+       "code": "JPY",
+       "minor_units": "0"
+      },
+      "target": {
+       "code": "FICTIONAL_W",
+       "minor_units": "2"
+      }
+     },
+     "declaration_hash": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+     "effective_at": "2099-12-31T15:00:01.000000Z",
+     "format": "openreserve.conversion.manifest/1",
+     "institution_id": "example-institution",
+     "ledger_closing": {
+      "bearer": "INSTITUTION",
+      "residue_account_change": "1"
+     },
+     "liabilities": {
+      "conversion": {
+       "leaf_count": "3",
+       "root": "02ba270d7dc739372c0449c10663d5aaadde5033b8721e2a142c3adb9f046129",
+       "total": "322580"
+      },
+      "converted_nonzero_count": "3",
+      "exact_total": {
+       "den": "31",
+       "num": "10000000"
+      },
+      "pre": {
+       "leaf_count": "3",
+       "root": "e101d897cc7370034604b7af37dd8513c369c5b3c4f107b5e8c4fb2e8973fbc4",
+       "total": "475000"
+      },
+      "reconciliation_difference": "-1",
+      "rounded_exact_total": "322581",
+      "sum_of_residues": {
+       "den": "31",
+       "num": "-20"
+      }
+     },
+     "post": {
+      "liabilities": {
+       "leaf_count": "4",
+       "root": "01ed84b7d40544a2f0dab7e4bdcbae808a229c93883ca6f0a3c92b5fdf952bd2",
+       "total": "323080"
+      },
+      "receivables": {
+       "leaf_count": "1",
+       "root": "3305c90e7231d1db005275db8df2ef52586d9ec739e031967859d61d7a453fe7",
+       "total": "41"
+      },
+      "scope": "MIXED"
+     },
+     "receivables": {
+      "conversion": {
+       "leaf_count": "1",
+       "root": "8a6107760f6ec8fadc3c8d6a273f3610760a99eabc6a5378632ade889b4e2b55",
+       "total": "41"
+      },
+      "converted_nonzero_count": "1",
+      "exact_total": {
+       "den": "589",
+       "num": "24000"
+      },
+      "pre": {
+       "leaf_count": "1",
+       "root": "7061e60fc176d30dd7ad2370a0f424e8934180b24d91aab522abbb74b0e08105",
+       "total": "60"
+      },
+      "reconciliation_difference": "0",
+      "rounded_exact_total": "41",
+      "sum_of_residues": {
+       "den": "589",
+       "num": "149"
+      }
+     }
+    },
+    "receivables": {
+     "conversion": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "conversion-receivables",
+       "minor_units": "2"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "41",
+        "payload": "{\"source_amount\":\"60\",\"target_slot_id\":\"acct-dave-w\"}",
+        "salt": "3c2bd7408878011389f6aa75bb555db8c951430aae1f893a653a6f472e9aa1e3",
+        "slot_id": "acct-dave"
+       }
+      ]
+     },
+     "post": {
+      "context": {
+       "as_of": "2099-12-31T15:00:01.000000Z",
+       "binding": "",
+       "currency": "FICTIONAL_W",
+       "institution_id": "example-institution",
+       "kind": "receivables",
+       "minor_units": "2"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "41",
+        "payload": "",
+        "salt": "928e913ba68a7722fe5b3f3c2d5d3358eb03ebbc0934768a8aa91f5f90810725",
+        "slot_id": "acct-dave-w"
+       }
+      ]
+     },
+     "pre": {
+      "context": {
+       "as_of": "2099-12-31T15:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "receivables",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.export/1",
+      "leaves": [
+       {
+        "amount": "60",
+        "payload": "",
+        "salt": "5474f13c2e314b7bc79896382b671a88101cf977139f261c670b4fa38ba97be2",
+        "slot_id": "acct-dave"
+       }
+      ]
+     }
+    }
+   },
+   "conversion_transaction_ids": {
+    "acct-alice": "conv_521d0bde74960d0104c2258c01efcc96ec8fe80c6ac286422cbb28d9addea986",
+    "acct-bob": "conv_3c642461e0828f6667ee7cf1315b952702f47e9da48bb9c2e194a53b20839dc1",
+    "acct-carol": "conv_89a1d7b0195e4d47fb15b63fdd0ab997031fed58a453e7e243655cd5b44f3951",
+    "acct-dave": "conv_4e2e409e12da12f44b7d917c9c03b2f8b8d13d10c3d87f1a2a392c5d092f552c"
+   },
+   "effective_at": "2099-12-31T15:00:01.000000Z",
+   "holder_bundles": [
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "52f1ff42c2702dc465d087e36d5c7e353ae09860c0ca3cc16afcabc50e9b82ec",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "203735",
+        "payload": "",
+        "salt": "f8b836e2b18d1b4eed5719fa13f88852f9746df9086514616e4eb936a3a061f8",
+        "slot_id": "acct-alice-w"
+       },
+       "leaf_count": "4",
+       "leaf_index": "3",
+       "path": [
+        {
+         "hash": "6c5054eb0ca60bb5e7db250e1bc1b22bc6e2fc4740822e0011260bf87362913f",
+         "sum": "500"
+        },
+        {
+         "hash": "ff15b8cfa421f21840fb429493cb5c1bf33dfa938075ffff1d336fc470d390c2",
+         "sum": "118845"
+        }
+       ]
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "300000",
+        "payload": "",
+        "salt": "e83af2650ecd9c70c553abeeb764bff72cd58a587da05e924b88f440cf796584",
+        "slot_id": "acct-alice"
+       },
+       "leaf_count": "3",
+       "leaf_index": "2",
+       "path": [
+        {
+         "hash": "42307302dea8840e9f9a87239a72997595ae2661ec0becf3959995ac75c0a13d",
+         "sum": "175000"
+        }
+       ]
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "203735",
+        "payload": "{\"source_amount\":\"300000\",\"target_slot_id\":\"acct-alice-w\"}",
+        "salt": "90f52090fcfd756fd60147970ed487b0f3e442043c1883847e430f60420af53f",
+        "slot_id": "acct-alice"
+       },
+       "leaf_count": "3",
+       "leaf_index": "0",
+       "path": [
+        {
+         "hash": "a24f7442d3f870d9d64f129917df7ecd466e6007c443bbc078f9e41c5f583a8e",
+         "sum": "37351"
+        },
+        {
+         "hash": "d40c1df0e1470bd63287d51b411a5951a723bc3d02242bef45244071214c3275",
+         "sum": "81494"
+        }
+       ]
+      },
+      "side": "liabilities"
+     },
+     "expected": {
+      "converted_amount": "203735",
+      "exact": {
+       "den": "589",
+       "num": "120000000"
+      },
+      "residue": {
+       "den": "589",
+       "num": "-85"
+      },
+      "side": "liabilities",
+      "source_amount": "300000",
+      "target_slot_id": "acct-alice-w"
+     },
+     "source_slot_id": "acct-alice"
+    },
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "52f1ff42c2702dc465d087e36d5c7e353ae09860c0ca3cc16afcabc50e9b82ec",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "81494",
+        "payload": "",
+        "salt": "2f9fe6acc97985ea1925ef3fc5e61b7ab48d66acc95ca10311d57dc69bea1c77",
+        "slot_id": "acct-bob-w"
+       },
+       "leaf_count": "4",
+       "leaf_index": "0",
+       "path": [
+        {
+         "hash": "4d0dba7c73e61ac2af05333ad100e387295c98f7cc919e4686d1f3ad760a6e33",
+         "sum": "37351"
+        },
+        {
+         "hash": "58b202e792449f57840b423b9e9aa75ecb7e6e04d77a3cfa2b36d47af82a12f3",
+         "sum": "204235"
+        }
+       ]
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "120000",
+        "payload": "",
+        "salt": "88d152b674c79535ecac48cf4e152e98085ea70b836dda8afc87484f42b720b0",
+        "slot_id": "acct-bob"
+       },
+       "leaf_count": "3",
+       "leaf_index": "0",
+       "path": [
+        {
+         "hash": "44df0682810e6207ffe5a924b0b108ab4c7363fa60e7e4cca831a3d261091879",
+         "sum": "55000"
+        },
+        {
+         "hash": "b99356f044fd5678055d3304a1fdad2403c1fc1910167b7fea1d74c6697d86b6",
+         "sum": "300000"
+        }
+       ]
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "81494",
+        "payload": "{\"source_amount\":\"120000\",\"target_slot_id\":\"acct-bob-w\"}",
+        "salt": "d35536d34bcc9aaf32453087105e45b0d48fb6bb15c150e6e36f710a0dbcf9c6",
+        "slot_id": "acct-bob"
+       },
+       "leaf_count": "3",
+       "leaf_index": "2",
+       "path": [
+        {
+         "hash": "2c7701063949ddb88e192fc32cdb997184fb583e8073584ded233831d02cd858",
+         "sum": "241086"
+        }
+       ]
+      },
+      "side": "liabilities"
+     },
+     "expected": {
+      "converted_amount": "81494",
+      "exact": {
+       "den": "589",
+       "num": "48000000"
+      },
+      "residue": {
+       "den": "589",
+       "num": "-34"
+      },
+      "side": "liabilities",
+      "source_amount": "120000",
+      "target_slot_id": "acct-bob-w"
+     },
+     "source_slot_id": "acct-bob"
+    },
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "52f1ff42c2702dc465d087e36d5c7e353ae09860c0ca3cc16afcabc50e9b82ec",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "37351",
+        "payload": "",
+        "salt": "367f52b586895de7ea879456b5be9f4cedfacdf23511d4ccacd9aa449792fe1e",
+        "slot_id": "acct-carol-w"
+       },
+       "leaf_count": "4",
+       "leaf_index": "1",
+       "path": [
+        {
+         "hash": "1763c1698772053cc9dda3d66df18ccfeddd7dd80e1a0034dcb13371d194aea4",
+         "sum": "81494"
+        },
+        {
+         "hash": "58b202e792449f57840b423b9e9aa75ecb7e6e04d77a3cfa2b36d47af82a12f3",
+         "sum": "204235"
+        }
+       ]
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "liabilities",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "55000",
+        "payload": "",
+        "salt": "8212b2ab797d00eae1173f915aa8024333dd54fad1032c36c80d1581c3ea853f",
+        "slot_id": "acct-carol"
+       },
+       "leaf_count": "3",
+       "leaf_index": "1",
+       "path": [
+        {
+         "hash": "1d67b64a549d64ca1d0f06517cf024599e1a141bffc30fa8df86977af55c011b",
+         "sum": "120000"
+        },
+        {
+         "hash": "b99356f044fd5678055d3304a1fdad2403c1fc1910167b7fea1d74c6697d86b6",
+         "sum": "300000"
+        }
+       ]
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-liabilities",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "37351",
+        "payload": "{\"source_amount\":\"55000\",\"target_slot_id\":\"acct-carol-w\"}",
+        "salt": "beb3eac172771e1ea2ffb327eaf37eb710d858e7905cdbe7dbfb9de3c70604ea",
+        "slot_id": "acct-carol"
+       },
+       "leaf_count": "3",
+       "leaf_index": "1",
+       "path": [
+        {
+         "hash": "7bfdd8c97234580ee409d8b3cff5ebff217bfa2e9424113b89c37dd7a52b6593",
+         "sum": "203735"
+        },
+        {
+         "hash": "d40c1df0e1470bd63287d51b411a5951a723bc3d02242bef45244071214c3275",
+         "sum": "81494"
+        }
+       ]
+      },
+      "side": "liabilities"
+     },
+     "expected": {
+      "converted_amount": "37351",
+      "exact": {
+       "den": "589",
+       "num": "22000000"
+      },
+      "residue": {
+       "den": "589",
+       "num": "-261"
+      },
+      "side": "liabilities",
+      "source_amount": "55000",
+      "target_slot_id": "acct-carol-w"
+     },
+     "source_slot_id": "acct-carol"
+    },
+    {
+     "bundle": {
+      "format": "openreserve.conversion.holder-bundle/1",
+      "manifest_hash": "52f1ff42c2702dc465d087e36d5c7e353ae09860c0ca3cc16afcabc50e9b82ec",
+      "post_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "receivables",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "41",
+        "payload": "",
+        "salt": "928e913ba68a7722fe5b3f3c2d5d3358eb03ebbc0934768a8aa91f5f90810725",
+        "slot_id": "acct-dave-w"
+       },
+       "leaf_count": "1",
+       "leaf_index": "0",
+       "path": []
+      },
+      "pre_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:00.000000Z",
+        "binding": "",
+        "currency": "JPY",
+        "institution_id": "example-institution",
+        "kind": "receivables",
+        "minor_units": "0"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "60",
+        "payload": "",
+        "salt": "5474f13c2e314b7bc79896382b671a88101cf977139f261c670b4fa38ba97be2",
+        "slot_id": "acct-dave"
+       },
+       "leaf_count": "1",
+       "leaf_index": "0",
+       "path": []
+      },
+      "record_proof": {
+       "context": {
+        "as_of": "2099-12-31T15:00:01.000000Z",
+        "binding": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+        "currency": "FICTIONAL_W",
+        "institution_id": "example-institution",
+        "kind": "conversion-receivables",
+        "minor_units": "2"
+       },
+       "format": "openreserve.sumtree.inclusion/1",
+       "leaf": {
+        "amount": "41",
+        "payload": "{\"source_amount\":\"60\",\"target_slot_id\":\"acct-dave-w\"}",
+        "salt": "3c2bd7408878011389f6aa75bb555db8c951430aae1f893a653a6f472e9aa1e3",
+        "slot_id": "acct-dave"
+       },
+       "leaf_count": "1",
+       "leaf_index": "0",
+       "path": []
+      },
+      "side": "receivables"
+     },
+     "expected": {
+      "converted_amount": "41",
+      "exact": {
+       "den": "589",
+       "num": "24000"
+      },
+      "residue": {
+       "den": "589",
+       "num": "149"
+      },
+      "side": "receivables",
+      "source_amount": "60",
+      "target_slot_id": "acct-dave-w"
+     },
+     "source_slot_id": "acct-dave"
+    }
+   ],
+   "holders": [
+    {
+     "signed_source_amount": "300000",
+     "source_slot_id": "acct-alice",
+     "target_slot_id": "acct-alice-w"
+    },
+    {
+     "signed_source_amount": "120000",
+     "source_slot_id": "acct-bob",
+     "target_slot_id": "acct-bob-w"
+    },
+    {
+     "signed_source_amount": "55000",
+     "source_slot_id": "acct-carol",
+     "target_slot_id": "acct-carol-w"
+    },
+    {
+     "signed_source_amount": "-60",
+     "source_slot_id": "acct-dave",
+     "target_slot_id": "acct-dave-w"
+    },
+    {
+     "signed_source_amount": "0",
+     "source_slot_id": "acct-erin",
+     "target_slot_id": "acct-erin-w"
+    }
+   ],
+   "institution_id": "example-institution",
+   "manifest": {
+    "accounts": {
+     "clearing_source": "acct-clearing-jpy",
+     "clearing_target": "acct-clearing-w",
+     "residue": "acct-residue-w"
+    },
+    "declaration": {
+     "cutoff_at": "2099-12-31T15:00:00.000000Z",
+     "declaration_id": "fictional-changeover/JPY",
+     "format": "openreserve.conversion.declaration/1",
+     "rate": {
+      "quotation": "SOURCE_PER_TARGET",
+      "text": "147.25"
+     },
+     "rate_significant_figures": null,
+     "reference_document_sha256": null,
+     "rounding": {
+      "level": "ACCOUNT",
+      "mode": "HALF_AWAY_FROM_ZERO",
+      "quantum_minor_units": "1"
+     },
+     "source": {
+      "code": "JPY",
+      "minor_units": "0"
+     },
+     "target": {
+      "code": "FICTIONAL_W",
+      "minor_units": "2"
+     }
+    },
+    "declaration_hash": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+    "effective_at": "2099-12-31T15:00:01.000000Z",
+    "format": "openreserve.conversion.manifest/1",
+    "institution_id": "example-institution",
+    "ledger_closing": {
+     "bearer": "INSTITUTION",
+     "residue_account_change": "1"
+    },
+    "liabilities": {
+     "conversion": {
+      "leaf_count": "3",
+      "root": "02ba270d7dc739372c0449c10663d5aaadde5033b8721e2a142c3adb9f046129",
+      "total": "322580"
+     },
+     "converted_nonzero_count": "3",
+     "exact_total": {
+      "den": "31",
+      "num": "10000000"
+     },
+     "pre": {
+      "leaf_count": "3",
+      "root": "e101d897cc7370034604b7af37dd8513c369c5b3c4f107b5e8c4fb2e8973fbc4",
+      "total": "475000"
+     },
+     "reconciliation_difference": "-1",
+     "rounded_exact_total": "322581",
+     "sum_of_residues": {
+      "den": "31",
+      "num": "-20"
+     }
+    },
+    "post": {
+     "liabilities": {
+      "leaf_count": "4",
+      "root": "01ed84b7d40544a2f0dab7e4bdcbae808a229c93883ca6f0a3c92b5fdf952bd2",
+      "total": "323080"
+     },
+     "receivables": {
+      "leaf_count": "1",
+      "root": "3305c90e7231d1db005275db8df2ef52586d9ec739e031967859d61d7a453fe7",
+      "total": "41"
+     },
+     "scope": "MIXED"
+    },
+    "receivables": {
+     "conversion": {
+      "leaf_count": "1",
+      "root": "8a6107760f6ec8fadc3c8d6a273f3610760a99eabc6a5378632ade889b4e2b55",
+      "total": "41"
+     },
+     "converted_nonzero_count": "1",
+     "exact_total": {
+      "den": "589",
+      "num": "24000"
+     },
+     "pre": {
+      "leaf_count": "1",
+      "root": "7061e60fc176d30dd7ad2370a0f424e8934180b24d91aab522abbb74b0e08105",
+      "total": "60"
+     },
+     "reconciliation_difference": "0",
+     "rounded_exact_total": "41",
+     "sum_of_residues": {
+      "den": "589",
+      "num": "149"
+     }
+    }
+   },
+   "manifest_canonical_utf8_hex": "7b226163636f756e7473223a7b22636c656172696e675f736f75726365223a22616363742d636c656172696e672d6a7079222c22636c656172696e675f746172676574223a22616363742d636c656172696e672d77222c2272657369647565223a22616363742d726573696475652d77227d2c226465636c61726174696f6e223a7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a2266696374696f6e616c2d6368616e67656f7665722f4a5059222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a22534f555243455f5045525f544152474554222c2274657874223a223134372e3235227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f415741595f46524f4d5f5a45524f222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a224a5059222c226d696e6f725f756e697473223a2230227d2c22746172676574223a7b22636f6465223a2246494354494f4e414c5f57222c226d696e6f725f756e697473223a2232227d7d2c226465636c61726174696f6e5f68617368223a2232393033666162373533383538653661613131613866323266343535333637396133353462373039663335326530633639323264383765346131343866376364222c226566666563746976655f6174223a22323039392d31322d33315431353a30303a30312e3030303030305a222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6d616e69666573742f31222c22696e737469747574696f6e5f6964223a226578616d706c652d696e737469747574696f6e222c226c65646765725f636c6f73696e67223a7b22626561726572223a22494e535449545554494f4e222c22726573696475655f6163636f756e745f6368616e6765223a2231227d2c226c696162696c6974696573223a7b22636f6e76657273696f6e223a7b226c6561665f636f756e74223a2233222c22726f6f74223a2230326261323730643764633733393337326330343439633130363633643561616164646535303333623837323165326131343263336164623966303436313239222c22746f74616c223a22333232353830227d2c22636f6e7665727465645f6e6f6e7a65726f5f636f756e74223a2233222c2265786163745f746f74616c223a7b2264656e223a223331222c226e756d223a223130303030303030227d2c22707265223a7b226c6561665f636f756e74223a2233222c22726f6f74223a2265313031643839376363373337303033343630346237616633376464383531336333363963356233633466313037623565386334666232653839373366626334222c22746f74616c223a22343735303030227d2c227265636f6e63696c696174696f6e5f646966666572656e6365223a222d31222c22726f756e6465645f65786163745f746f74616c223a22333232353831222c2273756d5f6f665f7265736964756573223a7b2264656e223a223331222c226e756d223a222d3230227d7d2c22706f7374223a7b226c696162696c6974696573223a7b226c6561665f636f756e74223a2234222c22726f6f74223a2230316564383462376434303534346132663064616237653462646362616538303861323239633933383833636136663061336339326235666466393532626432222c22746f74616c223a22333233303830227d2c2272656365697661626c6573223a7b226c6561665f636f756e74223a2231222c22726f6f74223a2233333035633930653732333164316462303035323735646238646632656635323538366439656337333965303331393637383539643631643761343533666537222c22746f74616c223a223431227d2c2273636f7065223a224d49584544227d2c2272656365697661626c6573223a7b22636f6e76657273696f6e223a7b226c6561665f636f756e74223a2231222c22726f6f74223a2238613631303737363066366563386661646333633864366132373366333631303736306139396561626336613533373836333261646538383962346532623535222c22746f74616c223a223431227d2c22636f6e7665727465645f6e6f6e7a65726f5f636f756e74223a2231222c2265786163745f746f74616c223a7b2264656e223a22353839222c226e756d223a223234303030227d2c22707265223a7b226c6561665f636f756e74223a2231222c22726f6f74223a2237303631653630666331373664333064643761643233373061306634323465383933343138306232346439316161623532326162626237346230653038313035222c22746f74616c223a223630227d2c227265636f6e63696c696174696f6e5f646966666572656e6365223a2230222c22726f756e6465645f65786163745f746f74616c223a223431222c2273756d5f6f665f7265736964756573223a7b2264656e223a22353839222c226e756d223a22313439227d7d7d",
+   "manifest_hash": "52f1ff42c2702dc465d087e36d5c7e353ae09860c0ca3cc16afcabc50e9b82ec",
+   "name": "jpy-to-fictional-w2-mixed-scope",
+   "note": "evidence-level example: the holder list and the ledger closing amount are inputs here; a ledger-level example is in conversion_ledger_fixture_v1.json",
+   "other_target_currency_balances": [
+    {
+     "signed_amount": "500",
+     "slot_id": "acct-other-w"
+    }
+   ],
+   "record_payloads": {
+    "acct-alice": "{\"source_amount\":\"300000\",\"target_slot_id\":\"acct-alice-w\"}",
+    "acct-bob": "{\"source_amount\":\"120000\",\"target_slot_id\":\"acct-bob-w\"}",
+    "acct-carol": "{\"source_amount\":\"55000\",\"target_slot_id\":\"acct-carol-w\"}",
+    "acct-dave": "{\"source_amount\":\"60\",\"target_slot_id\":\"acct-dave-w\"}"
+   },
+   "residue_account_change_input": "1",
+   "residue_transaction_id": "convres_23fb140b4b340b22224c3577f55c9e850ee5d77bd11f012fedc6c386f0192d85",
+   "salt_key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+  }
+ ]
+}

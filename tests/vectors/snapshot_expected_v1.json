@@ -1,0 +1,152 @@
+{
+ "abc_liabilities": {
+  "leaf_count": "3",
+  "root": "15999a7b45465f066c26266c9c0371f430116f646c810dc30196623faba05b3a",
+  "total": "475000"
+ },
+ "abc_reserve_coverage_summary": {
+  "ledger_fixture": "the abc fixture plus a RESERVE account with id reserve funded 1000000",
+  "summary": {
+   "coverage": {
+    "basis_points_floor": "21052",
+    "covered": true
+   },
+   "format": "openreserve.reserve-coverage/1",
+   "reserves_self_booked": {
+    "account_ids": [
+     "reserve"
+    ],
+    "total": "1000000"
+   },
+   "snapshot": {
+    "currency": "JPY",
+    "format": "openreserve.liabilities-snapshot/1",
+    "inclusion_rule": "SETTLED_AT_OR_BEFORE_SNAPSHOT",
+    "institution_id": "example-institution",
+    "liabilities": {
+     "leaf_count": "3",
+     "root": "15999a7b45465f066c26266c9c0371f430116f646c810dc30196623faba05b3a",
+     "total": "475000"
+    },
+    "minor_units": "0",
+    "population_rule": "USER_ACCOUNTS_WITH_NONZERO_BALANCE",
+    "receivables": {
+     "leaf_count": "0",
+     "root": "f7b3370b9761b2dcdbb71edfb057c32c7522b2ec5ac81665720716e2b5afd79c",
+     "total": "0"
+    },
+    "snapshot_at": "2026-01-01T00:00:00.000000Z"
+   }
+  },
+  "summary_hash": "a15cf45f2e16472155dd814c05ac535cf353bf293368fffe0d4ca3112d0eb678"
+ },
+ "abc_snapshot_summary": {
+  "canonical_utf8": "{\"currency\":\"JPY\",\"format\":\"openreserve.liabilities-snapshot/1\",\"inclusion_rule\":\"SETTLED_AT_OR_BEFORE_SNAPSHOT\",\"institution_id\":\"example-institution\",\"liabilities\":{\"leaf_count\":\"3\",\"root\":\"15999a7b45465f066c26266c9c0371f430116f646c810dc30196623faba05b3a\",\"total\":\"475000\"},\"minor_units\":\"0\",\"population_rule\":\"USER_ACCOUNTS_WITH_NONZERO_BALANCE\",\"receivables\":{\"leaf_count\":\"0\",\"root\":\"f7b3370b9761b2dcdbb71edfb057c32c7522b2ec5ac81665720716e2b5afd79c\",\"total\":\"0\"},\"snapshot_at\":\"2026-01-01T00:00:00.000000Z\"}",
+  "ledger_fixture": "USER accounts with ids alice, bob, carol (JPY) funded 300000, 120000, 55000 from a PLATFORM account, all settled at 2026-01-01T00:00:00Z; institution_id example-institution; salt key 000102...1f (32 bytes); snapshot at the same instant",
+  "summary": {
+   "currency": "JPY",
+   "format": "openreserve.liabilities-snapshot/1",
+   "inclusion_rule": "SETTLED_AT_OR_BEFORE_SNAPSHOT",
+   "institution_id": "example-institution",
+   "liabilities": {
+    "leaf_count": "3",
+    "root": "15999a7b45465f066c26266c9c0371f430116f646c810dc30196623faba05b3a",
+    "total": "475000"
+   },
+   "minor_units": "0",
+   "population_rule": "USER_ACCOUNTS_WITH_NONZERO_BALANCE",
+   "receivables": {
+    "leaf_count": "0",
+    "root": "f7b3370b9761b2dcdbb71edfb057c32c7522b2ec5ac81665720716e2b5afd79c",
+    "total": "0"
+   },
+   "snapshot_at": "2026-01-01T00:00:00.000000Z"
+  },
+  "summary_hash": "c981cf21c98a294c7ba4db280c0939d9ec984c82b3b0c82570d0fa1f8f6dd4ed"
+ },
+ "empty_liabilities_same_context": {
+  "leaf_count": "0",
+  "root": "75ea0f466b6231dd9e548d87000a7e10d9d90d091a9ae692476a53ecbfc5b64a",
+  "total": "0"
+ },
+ "empty_receivables_same_context": {
+  "leaf_count": "0",
+  "root": "f7b3370b9761b2dcdbb71edfb057c32c7522b2ec5ac81665720716e2b5afd79c",
+  "total": "0"
+ },
+ "four_leaf_abcd": {
+  "leaf_count": "4",
+  "root": "0795a28fdc881a5065a683e173fabd140bec8da2a2d71479286bfed415944e79",
+  "total": "484000"
+ },
+ "four_leaf_alice_disclosed": [
+  [
+   1,
+   120000
+  ],
+  [
+   2,
+   64000
+  ]
+ ],
+ "four_leaf_alice_index": "3",
+ "four_leaf_order": [
+  "carol",
+  "dave",
+  "bob",
+  "alice"
+ ],
+ "overdraft_liabilities_a100": {
+  "leaf_count": "1",
+  "root": "3c94a9c23690aa558bb928840782df5c7caeb430a5ca9ecfc6d91ae464b7b724",
+  "total": "100"
+ },
+ "overdraft_receivables_b60": {
+  "leaf_count": "1",
+  "root": "bf7af395aa86433da9cca0bd0bfc6cb15e1c5f734284d387facb84478d04b50a",
+  "total": "60"
+ },
+ "overdraft_snapshot_summary": {
+  "expected_coverage": {
+   "basis_points_floor": "5000",
+   "covered": false,
+   "reserves": "50"
+  },
+  "ledger_fixture": "USER accounts with ids a and b (JPY): a funded 100 from PLATFORM, b pays 60 to PLATFORM without funds (balance -60); RESERVE funded 50",
+  "legacy_after_fix": {
+   "is_solvent": false,
+   "user_liabilities_total": "100",
+   "user_receivables_count": "1",
+   "user_receivables_total": "60"
+  },
+  "legacy_before_fix": {
+   "is_solvent": true,
+   "user_liabilities_total": "40"
+  },
+  "summary": {
+   "currency": "JPY",
+   "format": "openreserve.liabilities-snapshot/1",
+   "inclusion_rule": "SETTLED_AT_OR_BEFORE_SNAPSHOT",
+   "institution_id": "example-institution",
+   "liabilities": {
+    "leaf_count": "1",
+    "root": "3c94a9c23690aa558bb928840782df5c7caeb430a5ca9ecfc6d91ae464b7b724",
+    "total": "100"
+   },
+   "minor_units": "0",
+   "population_rule": "USER_ACCOUNTS_WITH_NONZERO_BALANCE",
+   "receivables": {
+    "leaf_count": "1",
+    "root": "bf7af395aa86433da9cca0bd0bfc6cb15e1c5f734284d387facb84478d04b50a",
+    "total": "60"
+   },
+   "snapshot_at": "2026-01-01T00:00:00.000000Z"
+  },
+  "summary_hash": "48756d5cc77a4134b2f5c18149b450ad323ed765048c4ee2558199a74b96263d"
+ },
+ "two_leaf_alice_bob": {
+  "leaf_count": "2",
+  "root": "1f19f1f192942e28c1c8be36910ae201dcc647cda2b75b6043cb3387720c027d",
+  "total": "420000"
+ }
+}
