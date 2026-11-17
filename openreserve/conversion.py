@@ -979,8 +979,19 @@ def close_conversion(
     ``(residue account, +S)``. The residue account has the type ``FX_GAIN_LOSS`` and belongs
     to the institution, which bears the difference; no holder's amount is ever adjusted.
 
-    Returns ``S``, the change of the residue account: positive when the institution gains
-    from rounding, negative when it loses. Running the function again changes nothing.
+    Returns ``S``, the change of the residue account. ``S`` is not what rounding gave or cost
+    the institution, because the institution's own converted accounts (reserve and platform
+    accounts, for example) were rounded as well. That amount, the institution's own accounts
+    after the conversion (the clearing and residue accounts included) minus the exact
+    conversion of their balances at the cut-off, is minus the sum of the customers' residues
+    ``e = y - z``. The conversion evidence reports the customers' residues per side as
+    ``sum_of_residues``, the receivables as magnitudes, so the amount equals
+    ``receivables.sum_of_residues - liabilities.sum_of_residues``. ``S`` can be 0 or have the
+    other sign: at 2 source units per target unit, rounded half away from zero, a customer at
+    +3, a reserve account at +3 and platform accounts at -3, -1, -1 and -1 give ``S = 1``,
+    while the institution's accounts end 1/2 below their exact conversion, the 1/2 by which
+    the customer's converted 2 exceeds the exact 3/2. Running the function again changes
+    nothing.
     """
     declaration = _as_declaration(declaration)
     if type(initiator_id) is not str or not initiator_id:

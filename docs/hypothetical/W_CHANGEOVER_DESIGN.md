@@ -32,7 +32,10 @@ check of the amount column refuses NUL characters (9.1); a stopped migration kee
 (9.1); the figures of a debtor's bundle are magnitudes and `effective_at` is the instant of the
 post snapshot (8.5, 8.6); the statements about two sources pointed at one target hold only when
 no other post leaf covers the gap (8.5, 8.8); and reason codes that the code used but the text
-did not list are now listed (7, 8.6).
+did not list are now listed (7, 8.6). A later check corrected two statements without a change
+of code: the closing amount `S` is not what rounding gave or cost the institution (8.4), and
+four fields of a conversion manifest are checked only by rebuilding the evidence from the
+ledger (8.6).
 
 ## 0. Framing and scope
 
@@ -1044,8 +1047,19 @@ close_conversion(ledger, declaration, *, clearing_source_account_id, clearing_ta
    `CURRENCY_CONVERSION_CLOSING`; metadata key `openreserve.conversion.closing/1` with
    `{"declaration_hash", "residue_account_change"}`. The residue account has the existing type
    `FX_GAIN_LOSS` and the target currency. Running the function again changes nothing.
-4. It returns `S`, the change of the residue account: positive when the institution gains from
-   rounding, negative when it loses.
+4. It returns `S`, the change of the residue account. `S` is not what rounding gave or cost the
+   institution, because the institution's own converted accounts (reserve and platform
+   accounts, for example) are rounded as well. That amount, the institution's own accounts
+   after the conversion (the clearing and residue accounts included) minus the exact
+   conversion of their balances at the cut-off, is minus the sum of the customers' residues
+   `e = y - z`. The manifest reports the customers' residues per side as `sum_of_residues`,
+   the receivables as magnitudes (section 8.5), so the amount is
+   `receivables.sum_of_residues - liabilities.sum_of_residues`. `S` can be 0 or have the
+   other sign. Example, at 2 source units per target unit, rounded half away from zero: a
+   customer at +3, a reserve account at +3 and platform accounts at -3, -1, -1 and -1 convert
+   to 2, 2, -2, -1, -1 and -1, so `S = 1`; the institution's accounts end at -2 (2 - 5 + 1)
+   against an exact -3/2, a cost of 1/2, which is the customer's residue of +1/2 with the
+   sign reversed.
 
 **Who bears it.** The institution: the residue account is its own. The manifest states
 `"bearer": "INSTITUTION"`; no other value exists in this format version. A holder's converted
@@ -1181,6 +1195,12 @@ the canonical value profile before anything else; no content makes them raise.
    `converted_nonzero_count`; under `MIXED` neither is smaller (`POST_TOTAL_MISMATCH`).
 
 The roots themselves, and `residue_account_change`, cannot be checked from the manifest alone.
+Four fields are bound in no root, so the manifest check sees only their form, and neither the
+holder check nor the auditor's check below covers them: `accounts.clearing_source`,
+`accounts.clearing_target`, `accounts.residue` and `ledger_closing.residue_account_change`. A
+manifest in which one of them is changed and which is republished under its own hash passes
+all three checks. They are checked only by rebuilding the evidence from the ledger with
+`build_conversion_evidence` and comparing manifest hashes (the last paragraph of this section).
 
 **A holder:** `verify_conversion_bundle(bundle, manifest, *, expected_manifest_hash,
 expected_source_slot_id, expected_side)`. `expected_side` is the side the holder expects from

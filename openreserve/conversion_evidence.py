@@ -27,12 +27,14 @@ the sum of the converted amounts.
   proofs. A holder checks that their balance at the cut-off, the declared rate and rounding
   rule, and their converted balance fit together: :func:`verify_conversion_bundle`.
 * The **auditor export** (``openreserve.conversion.export/1``) holds every leaf. An auditor
-  recomputes everything: :func:`audit_conversion_export`.
+  recomputes every tree and figure of the export: :func:`audit_conversion_export`.
 
 What these checks do not show: that every balance was recorded, that every holder was given
-the same manifest, that an identifier belongs to one holder only, or anything about
-reserves. There is no signature in these formats. The checks never raise on the content of
-what they verify; they return a :class:`~openreserve.transparency.sumtree.Verification`.
+the same manifest, that an identifier belongs to one holder only, that the clearing and
+residue accounts and the closing amount named in the manifest are the ones of the ledger
+(only rebuilding the evidence from the ledger shows that), or anything about reserves. There
+is no signature in these formats. The checks never raise on the content of what they verify;
+they return a :class:`~openreserve.transparency.sumtree.Verification`.
 
 The specification is docs/hypothetical/W_CHANGEOVER_DESIGN.md, sections 8.5 and 8.6.
 """
@@ -719,8 +721,13 @@ def verify_conversion_manifest(manifest: object) -> Verification:
        (``POST_TOTAL_MISMATCH``).
 
     The roots themselves, the totals bound in them, and ``residue_account_change`` cannot be
-    checked from the manifest alone: holders and auditors check the roots. No content of
-    ``manifest`` makes the function raise.
+    checked from the manifest alone: holders and auditors check the roots. Four fields are
+    bound in no root, so this function checks only their form and neither the holder check
+    nor the auditor's check covers them: ``accounts.clearing_source``,
+    ``accounts.clearing_target``, ``accounts.residue`` and
+    ``ledger_closing.residue_account_change``. They are checked only by rebuilding the
+    evidence from the ledger with :func:`build_conversion_evidence` and comparing manifest
+    hashes. No content of ``manifest`` makes the function raise.
     """
     try:
         return _check_manifest(manifest)[0]
