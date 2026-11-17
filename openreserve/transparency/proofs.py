@@ -9,14 +9,25 @@ transparency/proofs.py — 3種の暗号学的証明の実装。
 from __future__ import annotations
 
 import json
+import warnings
 from dataclasses import dataclass, field
 from datetime import datetime
+from fractions import Fraction
 from typing import Any
 
 from openreserve.core.ledger import Ledger
 from openreserve.core.types import Currency, OwnerType, TransactionStatus
 from openreserve.transparency.audit_log import AuditLog
+from openreserve.transparency.coverage import coverage_figures
 from openreserve.transparency.merkle import MerkleLeaf, MerkleProof, MerkleTree
+from openreserve.transparency.snapshot import collect_user_balances
+
+
+def _pending_deprecation_message(old: str, new: str) -> str:
+    return (
+        f"{old} is the legacy reserve artifact and will be deprecated; use {new} "
+        "(see docs/hypothetical/W_CHANGEOVER_DESIGN.md, section 9.3)"
+    )
 
 
 @dataclass(frozen=True)
@@ -27,6 +38,20 @@ class ProofOfReserves:
     user_liabilities_total_cents: 利用者負債合計
     reserve_assets_total_cents: 準備資産合計
     is_solvent: reserve >= liabilities
+
+    Negative customer balances are never netted against liabilities: an account with a
+    negative balance has no leaf and is left out of ``user_liabilities_total_cents``. Their
+    number and total magnitude are reported in ``user_receivables_count`` and
+    ``user_receivables_total_cents``. ``user_liabilities_count`` counts the accounts that
+    have a leaf (zero-balance accounts keep theirs in this legacy artifact).
+
+    ``coverage_ratio`` is ``Fraction(reserves, liabilities)``, or ``None`` when the
+    liabilities are 0. In the summary, ``coverage_ratio_basis_points`` is
+    ``(10000 * reserves) // liabilities``, or ``null`` when the liabilities are 0.
+
+    Integers in the summary are JSON numbers, exact across implementations only up to
+    2**53 - 1. The newer artifacts of ``transparency/coverage.py`` write every integer as a
+    string. This class is kept for compatibility; its replacement is ``ReserveCoverage``.
     """
 
     snapshot_at: datetime
@@ -37,7 +62,10 @@ class ProofOfReserves:
     reserve_assets_total_cents: int
     reserve_accounts: tuple[str, ...]  # 準備資産口座のID一覧（公開）
     is_solvent: bool
-    coverage_ratio: float  # reserves / liabilities (1.0以上が健全)
+    # Exact reserves / liabilities, or None when there are no liabilities (no float, no sentinel).
+    coverage_ratio: Fraction | None
+    user_receivables_count: int = 0  # customer accounts with a negative balance (no leaf)
+    user_receivables_total_cents: int = 0  # sum of the magnitudes of those balances
 
     def to_public_summary(self) -> dict[str, Any]:
         """公開ダッシュボード用の要約。利用者個別残高は含まない。"""
@@ -50,17 +78,39 @@ class ProofOfReserves:
             "reserve_assets_total": self.reserve_assets_total_cents,
             "reserve_accounts": list(self.reserve_accounts),
             "is_solvent": self.is_solvent,
-            "coverage_ratio_basis_points": int(self.coverage_ratio * 10000),
+            "coverage_ratio_basis_points": coverage_figures(
+                self.reserve_assets_total_cents, self.user_liabilities_total_cents
+            ).basis_points_floor,
+            "user_receivables_count": self.user_receivables_count,
+            "user_receivables_total": self.user_receivables_total_cents,
         }
 
 
 class ProofOfReservesGenerator:
-    """元帳から Proof of Reserves を生成する。"""
+    """元帳から Proof of Reserves を生成する。
+
+    Legacy generator, kept with its signature and artifact for a deprecation period. Calling
+    :meth:`generate` emits a ``PendingDeprecationWarning`` naming the replacement,
+    ``ReserveCoverageGenerator``.
+    """
 
     def __init__(self, ledger: Ledger) -> None:
         self._ledger = ledger
 
     def generate(
+        self,
+        currency: Currency,
+        snapshot_at: datetime,
+    ) -> tuple[ProofOfReserves, MerkleTree]:
+        """See :meth:`_generate`; this entry point also emits the pending deprecation warning."""
+        warnings.warn(
+            _pending_deprecation_message("ProofOfReservesGenerator.generate", "ReserveCoverageGenerator.generate"),
+            PendingDeprecationWarning,
+            stacklevel=2,
+        )
+        return self._generate(currency, snapshot_at)
+
+    def _generate(
         self,
         currency: Currency,
         snapshot_at: datetime,
@@ -75,21 +125,25 @@ class ProofOfReservesGenerator:
         MerkleTreeは個別利用者へのProof発行に使う。
         """
         # 利用者口座の残高を集計
-        user_accounts = self._ledger.list_accounts(owner_type=OwnerType.USER)
+        # A negative balance is a receivable, not a negative liability: it gets no leaf and
+        # is never netted against what is owed to other customers.
         leaves: list[MerkleLeaf] = []
         total_liabilities = 0
-        for account in user_accounts:
-            if account.currency != currency:
+        receivables_count = 0
+        receivables_total = 0
+        for account_id, balance_cents in collect_user_balances(self._ledger, currency, snapshot_at):
+            if balance_cents < 0:
+                receivables_count += 1
+                receivables_total += -balance_cents
                 continue
-            balance = self._ledger.balance(account.account_id, as_of=snapshot_at)
             leaves.append(
                 MerkleLeaf(
-                    account_id=account.account_id,
-                    balance_cents=balance.cents,
+                    account_id=account_id,
+                    balance_cents=balance_cents,
                     currency_code=currency.code,
                 )
             )
-            total_liabilities += balance.cents
+            total_liabilities += balance_cents
 
         if not leaves:
             # 利用者口座が0件でも空のProofを生成可能にする
@@ -111,10 +165,8 @@ class ProofOfReservesGenerator:
             balance = self._ledger.balance(account.account_id, as_of=snapshot_at)
             total_reserves += balance.cents
 
-        is_solvent = total_reserves >= total_liabilities
-        coverage_ratio = (
-            total_reserves / total_liabilities if total_liabilities > 0 else float("inf")
-        )
+        figures = coverage_figures(total_reserves, total_liabilities)
+        is_solvent = figures.covered
 
         proof = ProofOfReserves(
             snapshot_at=snapshot_at,
@@ -125,7 +177,9 @@ class ProofOfReservesGenerator:
             reserve_assets_total_cents=total_reserves,
             reserve_accounts=tuple(reserve_account_ids),
             is_solvent=is_solvent,
-            coverage_ratio=coverage_ratio if coverage_ratio != float("inf") else 999.99,
+            coverage_ratio=figures.ratio,
+            user_receivables_count=receivables_count,
+            user_receivables_total_cents=receivables_total,
         )
         return proof, tree
 
@@ -152,7 +206,12 @@ class ProofOfSolvency:
 
 
 class ProofOfSolvencyGenerator:
-    """全通貨を統合した Proof of Solvency を生成する。"""
+    """全通貨を統合した Proof of Solvency を生成する。
+
+    Legacy generator, kept with its signature and artifact for a deprecation period. Calling
+    :meth:`generate` emits a ``PendingDeprecationWarning`` naming the replacement,
+    ``DeclaredReserveCoverageGenerator``.
+    """
 
     def __init__(self, ledger: Ledger) -> None:
         self._ledger = ledger
@@ -165,11 +224,18 @@ class ProofOfSolvencyGenerator:
         snapshot_at: datetime,
     ) -> tuple[ProofOfSolvency, dict[Currency, MerkleTree]]:
         # snapshot_at は必須 (wall-clock フォールバックなし)。
+        warnings.warn(
+            _pending_deprecation_message(
+                "ProofOfSolvencyGenerator.generate", "DeclaredReserveCoverageGenerator.generate"
+            ),
+            PendingDeprecationWarning,
+            stacklevel=2,
+        )
         per_currency_proofs: list[ProofOfReserves] = []
         trees: dict[Currency, MerkleTree] = {}
         all_solvent = True
         for currency in currencies:
-            por, tree = self._por_generator.generate(currency=currency, snapshot_at=snapshot_at)
+            por, tree = self._por_generator._generate(currency=currency, snapshot_at=snapshot_at)
             per_currency_proofs.append(por)
             trees[currency] = tree
             if not por.is_solvent:

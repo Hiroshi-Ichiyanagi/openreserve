@@ -1,0 +1,2562 @@
+{
+ "abc_context_variants": {
+  "as_of_text": {
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000001Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "6bcc3c8cc889ea006b0b64889f2a3ffd8413f1a2d7a54f5be875e67f6f54bf3f",
+   "root": "2bf0741113109a7ddbd76544d38ee92a70880362e241633f87e35494b2e385a3"
+  },
+  "binding": {
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "1111111111111111111111111111111111111111111111111111111111111111",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "1bb31c799d50694c58db710d03d6a8d29df679c435af110c551f5718f3f3959c",
+   "root": "264286c6a1871792c36ebdea941d4f1d42d600ca0f6bb3e7fd0775a40b295965"
+  },
+  "currency": {
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "USD",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "2762c8d30dadae94cbee982868ec3a91575ec6cb9960c300afd29edac53d76f5",
+   "root": "199319213f105a804769b84c10336b458e907eac4afdd9d3a314e4c20b1fe3ed"
+  },
+  "institution_id": {
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "other-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "35e5a83829f9391ed0bc45d0377403b9b8472e544c2dbfc933a46d8e1892ddd4",
+   "root": "72efb46a33630375c28c42722d0da7e49c8d1787a92266175188534295ee5757"
+  },
+  "kind": {
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "receivables",
+    "minor_units": "0"
+   },
+   "context_digest": "e6791a2d2a13ec21415654140c9aebba14f08c9847bb06a7bcf7fc841209e006",
+   "root": "86cc1e9737ecd22bc1072bf9853d4b25e0e9b899d14d4b4888a366668efe2859"
+  },
+  "minor_units": {
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "2"
+   },
+   "context_digest": "606b2386ed0fcb49480c3d7747fff37d51e946d32fbfe8951dae72718f536df0",
+   "root": "3fa358075ef307fdca7b03d8b1365293e94079562973872eaf2da98534a1017a"
+  }
+ },
+ "abc_root_with_another_salt_key": {
+  "root": "8e284b9c62c12f170e2b1a08718a621342615e796e25ec074987acb2b3ff1486",
+  "salt_key_hex": "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20"
+ },
+ "byte_layout_example": {
+  "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+  "context_preimage_hex": "6f70656e726573657276652e73756d747265652e7631030000000b6c696162696c6974696573000000136578616d706c652d696e737469747574696f6e000000034a5059000000001b323032362d30312d30315430303a30303a30302e3030303030305a00000000",
+  "first_leaf_slot_id": "bob",
+  "leaf_hash": "cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c",
+  "leaf_preimage_hex": "6f70656e726573657276652e73756d747265652e763100ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f00200000003626f620000000000000000000000000001d4c09718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be00000000",
+  "node_preimage_hex": "6f70656e726573657276652e73756d747265652e763101cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c0000000000000000000000000001d4c0cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374000000000000000000000000000493e0",
+  "node_preimage_length": "119",
+  "root": "1f19f1f192942e28c1c8be36910ae201dcc647cda2b75b6043cb3387720c027d",
+  "root_preimage_hex": "6f70656e726573657276652e73756d747265652e763102ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f0020000000000000002000000000000000000000000000668a0e718267f663d147859473a4adbfea0daf4e09c8b0a930a61587cac5024077084",
+  "salt": "9718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be",
+  "salt_hmac_message_hex": "6f70656e726573657276652e73756d747265652e763110ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f00200000003626f62",
+  "top_hash": "e718267f663d147859473a4adbfea0daf4e09c8b0a930a61587cac5024077084",
+  "tree": "two-leaves"
+ },
+ "domain_ascii": "openreserve.sumtree.v1",
+ "format": "openreserve.sumtree/1",
+ "salt_key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+ "trees": [
+  {
+   "canonical_leaves": [],
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+   "head": {
+    "leaf_count": "0",
+    "root": "75ea0f466b6231dd9e548d87000a7e10d9d90d091a9ae692476a53ecbfc5b64a",
+    "total": "0"
+   },
+   "input_leaves": [],
+   "name": "empty",
+   "proofs": [],
+   "top_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  {
+   "canonical_leaves": [
+    {
+     "amount": "300000",
+     "index": "0",
+     "leaf_hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+     "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+     "slot_id": "alice"
+    }
+   ],
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+   "head": {
+    "leaf_count": "1",
+    "root": "b122c6bf923cfe591ac253e3cfee5b1b03ba347132b5179620eda5d0bba5e1d4",
+    "total": "300000"
+   },
+   "input_leaves": [
+    {
+     "amount": "300000",
+     "slot_id": "alice"
+    }
+   ],
+   "name": "one-leaf",
+   "proofs": [
+    {
+     "disclosed_sibling_subtrees": [],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "300000",
+       "payload": "",
+       "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+       "slot_id": "alice"
+      },
+      "leaf_count": "1",
+      "leaf_index": "0",
+      "path": []
+     }
+    }
+   ],
+   "top_hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374"
+  },
+  {
+   "canonical_leaves": [
+    {
+     "amount": "120000",
+     "index": "0",
+     "leaf_hash": "cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c",
+     "salt": "9718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be",
+     "slot_id": "bob"
+    },
+    {
+     "amount": "300000",
+     "index": "1",
+     "leaf_hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+     "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+     "slot_id": "alice"
+    }
+   ],
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+   "head": {
+    "leaf_count": "2",
+    "root": "1f19f1f192942e28c1c8be36910ae201dcc647cda2b75b6043cb3387720c027d",
+    "total": "420000"
+   },
+   "input_leaves": [
+    {
+     "amount": "300000",
+     "slot_id": "alice"
+    },
+    {
+     "amount": "120000",
+     "slot_id": "bob"
+    }
+   ],
+   "name": "two-leaves",
+   "proofs": [
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "300000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "120000",
+       "payload": "",
+       "salt": "9718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be",
+       "slot_id": "bob"
+      },
+      "leaf_count": "2",
+      "leaf_index": "0",
+      "path": [
+       {
+        "hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+        "sum": "300000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "120000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "300000",
+       "payload": "",
+       "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+       "slot_id": "alice"
+      },
+      "leaf_count": "2",
+      "leaf_index": "1",
+      "path": [
+       {
+        "hash": "cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c",
+        "sum": "120000"
+       }
+      ]
+     }
+    }
+   ],
+   "top_hash": "e718267f663d147859473a4adbfea0daf4e09c8b0a930a61587cac5024077084"
+  },
+  {
+   "canonical_leaves": [
+    {
+     "amount": "55000",
+     "index": "0",
+     "leaf_hash": "750af0b767b92738a9a4d26be595b046290ffbe816011330140975ff8a910786",
+     "salt": "89fbd71ca48df1ed00a2645adeef9a127707881166044e1d7c93dc0d7bbfdf82",
+     "slot_id": "carol"
+    },
+    {
+     "amount": "120000",
+     "index": "1",
+     "leaf_hash": "cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c",
+     "salt": "9718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be",
+     "slot_id": "bob"
+    },
+    {
+     "amount": "300000",
+     "index": "2",
+     "leaf_hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+     "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+     "slot_id": "alice"
+    }
+   ],
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+   "head": {
+    "leaf_count": "3",
+    "root": "15999a7b45465f066c26266c9c0371f430116f646c810dc30196623faba05b3a",
+    "total": "475000"
+   },
+   "input_leaves": [
+    {
+     "amount": "300000",
+     "slot_id": "alice"
+    },
+    {
+     "amount": "120000",
+     "slot_id": "bob"
+    },
+    {
+     "amount": "55000",
+     "slot_id": "carol"
+    }
+   ],
+   "name": "abc",
+   "proofs": [
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "120000"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "300000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "55000",
+       "payload": "",
+       "salt": "89fbd71ca48df1ed00a2645adeef9a127707881166044e1d7c93dc0d7bbfdf82",
+       "slot_id": "carol"
+      },
+      "leaf_count": "3",
+      "leaf_index": "0",
+      "path": [
+       {
+        "hash": "cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c",
+        "sum": "120000"
+       },
+       {
+        "hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+        "sum": "300000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "55000"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "300000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "120000",
+       "payload": "",
+       "salt": "9718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be",
+       "slot_id": "bob"
+      },
+      "leaf_count": "3",
+      "leaf_index": "1",
+      "path": [
+       {
+        "hash": "750af0b767b92738a9a4d26be595b046290ffbe816011330140975ff8a910786",
+        "sum": "55000"
+       },
+       {
+        "hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+        "sum": "300000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "2",
+       "sum": "175000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "300000",
+       "payload": "",
+       "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+       "slot_id": "alice"
+      },
+      "leaf_count": "3",
+      "leaf_index": "2",
+      "path": [
+       {
+        "hash": "bd65ccbc5cf1c0aa1d586854bacd4de78cde6991b7c8dea78f2f51368838c9e2",
+        "sum": "175000"
+       }
+      ]
+     }
+    }
+   ],
+   "top_hash": "1ad3f03dbe04b29d5b499cfbfda625c578c6545fa9f2de1f6a16d845b8aed3f3"
+  },
+  {
+   "canonical_leaves": [
+    {
+     "amount": "55000",
+     "index": "0",
+     "leaf_hash": "3784deb55ab3bec5981634651d4729eb38a9b207b9223ee023ff227b3a00a857",
+     "salt": "1d02f9a35e1813fecc5c416adbd02ffb062910034a99ef18f1235e6546e42012",
+     "slot_id": "dave"
+    },
+    {
+     "amount": "55000",
+     "index": "1",
+     "leaf_hash": "750af0b767b92738a9a4d26be595b046290ffbe816011330140975ff8a910786",
+     "salt": "89fbd71ca48df1ed00a2645adeef9a127707881166044e1d7c93dc0d7bbfdf82",
+     "slot_id": "carol"
+    },
+    {
+     "amount": "120000",
+     "index": "2",
+     "leaf_hash": "cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c",
+     "salt": "9718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be",
+     "slot_id": "bob"
+    },
+    {
+     "amount": "300000",
+     "index": "3",
+     "leaf_hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+     "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+     "slot_id": "alice"
+    }
+   ],
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+   "head": {
+    "leaf_count": "4",
+    "root": "f88f652b794a454653c105b1c3aa965f3e0fd35c4bfab31df0b5ca46f4fc7757",
+    "total": "530000"
+   },
+   "input_leaves": [
+    {
+     "amount": "300000",
+     "slot_id": "alice"
+    },
+    {
+     "amount": "120000",
+     "slot_id": "bob"
+    },
+    {
+     "amount": "55000",
+     "slot_id": "carol"
+    },
+    {
+     "amount": "55000",
+     "slot_id": "dave"
+    }
+   ],
+   "name": "abc-plus-dave-with-carols-amount",
+   "proofs": [
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "55000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "420000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "55000",
+       "payload": "",
+       "salt": "1d02f9a35e1813fecc5c416adbd02ffb062910034a99ef18f1235e6546e42012",
+       "slot_id": "dave"
+      },
+      "leaf_count": "4",
+      "leaf_index": "0",
+      "path": [
+       {
+        "hash": "750af0b767b92738a9a4d26be595b046290ffbe816011330140975ff8a910786",
+        "sum": "55000"
+       },
+       {
+        "hash": "e718267f663d147859473a4adbfea0daf4e09c8b0a930a61587cac5024077084",
+        "sum": "420000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "55000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "420000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "55000",
+       "payload": "",
+       "salt": "89fbd71ca48df1ed00a2645adeef9a127707881166044e1d7c93dc0d7bbfdf82",
+       "slot_id": "carol"
+      },
+      "leaf_count": "4",
+      "leaf_index": "1",
+      "path": [
+       {
+        "hash": "3784deb55ab3bec5981634651d4729eb38a9b207b9223ee023ff227b3a00a857",
+        "sum": "55000"
+       },
+       {
+        "hash": "e718267f663d147859473a4adbfea0daf4e09c8b0a930a61587cac5024077084",
+        "sum": "420000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "300000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "110000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "120000",
+       "payload": "",
+       "salt": "9718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be",
+       "slot_id": "bob"
+      },
+      "leaf_count": "4",
+      "leaf_index": "2",
+      "path": [
+       {
+        "hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+        "sum": "300000"
+       },
+       {
+        "hash": "75c25045e681b8561d9cc18a1dcf6f39f4009435f5989f03d87680cb7367c4b0",
+        "sum": "110000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "120000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "110000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "300000",
+       "payload": "",
+       "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+       "slot_id": "alice"
+      },
+      "leaf_count": "4",
+      "leaf_index": "3",
+      "path": [
+       {
+        "hash": "cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c",
+        "sum": "120000"
+       },
+       {
+        "hash": "75c25045e681b8561d9cc18a1dcf6f39f4009435f5989f03d87680cb7367c4b0",
+        "sum": "110000"
+       }
+      ]
+     }
+    }
+   ],
+   "top_hash": "bfbd2ab6af4eaae7e29e76401220710c1d0def24f7b9b2f79295ac089b75182d"
+  },
+  {
+   "canonical_leaves": [
+    {
+     "amount": "55000",
+     "index": "0",
+     "leaf_hash": "3784deb55ab3bec5981634651d4729eb38a9b207b9223ee023ff227b3a00a857",
+     "salt": "1d02f9a35e1813fecc5c416adbd02ffb062910034a99ef18f1235e6546e42012",
+     "slot_id": "dave"
+    },
+    {
+     "amount": "55000",
+     "index": "1",
+     "leaf_hash": "750af0b767b92738a9a4d26be595b046290ffbe816011330140975ff8a910786",
+     "salt": "89fbd71ca48df1ed00a2645adeef9a127707881166044e1d7c93dc0d7bbfdf82",
+     "slot_id": "carol"
+    },
+    {
+     "amount": "1",
+     "index": "2",
+     "leaf_hash": "c2371c8b23bcf9a517f2647d95f742dd5266ccb046579026daf20aa6f4840fed",
+     "salt": "799ebe087fdbb28b485238af8c625940749bdb63e931a25eeafa87122370ac51",
+     "slot_id": "erin"
+    },
+    {
+     "amount": "120000",
+     "index": "3",
+     "leaf_hash": "cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c",
+     "salt": "9718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be",
+     "slot_id": "bob"
+    },
+    {
+     "amount": "300000",
+     "index": "4",
+     "leaf_hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+     "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+     "slot_id": "alice"
+    }
+   ],
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+   "head": {
+    "leaf_count": "5",
+    "root": "7e1e7790e82274a3455a377b2b87f5fdef354cefbcd6e065e605b410d0eb6f99",
+    "total": "530001"
+   },
+   "input_leaves": [
+    {
+     "amount": "300000",
+     "slot_id": "alice"
+    },
+    {
+     "amount": "120000",
+     "slot_id": "bob"
+    },
+    {
+     "amount": "55000",
+     "slot_id": "carol"
+    },
+    {
+     "amount": "55000",
+     "slot_id": "dave"
+    },
+    {
+     "amount": "1",
+     "slot_id": "erin"
+    }
+   ],
+   "name": "five",
+   "proofs": [
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "55000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "120001"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "300000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "55000",
+       "payload": "",
+       "salt": "1d02f9a35e1813fecc5c416adbd02ffb062910034a99ef18f1235e6546e42012",
+       "slot_id": "dave"
+      },
+      "leaf_count": "5",
+      "leaf_index": "0",
+      "path": [
+       {
+        "hash": "750af0b767b92738a9a4d26be595b046290ffbe816011330140975ff8a910786",
+        "sum": "55000"
+       },
+       {
+        "hash": "65ea27c2d2d4379f3f3180071ec1f6248113129ddda97696b23d7f510ecfe2cc",
+        "sum": "120001"
+       },
+       {
+        "hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+        "sum": "300000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "55000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "120001"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "300000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "55000",
+       "payload": "",
+       "salt": "89fbd71ca48df1ed00a2645adeef9a127707881166044e1d7c93dc0d7bbfdf82",
+       "slot_id": "carol"
+      },
+      "leaf_count": "5",
+      "leaf_index": "1",
+      "path": [
+       {
+        "hash": "3784deb55ab3bec5981634651d4729eb38a9b207b9223ee023ff227b3a00a857",
+        "sum": "55000"
+       },
+       {
+        "hash": "65ea27c2d2d4379f3f3180071ec1f6248113129ddda97696b23d7f510ecfe2cc",
+        "sum": "120001"
+       },
+       {
+        "hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+        "sum": "300000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "120000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "110000"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "300000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "1",
+       "payload": "",
+       "salt": "799ebe087fdbb28b485238af8c625940749bdb63e931a25eeafa87122370ac51",
+       "slot_id": "erin"
+      },
+      "leaf_count": "5",
+      "leaf_index": "2",
+      "path": [
+       {
+        "hash": "cc2b75e2bd3b6c0fc552c792fc13535a1cbb9b3cf438338f5913bd1447c5f72c",
+        "sum": "120000"
+       },
+       {
+        "hash": "75c25045e681b8561d9cc18a1dcf6f39f4009435f5989f03d87680cb7367c4b0",
+        "sum": "110000"
+       },
+       {
+        "hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+        "sum": "300000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "110000"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "300000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "120000",
+       "payload": "",
+       "salt": "9718cd5fb3a5b136cf09d6cfcaafd38796fd2208558f5b6fa6f45ac966d632be",
+       "slot_id": "bob"
+      },
+      "leaf_count": "5",
+      "leaf_index": "3",
+      "path": [
+       {
+        "hash": "c2371c8b23bcf9a517f2647d95f742dd5266ccb046579026daf20aa6f4840fed",
+        "sum": "1"
+       },
+       {
+        "hash": "75c25045e681b8561d9cc18a1dcf6f39f4009435f5989f03d87680cb7367c4b0",
+        "sum": "110000"
+       },
+       {
+        "hash": "cd9c5265f875d3d411ea0b8fede88f72084669cee3029adedaf16fc43bc9e374",
+        "sum": "300000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "4",
+       "sum": "230001"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "300000",
+       "payload": "",
+       "salt": "546dc4f52f24beb3c49f1b6e7084dc670a880a93be1f2c5114486ff65c7a37ae",
+       "slot_id": "alice"
+      },
+      "leaf_count": "5",
+      "leaf_index": "4",
+      "path": [
+       {
+        "hash": "09dfd65c0c8aba3c03f25381d1262d22a83d04c67ec2d739b6c7b640e08f7e83",
+        "sum": "230001"
+       }
+      ]
+     }
+    }
+   ],
+   "top_hash": "ab2cf5495af845207e5e16d63fdca3ba07b0bdbfd59575de775a076e7a0b4d9f"
+  },
+  {
+   "canonical_leaves": [
+    {
+     "amount": "100000",
+     "index": "0",
+     "leaf_hash": "0eb0dda9ac531d79e6640cd0c487e6b96c352cf72bc3850a467562be6b9c91da",
+     "salt": "c087bfd36241a00b9ebf938bd13ee3c35135ed6c2f2355370479926d5618cae5",
+     "slot_id": "h5"
+    },
+    {
+     "amount": "10000",
+     "index": "1",
+     "leaf_hash": "316cdf9e70dd0c5118a07f2cbea2eba933530616173dffe322cc5ba71ce62199",
+     "salt": "acdf5f05388fcb53e615dc75159e96166ceec71f528e093634a894a927e0b350",
+     "slot_id": "h4"
+    },
+    {
+     "amount": "1000",
+     "index": "2",
+     "leaf_hash": "42ecab21832bf0fb0c0c836a4be225d4317cebb73cc6b8bf69111e0ed0313e80",
+     "salt": "e2343495d610a73a87d9fbe310cf9646cf8fea377dbaa43cb626c74aa0ccbc8b",
+     "slot_id": "h3"
+    },
+    {
+     "amount": "100",
+     "index": "3",
+     "leaf_hash": "5219f060a5b9154d5ef4a5a4d6691fa9d2ebb31af2c30749ac40b3b1d9a1f727",
+     "salt": "d5781ba019a2311624bd797be23698025397c7c9f079883076a1f93e4fe77178",
+     "slot_id": "h2"
+    },
+    {
+     "amount": "1",
+     "index": "4",
+     "leaf_hash": "d69f63edb187d2954e0456504ba34bc2b2fddfa491b6b3331446d7ea07205bd5",
+     "salt": "7f72acfa18e42e16c0aced3b4807b8f57cbe0da797e6161c62b058ed0ee3a7ec",
+     "slot_id": "h0"
+    },
+    {
+     "amount": "1000000",
+     "index": "5",
+     "leaf_hash": "e6d31698b3f75fc57c59e1161a307b65bfa06585ca231d62b47e92fc5fa73e90",
+     "salt": "d655ae4f1fb463b74c8d464c05727e0b6e12223aacc6aca037e3871d20ec0d8a",
+     "slot_id": "h6"
+    },
+    {
+     "amount": "10",
+     "index": "6",
+     "leaf_hash": "f9361b82d4ad6654855fa5a776ac37ffa9f4d1c8355f2f062bbdb2a30adfc866",
+     "salt": "404306eaea03ec7a7d76f50615eda42dc6c5ff874306cdbedb48e65154f46789",
+     "slot_id": "h1"
+    }
+   ],
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+   "head": {
+    "leaf_count": "7",
+    "root": "0e0020753f8dff41061a9754d117fe4ecb73e1c64f6dd1861c64ff57d8e8f066",
+    "total": "1111111"
+   },
+   "input_leaves": [
+    {
+     "amount": "1",
+     "slot_id": "h0"
+    },
+    {
+     "amount": "10",
+     "slot_id": "h1"
+    },
+    {
+     "amount": "100",
+     "slot_id": "h2"
+    },
+    {
+     "amount": "1000",
+     "slot_id": "h3"
+    },
+    {
+     "amount": "10000",
+     "slot_id": "h4"
+    },
+    {
+     "amount": "100000",
+     "slot_id": "h5"
+    },
+    {
+     "amount": "1000000",
+     "slot_id": "h6"
+    }
+   ],
+   "name": "seven",
+   "proofs": [
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "10000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "1100"
+      },
+      {
+       "leaf_count": "3",
+       "sum": "1000011"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "100000",
+       "payload": "",
+       "salt": "c087bfd36241a00b9ebf938bd13ee3c35135ed6c2f2355370479926d5618cae5",
+       "slot_id": "h5"
+      },
+      "leaf_count": "7",
+      "leaf_index": "0",
+      "path": [
+       {
+        "hash": "316cdf9e70dd0c5118a07f2cbea2eba933530616173dffe322cc5ba71ce62199",
+        "sum": "10000"
+       },
+       {
+        "hash": "413e8adbbcca54a93054e42f0b6118e061aa6a22251f7065b4f5311cf217ac70",
+        "sum": "1100"
+       },
+       {
+        "hash": "13b1803e11f2ddfeeab0a5945c4e45354834923b7fc6540c83eeab5341494e62",
+        "sum": "1000011"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "100000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "1100"
+      },
+      {
+       "leaf_count": "3",
+       "sum": "1000011"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "10000",
+       "payload": "",
+       "salt": "acdf5f05388fcb53e615dc75159e96166ceec71f528e093634a894a927e0b350",
+       "slot_id": "h4"
+      },
+      "leaf_count": "7",
+      "leaf_index": "1",
+      "path": [
+       {
+        "hash": "0eb0dda9ac531d79e6640cd0c487e6b96c352cf72bc3850a467562be6b9c91da",
+        "sum": "100000"
+       },
+       {
+        "hash": "413e8adbbcca54a93054e42f0b6118e061aa6a22251f7065b4f5311cf217ac70",
+        "sum": "1100"
+       },
+       {
+        "hash": "13b1803e11f2ddfeeab0a5945c4e45354834923b7fc6540c83eeab5341494e62",
+        "sum": "1000011"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "100"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "110000"
+      },
+      {
+       "leaf_count": "3",
+       "sum": "1000011"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "1000",
+       "payload": "",
+       "salt": "e2343495d610a73a87d9fbe310cf9646cf8fea377dbaa43cb626c74aa0ccbc8b",
+       "slot_id": "h3"
+      },
+      "leaf_count": "7",
+      "leaf_index": "2",
+      "path": [
+       {
+        "hash": "5219f060a5b9154d5ef4a5a4d6691fa9d2ebb31af2c30749ac40b3b1d9a1f727",
+        "sum": "100"
+       },
+       {
+        "hash": "c1df591a64944c12e8a58f57a98e4fb603f7881b86711a3784580117a65ada1a",
+        "sum": "110000"
+       },
+       {
+        "hash": "13b1803e11f2ddfeeab0a5945c4e45354834923b7fc6540c83eeab5341494e62",
+        "sum": "1000011"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "1000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "110000"
+      },
+      {
+       "leaf_count": "3",
+       "sum": "1000011"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "100",
+       "payload": "",
+       "salt": "d5781ba019a2311624bd797be23698025397c7c9f079883076a1f93e4fe77178",
+       "slot_id": "h2"
+      },
+      "leaf_count": "7",
+      "leaf_index": "3",
+      "path": [
+       {
+        "hash": "42ecab21832bf0fb0c0c836a4be225d4317cebb73cc6b8bf69111e0ed0313e80",
+        "sum": "1000"
+       },
+       {
+        "hash": "c1df591a64944c12e8a58f57a98e4fb603f7881b86711a3784580117a65ada1a",
+        "sum": "110000"
+       },
+       {
+        "hash": "13b1803e11f2ddfeeab0a5945c4e45354834923b7fc6540c83eeab5341494e62",
+        "sum": "1000011"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "1000000"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "10"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "111100"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "1",
+       "payload": "",
+       "salt": "7f72acfa18e42e16c0aced3b4807b8f57cbe0da797e6161c62b058ed0ee3a7ec",
+       "slot_id": "h0"
+      },
+      "leaf_count": "7",
+      "leaf_index": "4",
+      "path": [
+       {
+        "hash": "e6d31698b3f75fc57c59e1161a307b65bfa06585ca231d62b47e92fc5fa73e90",
+        "sum": "1000000"
+       },
+       {
+        "hash": "f9361b82d4ad6654855fa5a776ac37ffa9f4d1c8355f2f062bbdb2a30adfc866",
+        "sum": "10"
+       },
+       {
+        "hash": "4e333e870586a80858379e3f002cede9f280cb58b539efac0583e8c3e5112eda",
+        "sum": "111100"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "10"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "111100"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "1000000",
+       "payload": "",
+       "salt": "d655ae4f1fb463b74c8d464c05727e0b6e12223aacc6aca037e3871d20ec0d8a",
+       "slot_id": "h6"
+      },
+      "leaf_count": "7",
+      "leaf_index": "5",
+      "path": [
+       {
+        "hash": "d69f63edb187d2954e0456504ba34bc2b2fddfa491b6b3331446d7ea07205bd5",
+        "sum": "1"
+       },
+       {
+        "hash": "f9361b82d4ad6654855fa5a776ac37ffa9f4d1c8355f2f062bbdb2a30adfc866",
+        "sum": "10"
+       },
+       {
+        "hash": "4e333e870586a80858379e3f002cede9f280cb58b539efac0583e8c3e5112eda",
+        "sum": "111100"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "2",
+       "sum": "1000001"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "111100"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "10",
+       "payload": "",
+       "salt": "404306eaea03ec7a7d76f50615eda42dc6c5ff874306cdbedb48e65154f46789",
+       "slot_id": "h1"
+      },
+      "leaf_count": "7",
+      "leaf_index": "6",
+      "path": [
+       {
+        "hash": "c431bb15f2e176a5221cd064806f41e567c56980cb111842efa6e394d9a8498f",
+        "sum": "1000001"
+       },
+       {
+        "hash": "4e333e870586a80858379e3f002cede9f280cb58b539efac0583e8c3e5112eda",
+        "sum": "111100"
+       }
+      ]
+     }
+    }
+   ],
+   "top_hash": "d3d8f89e06bc35a38223f114f16f947e6fd51e3b00df9ee1d1d42aa75442e771"
+  },
+  {
+   "canonical_leaves": [
+    {
+     "amount": "100000",
+     "index": "0",
+     "leaf_hash": "0eb0dda9ac531d79e6640cd0c487e6b96c352cf72bc3850a467562be6b9c91da",
+     "salt": "c087bfd36241a00b9ebf938bd13ee3c35135ed6c2f2355370479926d5618cae5",
+     "slot_id": "h5"
+    },
+    {
+     "amount": "10000000",
+     "index": "1",
+     "leaf_hash": "2f69fb9669a3340d65a855a4c9ccd8f4d080a777a42796186d7a6a26f9010d4d",
+     "salt": "a13335a366a6508edc6ae81df06104eaca46e5aa70e28394113c501216e60a49",
+     "slot_id": "h7"
+    },
+    {
+     "amount": "10000",
+     "index": "2",
+     "leaf_hash": "316cdf9e70dd0c5118a07f2cbea2eba933530616173dffe322cc5ba71ce62199",
+     "salt": "acdf5f05388fcb53e615dc75159e96166ceec71f528e093634a894a927e0b350",
+     "slot_id": "h4"
+    },
+    {
+     "amount": "1000",
+     "index": "3",
+     "leaf_hash": "42ecab21832bf0fb0c0c836a4be225d4317cebb73cc6b8bf69111e0ed0313e80",
+     "salt": "e2343495d610a73a87d9fbe310cf9646cf8fea377dbaa43cb626c74aa0ccbc8b",
+     "slot_id": "h3"
+    },
+    {
+     "amount": "100",
+     "index": "4",
+     "leaf_hash": "5219f060a5b9154d5ef4a5a4d6691fa9d2ebb31af2c30749ac40b3b1d9a1f727",
+     "salt": "d5781ba019a2311624bd797be23698025397c7c9f079883076a1f93e4fe77178",
+     "slot_id": "h2"
+    },
+    {
+     "amount": "1",
+     "index": "5",
+     "leaf_hash": "d69f63edb187d2954e0456504ba34bc2b2fddfa491b6b3331446d7ea07205bd5",
+     "salt": "7f72acfa18e42e16c0aced3b4807b8f57cbe0da797e6161c62b058ed0ee3a7ec",
+     "slot_id": "h0"
+    },
+    {
+     "amount": "1000000",
+     "index": "6",
+     "leaf_hash": "e6d31698b3f75fc57c59e1161a307b65bfa06585ca231d62b47e92fc5fa73e90",
+     "salt": "d655ae4f1fb463b74c8d464c05727e0b6e12223aacc6aca037e3871d20ec0d8a",
+     "slot_id": "h6"
+    },
+    {
+     "amount": "10",
+     "index": "7",
+     "leaf_hash": "f9361b82d4ad6654855fa5a776ac37ffa9f4d1c8355f2f062bbdb2a30adfc866",
+     "salt": "404306eaea03ec7a7d76f50615eda42dc6c5ff874306cdbedb48e65154f46789",
+     "slot_id": "h1"
+    }
+   ],
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+   "head": {
+    "leaf_count": "8",
+    "root": "c8af4e44904cecdb80007e85fb61184a31ebee60b7c9f44039c15b465a1ad158",
+    "total": "11111111"
+   },
+   "input_leaves": [
+    {
+     "amount": "1",
+     "slot_id": "h0"
+    },
+    {
+     "amount": "10",
+     "slot_id": "h1"
+    },
+    {
+     "amount": "100",
+     "slot_id": "h2"
+    },
+    {
+     "amount": "1000",
+     "slot_id": "h3"
+    },
+    {
+     "amount": "10000",
+     "slot_id": "h4"
+    },
+    {
+     "amount": "100000",
+     "slot_id": "h5"
+    },
+    {
+     "amount": "1000000",
+     "slot_id": "h6"
+    },
+    {
+     "amount": "10000000",
+     "slot_id": "h7"
+    }
+   ],
+   "name": "eight",
+   "proofs": [
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "10000000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "11000"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "1000111"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "100000",
+       "payload": "",
+       "salt": "c087bfd36241a00b9ebf938bd13ee3c35135ed6c2f2355370479926d5618cae5",
+       "slot_id": "h5"
+      },
+      "leaf_count": "8",
+      "leaf_index": "0",
+      "path": [
+       {
+        "hash": "2f69fb9669a3340d65a855a4c9ccd8f4d080a777a42796186d7a6a26f9010d4d",
+        "sum": "10000000"
+       },
+       {
+        "hash": "7ba291f796ca72b11a062c6adc522842e2f76a521a994dafbdc07bfbe8c3cd88",
+        "sum": "11000"
+       },
+       {
+        "hash": "755f80924d9ca675ab16ccd386e39705d5e7da281453cfbb49145973882a9a57",
+        "sum": "1000111"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "100000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "11000"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "1000111"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "10000000",
+       "payload": "",
+       "salt": "a13335a366a6508edc6ae81df06104eaca46e5aa70e28394113c501216e60a49",
+       "slot_id": "h7"
+      },
+      "leaf_count": "8",
+      "leaf_index": "1",
+      "path": [
+       {
+        "hash": "0eb0dda9ac531d79e6640cd0c487e6b96c352cf72bc3850a467562be6b9c91da",
+        "sum": "100000"
+       },
+       {
+        "hash": "7ba291f796ca72b11a062c6adc522842e2f76a521a994dafbdc07bfbe8c3cd88",
+        "sum": "11000"
+       },
+       {
+        "hash": "755f80924d9ca675ab16ccd386e39705d5e7da281453cfbb49145973882a9a57",
+        "sum": "1000111"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "1000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "10100000"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "1000111"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "10000",
+       "payload": "",
+       "salt": "acdf5f05388fcb53e615dc75159e96166ceec71f528e093634a894a927e0b350",
+       "slot_id": "h4"
+      },
+      "leaf_count": "8",
+      "leaf_index": "2",
+      "path": [
+       {
+        "hash": "42ecab21832bf0fb0c0c836a4be225d4317cebb73cc6b8bf69111e0ed0313e80",
+        "sum": "1000"
+       },
+       {
+        "hash": "2f51bc94bb3ec00e00edc0351b7099ed7268cef5cdf7a5264b3ea4f8abe456d5",
+        "sum": "10100000"
+       },
+       {
+        "hash": "755f80924d9ca675ab16ccd386e39705d5e7da281453cfbb49145973882a9a57",
+        "sum": "1000111"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "10000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "10100000"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "1000111"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "1000",
+       "payload": "",
+       "salt": "e2343495d610a73a87d9fbe310cf9646cf8fea377dbaa43cb626c74aa0ccbc8b",
+       "slot_id": "h3"
+      },
+      "leaf_count": "8",
+      "leaf_index": "3",
+      "path": [
+       {
+        "hash": "316cdf9e70dd0c5118a07f2cbea2eba933530616173dffe322cc5ba71ce62199",
+        "sum": "10000"
+       },
+       {
+        "hash": "2f51bc94bb3ec00e00edc0351b7099ed7268cef5cdf7a5264b3ea4f8abe456d5",
+        "sum": "10100000"
+       },
+       {
+        "hash": "755f80924d9ca675ab16ccd386e39705d5e7da281453cfbb49145973882a9a57",
+        "sum": "1000111"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "1000010"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "10111000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "100",
+       "payload": "",
+       "salt": "d5781ba019a2311624bd797be23698025397c7c9f079883076a1f93e4fe77178",
+       "slot_id": "h2"
+      },
+      "leaf_count": "8",
+      "leaf_index": "4",
+      "path": [
+       {
+        "hash": "d69f63edb187d2954e0456504ba34bc2b2fddfa491b6b3331446d7ea07205bd5",
+        "sum": "1"
+       },
+       {
+        "hash": "d701d747bb4be5d80794ad916a7d4cb40b80399087c16940e8570b7bbbbd7b5a",
+        "sum": "1000010"
+       },
+       {
+        "hash": "3d156c5526674c0024a8890b65afff2c327ec00645252b14845fbd6f3d5e767f",
+        "sum": "10111000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "100"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "1000010"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "10111000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "1",
+       "payload": "",
+       "salt": "7f72acfa18e42e16c0aced3b4807b8f57cbe0da797e6161c62b058ed0ee3a7ec",
+       "slot_id": "h0"
+      },
+      "leaf_count": "8",
+      "leaf_index": "5",
+      "path": [
+       {
+        "hash": "5219f060a5b9154d5ef4a5a4d6691fa9d2ebb31af2c30749ac40b3b1d9a1f727",
+        "sum": "100"
+       },
+       {
+        "hash": "d701d747bb4be5d80794ad916a7d4cb40b80399087c16940e8570b7bbbbd7b5a",
+        "sum": "1000010"
+       },
+       {
+        "hash": "3d156c5526674c0024a8890b65afff2c327ec00645252b14845fbd6f3d5e767f",
+        "sum": "10111000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "10"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "101"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "10111000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "1000000",
+       "payload": "",
+       "salt": "d655ae4f1fb463b74c8d464c05727e0b6e12223aacc6aca037e3871d20ec0d8a",
+       "slot_id": "h6"
+      },
+      "leaf_count": "8",
+      "leaf_index": "6",
+      "path": [
+       {
+        "hash": "f9361b82d4ad6654855fa5a776ac37ffa9f4d1c8355f2f062bbdb2a30adfc866",
+        "sum": "10"
+       },
+       {
+        "hash": "3e681dfb7eae31867b5dce43f2e35581a13f8507a9739989a6470dca7fc08a8e",
+        "sum": "101"
+       },
+       {
+        "hash": "3d156c5526674c0024a8890b65afff2c327ec00645252b14845fbd6f3d5e767f",
+        "sum": "10111000"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "1000000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "101"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "10111000"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "10",
+       "payload": "",
+       "salt": "404306eaea03ec7a7d76f50615eda42dc6c5ff874306cdbedb48e65154f46789",
+       "slot_id": "h1"
+      },
+      "leaf_count": "8",
+      "leaf_index": "7",
+      "path": [
+       {
+        "hash": "e6d31698b3f75fc57c59e1161a307b65bfa06585ca231d62b47e92fc5fa73e90",
+        "sum": "1000000"
+       },
+       {
+        "hash": "3e681dfb7eae31867b5dce43f2e35581a13f8507a9739989a6470dca7fc08a8e",
+        "sum": "101"
+       },
+       {
+        "hash": "3d156c5526674c0024a8890b65afff2c327ec00645252b14845fbd6f3d5e767f",
+        "sum": "10111000"
+       }
+      ]
+     }
+    }
+   ],
+   "top_hash": "7368a864ebec0d2214d9214a259e83433cd2b766897b2572345ca50b7679187b"
+  },
+  {
+   "canonical_leaves": [
+    {
+     "amount": "0",
+     "index": "0",
+     "leaf_hash": "03732f230bd530eab95b61b76b82cf8be06c486ecdd1e27fa536d41ff9101717",
+     "salt": "7f72acfa18e42e16c0aced3b4807b8f57cbe0da797e6161c62b058ed0ee3a7ec",
+     "slot_id": "h0"
+    },
+    {
+     "amount": "3",
+     "index": "1",
+     "leaf_hash": "14782bddf81f02a4645a95c9ecda6a215da6401eaef2a627a58cc3a3b8dd7165",
+     "salt": "14f7e1c3e8aec93a4551e07a69c6b3c2f8fcaf42d4970ae222b5adff0ed8f3e4",
+     "slot_id": "h8"
+    },
+    {
+     "amount": "7",
+     "index": "2",
+     "leaf_hash": "28330cab8020c860eebef4c675fa93eaf36540685849af6d53b7a5d80d92c7c0",
+     "salt": "c087bfd36241a00b9ebf938bd13ee3c35135ed6c2f2355370479926d5618cae5",
+     "slot_id": "h5"
+    },
+    {
+     "amount": "7",
+     "index": "3",
+     "leaf_hash": "6b639149cc0f70e5a3f93c85c8fcb275ef3fa93e6c5db881ae5a8b9010031149",
+     "salt": "acdf5f05388fcb53e615dc75159e96166ceec71f528e093634a894a927e0b350",
+     "slot_id": "h4"
+    },
+    {
+     "amount": "10000000000000000000000000000000000000",
+     "index": "4",
+     "leaf_hash": "6eed77fc2b1b55c76cbd51da969b2b6789d9d8089d73f8369de8bca8120967a5",
+     "salt": "d655ae4f1fb463b74c8d464c05727e0b6e12223aacc6aca037e3871d20ec0d8a",
+     "slot_id": "h6"
+    },
+    {
+     "amount": "9223372036854775808",
+     "index": "5",
+     "leaf_hash": "d40b63dcac2e7ecaa4adf5722a7ef04e257d6923cac8f101f52aeb43bf58cd20",
+     "salt": "d5781ba019a2311624bd797be23698025397c7c9f079883076a1f93e4fe77178",
+     "slot_id": "h2"
+    },
+    {
+     "amount": "1000000000000000000000000000000",
+     "index": "6",
+     "leaf_hash": "e566fe0e06292181c77a15f42bede00888f6dce8f0a7498aad8f91f5f537a602",
+     "salt": "e2343495d610a73a87d9fbe310cf9646cf8fea377dbaa43cb626c74aa0ccbc8b",
+     "slot_id": "h3"
+    },
+    {
+     "amount": "5",
+     "index": "7",
+     "leaf_hash": "f8ade64eb15681b97474d2edd66c7951752bcb9dfd878d7a26d511205917f116",
+     "salt": "a13335a366a6508edc6ae81df06104eaca46e5aa70e28394113c501216e60a49",
+     "slot_id": "h7"
+    },
+    {
+     "amount": "1",
+     "index": "8",
+     "leaf_hash": "fe2020c976571a50223d407bf637bb5592ded763f62396552466820c8fdae393",
+     "salt": "404306eaea03ec7a7d76f50615eda42dc6c5ff874306cdbedb48e65154f46789",
+     "slot_id": "h1"
+    }
+   ],
+   "context": {
+    "as_of": "2026-01-01T00:00:00.000000Z",
+    "binding": "",
+    "currency": "JPY",
+    "institution_id": "example-institution",
+    "kind": "liabilities",
+    "minor_units": "0"
+   },
+   "context_digest": "ce298feaa458599c199eccf8c01e45c2e6ac6f890ba6df5cd2248e661ff0f002",
+   "head": {
+    "leaf_count": "9",
+    "root": "892f206b96e85b53009682877dd06a19c66c89f05a76c9cc59b9c10b50508379",
+    "total": "10000001000000000009223372036854775831"
+   },
+   "input_leaves": [
+    {
+     "amount": "0",
+     "slot_id": "h0"
+    },
+    {
+     "amount": "1",
+     "slot_id": "h1"
+    },
+    {
+     "amount": "9223372036854775808",
+     "slot_id": "h2"
+    },
+    {
+     "amount": "1000000000000000000000000000000",
+     "slot_id": "h3"
+    },
+    {
+     "amount": "7",
+     "slot_id": "h4"
+    },
+    {
+     "amount": "7",
+     "slot_id": "h5"
+    },
+    {
+     "amount": "10000000000000000000000000000000000000",
+     "slot_id": "h6"
+    },
+    {
+     "amount": "5",
+     "slot_id": "h7"
+    },
+    {
+     "amount": "3",
+     "slot_id": "h8"
+    }
+   ],
+   "name": "nine-with-zero-and-large",
+   "proofs": [
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "3"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "14"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "10000001000000000009223372036854775813"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "0",
+       "payload": "",
+       "salt": "7f72acfa18e42e16c0aced3b4807b8f57cbe0da797e6161c62b058ed0ee3a7ec",
+       "slot_id": "h0"
+      },
+      "leaf_count": "9",
+      "leaf_index": "0",
+      "path": [
+       {
+        "hash": "14782bddf81f02a4645a95c9ecda6a215da6401eaef2a627a58cc3a3b8dd7165",
+        "sum": "3"
+       },
+       {
+        "hash": "0f99c6347cbcbae3cd580f78732415a0e9865762faa57454c71f3babf6871888",
+        "sum": "14"
+       },
+       {
+        "hash": "5d76d70c9ecf68c810c61748a456a0f71b5a9d9905fabe42e19e582815f54bcc",
+        "sum": "10000001000000000009223372036854775813"
+       },
+       {
+        "hash": "fe2020c976571a50223d407bf637bb5592ded763f62396552466820c8fdae393",
+        "sum": "1"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "0"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "14"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "10000001000000000009223372036854775813"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "3",
+       "payload": "",
+       "salt": "14f7e1c3e8aec93a4551e07a69c6b3c2f8fcaf42d4970ae222b5adff0ed8f3e4",
+       "slot_id": "h8"
+      },
+      "leaf_count": "9",
+      "leaf_index": "1",
+      "path": [
+       {
+        "hash": "03732f230bd530eab95b61b76b82cf8be06c486ecdd1e27fa536d41ff9101717",
+        "sum": "0"
+       },
+       {
+        "hash": "0f99c6347cbcbae3cd580f78732415a0e9865762faa57454c71f3babf6871888",
+        "sum": "14"
+       },
+       {
+        "hash": "5d76d70c9ecf68c810c61748a456a0f71b5a9d9905fabe42e19e582815f54bcc",
+        "sum": "10000001000000000009223372036854775813"
+       },
+       {
+        "hash": "fe2020c976571a50223d407bf637bb5592ded763f62396552466820c8fdae393",
+        "sum": "1"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "7"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "3"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "10000001000000000009223372036854775813"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "7",
+       "payload": "",
+       "salt": "c087bfd36241a00b9ebf938bd13ee3c35135ed6c2f2355370479926d5618cae5",
+       "slot_id": "h5"
+      },
+      "leaf_count": "9",
+      "leaf_index": "2",
+      "path": [
+       {
+        "hash": "6b639149cc0f70e5a3f93c85c8fcb275ef3fa93e6c5db881ae5a8b9010031149",
+        "sum": "7"
+       },
+       {
+        "hash": "4fca205de9ec16b896a247b95d880829715319f895be0797f7f06249e345c8cc",
+        "sum": "3"
+       },
+       {
+        "hash": "5d76d70c9ecf68c810c61748a456a0f71b5a9d9905fabe42e19e582815f54bcc",
+        "sum": "10000001000000000009223372036854775813"
+       },
+       {
+        "hash": "fe2020c976571a50223d407bf637bb5592ded763f62396552466820c8fdae393",
+        "sum": "1"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "7"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "3"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "10000001000000000009223372036854775813"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "7",
+       "payload": "",
+       "salt": "acdf5f05388fcb53e615dc75159e96166ceec71f528e093634a894a927e0b350",
+       "slot_id": "h4"
+      },
+      "leaf_count": "9",
+      "leaf_index": "3",
+      "path": [
+       {
+        "hash": "28330cab8020c860eebef4c675fa93eaf36540685849af6d53b7a5d80d92c7c0",
+        "sum": "7"
+       },
+       {
+        "hash": "4fca205de9ec16b896a247b95d880829715319f895be0797f7f06249e345c8cc",
+        "sum": "3"
+       },
+       {
+        "hash": "5d76d70c9ecf68c810c61748a456a0f71b5a9d9905fabe42e19e582815f54bcc",
+        "sum": "10000001000000000009223372036854775813"
+       },
+       {
+        "hash": "fe2020c976571a50223d407bf637bb5592ded763f62396552466820c8fdae393",
+        "sum": "1"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "9223372036854775808"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "1000000000000000000000000000005"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "17"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "10000000000000000000000000000000000000",
+       "payload": "",
+       "salt": "d655ae4f1fb463b74c8d464c05727e0b6e12223aacc6aca037e3871d20ec0d8a",
+       "slot_id": "h6"
+      },
+      "leaf_count": "9",
+      "leaf_index": "4",
+      "path": [
+       {
+        "hash": "d40b63dcac2e7ecaa4adf5722a7ef04e257d6923cac8f101f52aeb43bf58cd20",
+        "sum": "9223372036854775808"
+       },
+       {
+        "hash": "10621a61cedc60729cb00348818918b3a2f73401228849948c40ea8701a76d41",
+        "sum": "1000000000000000000000000000005"
+       },
+       {
+        "hash": "9412694cffad9009a51f2182dc316df5a22960cc51e2a0bfebc7d601a8895ae3",
+        "sum": "17"
+       },
+       {
+        "hash": "fe2020c976571a50223d407bf637bb5592ded763f62396552466820c8fdae393",
+        "sum": "1"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "10000000000000000000000000000000000000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "1000000000000000000000000000005"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "17"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "9223372036854775808",
+       "payload": "",
+       "salt": "d5781ba019a2311624bd797be23698025397c7c9f079883076a1f93e4fe77178",
+       "slot_id": "h2"
+      },
+      "leaf_count": "9",
+      "leaf_index": "5",
+      "path": [
+       {
+        "hash": "6eed77fc2b1b55c76cbd51da969b2b6789d9d8089d73f8369de8bca8120967a5",
+        "sum": "10000000000000000000000000000000000000"
+       },
+       {
+        "hash": "10621a61cedc60729cb00348818918b3a2f73401228849948c40ea8701a76d41",
+        "sum": "1000000000000000000000000000005"
+       },
+       {
+        "hash": "9412694cffad9009a51f2182dc316df5a22960cc51e2a0bfebc7d601a8895ae3",
+        "sum": "17"
+       },
+       {
+        "hash": "fe2020c976571a50223d407bf637bb5592ded763f62396552466820c8fdae393",
+        "sum": "1"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "5"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "10000000000000000009223372036854775808"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "17"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "1000000000000000000000000000000",
+       "payload": "",
+       "salt": "e2343495d610a73a87d9fbe310cf9646cf8fea377dbaa43cb626c74aa0ccbc8b",
+       "slot_id": "h3"
+      },
+      "leaf_count": "9",
+      "leaf_index": "6",
+      "path": [
+       {
+        "hash": "f8ade64eb15681b97474d2edd66c7951752bcb9dfd878d7a26d511205917f116",
+        "sum": "5"
+       },
+       {
+        "hash": "06e74a8ed013191fa637e6d326b62212fc0bda3249352585ed7b15cae4e08e2e",
+        "sum": "10000000000000000009223372036854775808"
+       },
+       {
+        "hash": "9412694cffad9009a51f2182dc316df5a22960cc51e2a0bfebc7d601a8895ae3",
+        "sum": "17"
+       },
+       {
+        "hash": "fe2020c976571a50223d407bf637bb5592ded763f62396552466820c8fdae393",
+        "sum": "1"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "1",
+       "sum": "1000000000000000000000000000000"
+      },
+      {
+       "leaf_count": "2",
+       "sum": "10000000000000000009223372036854775808"
+      },
+      {
+       "leaf_count": "4",
+       "sum": "17"
+      },
+      {
+       "leaf_count": "1",
+       "sum": "1"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "5",
+       "payload": "",
+       "salt": "a13335a366a6508edc6ae81df06104eaca46e5aa70e28394113c501216e60a49",
+       "slot_id": "h7"
+      },
+      "leaf_count": "9",
+      "leaf_index": "7",
+      "path": [
+       {
+        "hash": "e566fe0e06292181c77a15f42bede00888f6dce8f0a7498aad8f91f5f537a602",
+        "sum": "1000000000000000000000000000000"
+       },
+       {
+        "hash": "06e74a8ed013191fa637e6d326b62212fc0bda3249352585ed7b15cae4e08e2e",
+        "sum": "10000000000000000009223372036854775808"
+       },
+       {
+        "hash": "9412694cffad9009a51f2182dc316df5a22960cc51e2a0bfebc7d601a8895ae3",
+        "sum": "17"
+       },
+       {
+        "hash": "fe2020c976571a50223d407bf637bb5592ded763f62396552466820c8fdae393",
+        "sum": "1"
+       }
+      ]
+     }
+    },
+    {
+     "disclosed_sibling_subtrees": [
+      {
+       "leaf_count": "8",
+       "sum": "10000001000000000009223372036854775830"
+      }
+     ],
+     "proof": {
+      "context": {
+       "as_of": "2026-01-01T00:00:00.000000Z",
+       "binding": "",
+       "currency": "JPY",
+       "institution_id": "example-institution",
+       "kind": "liabilities",
+       "minor_units": "0"
+      },
+      "format": "openreserve.sumtree.inclusion/1",
+      "leaf": {
+       "amount": "1",
+       "payload": "",
+       "salt": "404306eaea03ec7a7d76f50615eda42dc6c5ff874306cdbedb48e65154f46789",
+       "slot_id": "h1"
+      },
+      "leaf_count": "9",
+      "leaf_index": "8",
+      "path": [
+       {
+        "hash": "3b4f52e5bc92d2cccd3590138eb50eb291feaf99beeb84f09268920a03c06654",
+        "sum": "10000001000000000009223372036854775830"
+       }
+      ]
+     }
+    }
+   ],
+   "top_hash": "c414a68167ed93a3599c2725906f906478631c24d552fdc302655155295555f7"
+  }
+ ],
+ "type_bytes": {
+  "context": "03",
+  "leaf": "00",
+  "node": "01",
+  "root": "02",
+  "salt": "10"
+ }
+}

@@ -56,7 +56,8 @@ class Money:
     currency: Currency
 
     def __post_init__(self) -> None:
-        if not isinstance(self.cents, int):
+        # bool is a subclass of int; True is not an amount.
+        if not isinstance(self.cents, int) or isinstance(self.cents, bool):
             raise TypeError(
                 f"Money.cents must be int, got {type(self.cents).__name__}. "
                 f"Floats are forbidden to prevent rounding errors."

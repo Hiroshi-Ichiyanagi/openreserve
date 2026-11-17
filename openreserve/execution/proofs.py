@@ -2,8 +2,8 @@
 execution/proofs.py — 最良執行証明 / サープラス回収証明。
 
 いずれも決定論的・オフライン検証可能。Merkle は LEAF:/NODE: ドメイン分離を使い、
-検証は verify_proof_with_node_prefix でのみ行う（素の MerkleProof.verify() は
-既知の壊れた検証器）。監査コミットメントは audit_root_as_of(snapshot_at) を使う。
+検証は MerkleProof.verify(expected_root=...) で行う（verify_proof_with_node_prefix は
+同じ検証ルーチンの別名）。監査コミットメントは audit_root_as_of(snapshot_at) を使う。
 
 スコープの正直さ：
 - ProofOfBestExecution は「開示された候補集合の中で最良」を証明する。抑圧された

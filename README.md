@@ -9,6 +9,14 @@ A small, self-contained **verification core** for deterministic, offline-verifia
 proof-of-reserves and a tamper-evident audit chain. It is early and has **no production
 adoption** yet — see [Limitations](#limitations).
 
+Experimental software for reproducing accounting snapshots and checking declared conversion
+calculations. This project does not issue currency or tokens, accept deposits, provide
+settlement or redemption, recommend financial decisions, or certify regulatory compliance.
+
+Successful verification establishes the specific integrity and arithmetic checks documented
+for that artifact. It does not establish completeness of liabilities, existence or
+availability of assets, enforceability of claims, or institutional solvency.
+
 ## What it does
 
 Given a **ledger state** (an append-only double-entry ledger) and an **explicit
@@ -44,16 +52,36 @@ counterparties are off-chain too — i.e. where an on-chain oracle is the wrong 
 - **Loyalty-point / closed-loop wallet operators** — prove outstanding point/credit
   balances are covered.
 
-## Proof of Reserves vs Proof of Solvency
+## What the coverage check is, and what it is not
 
-- **Proof of Reserves** — evidence that the reserve assets exist (and, here, a
-  Merkle-committed view of the liabilities they back).
-- **Proof of Solvency** — evidence that `assets >= liabilities`, i.e. that the reserves
-  actually cover what is owed.
+openreserve gives a commitment to customer balances (a Merkle-sum tree whose root binds the
+total) and a comparison with the reserve balances the operator booked; it is not evidence that
+reserve assets exist. The comparison is called *declared reserve coverage*.
 
-openreserve provides both: a Merkle-committed reserve proof plus a per-currency solvency
-check. The solvency result is only as complete as the set of liabilities you include in
-the ledger — see [Limitations](#limitations).
+Scope:
+
+1. **Reserve model.** The coverage check compares reserve balances booked by the operator with
+   the sum of positive customer balances, per currency. It is a 1:1 reserve model. It fits
+   institutions that are expected to hold reserves at least equal to customer balances, such as
+   e-money issuers, payment processors, custodians and the reserve side of stablecoin issuers. It
+   is not a solvency test, and it does not fit institutions that lend customer deposits; for
+   those the library can at most give a commitment to liabilities and a check of conversion
+   arithmetic.
+2. **Fresh start.** If old balances are voided and new ones are allocated per person, there is
+   no rate to apply. Only the cut-off snapshot remains in scope, as a record of what existed.
+   One-person-one-claim checks are out of scope.
+3. **Completeness.** A verification covers the records that were committed. It does not
+   establish that every account, debt or encumbrance was recorded, that reserve assets exist or
+   are available, that claims are enforceable, or that an institution is solvent.
+4. **Publication.** A holder's check means something only against a root that every holder sees
+   identically. This library does not publish, sign or witness roots.
+5. **Identifiers.** A proof binds an account identifier chosen by the operator. A holder must
+   check that it is an identifier they already knew to be uniquely theirs.
+6. **Who checked.** Holder checks protect only the holders who actually check. Leaves nobody
+   checks are covered only by a full recomputation from the complete leaf list.
+
+The older names `ProofOfReserves*` and `ProofOfSolvency*` keep working for a deprecation period
+(see the changelog).
 
 ## Determinism is the core property
 

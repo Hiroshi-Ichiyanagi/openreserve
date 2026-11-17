@@ -1,0 +1,109 @@
+{
+ "cases": [
+  {
+   "basis_points_floor": "3333",
+   "covered": false,
+   "liabilities": "3",
+   "ratio": {
+    "den": "3",
+    "num": "1"
+   },
+   "reserves": "1"
+  },
+  {
+   "basis_points_floor": "5700",
+   "covered": false,
+   "liabilities": "100",
+   "ratio": {
+    "den": "100",
+    "num": "57"
+   },
+   "reserves": "57"
+  },
+  {
+   "basis_points_floor": "25000",
+   "covered": true,
+   "liabilities": "2",
+   "ratio": {
+    "den": "2",
+    "num": "5"
+   },
+   "reserves": "5"
+  },
+  {
+   "basis_points_floor": "0",
+   "covered": false,
+   "liabilities": "7",
+   "ratio": {
+    "den": "1",
+    "num": "0"
+   },
+   "reserves": "0"
+  },
+  {
+   "basis_points_floor": "10000",
+   "covered": true,
+   "liabilities": "7",
+   "ratio": {
+    "den": "1",
+    "num": "1"
+   },
+   "reserves": "7"
+  },
+  {
+   "basis_points_floor": "8571",
+   "covered": false,
+   "liabilities": "7",
+   "ratio": {
+    "den": "7",
+    "num": "6"
+   },
+   "reserves": "6"
+  },
+  {
+   "basis_points_floor": "10000",
+   "covered": true,
+   "liabilities": "1000000000000000000000000000000",
+   "ratio": {
+    "den": "1000000000000000000000000000000",
+    "num": "1000000000000000000000000000001"
+   },
+   "reserves": "1000000000000000000000000000001"
+  },
+  {
+   "basis_points_floor": "9999",
+   "covered": false,
+   "liabilities": "9223372036854775809",
+   "ratio": {
+    "den": "9223372036854775809",
+    "num": "9223372036854775808"
+   },
+   "reserves": "9223372036854775808"
+  },
+  {
+   "basis_points_floor": "-3334",
+   "covered": false,
+   "liabilities": "3",
+   "ratio": {
+    "den": "3",
+    "num": "-1"
+   },
+   "reserves": "-1"
+  },
+  {
+   "basis_points_floor": null,
+   "covered": true,
+   "liabilities": "0",
+   "ratio": null,
+   "reserves": "5"
+  },
+  {
+   "basis_points_floor": null,
+   "covered": true,
+   "liabilities": "0",
+   "ratio": null,
+   "reserves": "0"
+  }
+ ],
+ "note": "basis_points_floor = floor(10000 * reserves / liabilities) by integer floor division; null when liabilities are zero"
+}

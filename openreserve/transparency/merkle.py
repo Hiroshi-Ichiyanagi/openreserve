@@ -8,22 +8,44 @@ Proof of Reservesの基礎構造。利用者個別の残高を秘匿しつつ、
 内部ノードは子ノードのハッシュの連結のSHA-256。
 ルートが公開され、利用者は自分の残高についてMerkle Pathを使って
 「自分の残高がツリーに含まれている」ことを検証できる。
+
+This is the legacy hash-only tree. Its bytes are frozen: a leaf is
+SHA-256("LEAF:<id>:<balance>:<currency>"), a node is SHA-256("NODE:" + left + right), and an
+odd last node is paired with itself. It keeps verifying artifacts published by 0.1.x and it
+keeps serving the intent and execution commitments. Known limit, kept visible by a test: the
+total is not bound to the root, and because of the self-pairing two leaf lists with different
+totals can share one root. New reserve artifacts use the Merkle-sum tree in
+``transparency/sumtree.py`` instead.
+
+There is exactly one verification routine for this tree (``_verify_legacy``).
+``MerkleProof.verify()`` and ``verify_proof_with_node_prefix()`` both call it.
 """
 
 from __future__ import annotations
 
 import hashlib
+import re
+import warnings
 from dataclasses import dataclass
 from typing import Sequence
+
+_HEX64 = re.compile(r"[0-9a-f]{64}")
+# A tree with more than 2**64 leaves cannot exist; a longer path is malformed.
+_MAX_STEPS = 64
 
 
 def sha256_hex(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def hash_pair(left_hex: str, right_hex: str) -> str:
-    """2つのハッシュを結合して新しいハッシュを生成する。"""
-    return sha256_hex(bytes.fromhex(left_hex) + bytes.fromhex(right_hex))
+def _is_hash(value: object) -> bool:
+    """Exactly 64 lower-case hexadecimal characters."""
+    return type(value) is str and _HEX64.fullmatch(value) is not None
+
+
+def _node_hash(left_hex: str, right_hex: str) -> str:
+    """The node hash of the legacy tree: SHA-256 over ``NODE:`` and both child hashes."""
+    return sha256_hex(b"NODE:" + bytes.fromhex(left_hex) + bytes.fromhex(right_hex))
 
 
 @dataclass(frozen=True)
@@ -64,15 +86,19 @@ class MerkleProof:
     steps: tuple[MerkleProofStep, ...]
     root_hash: str
 
-    def verify(self) -> bool:
-        """このProofが有効かどうかを検証する。"""
-        current = self.leaf.hash_hex
-        for step in self.steps:
-            if step.is_left:
-                current = hash_pair(step.sibling_hash, current)
-            else:
-                current = hash_pair(current, step.sibling_hash)
-        return current == self.root_hash
+    def verify(self, expected_root: str | None = None) -> bool:
+        """このProofが有効かどうかを検証する。
+
+        With ``expected_root`` (the root the verifier trusts, for example the published
+        one), the root recomputed from the leaf and the path must equal it.
+
+        Without the argument the recomputed root is compared with ``self.root_hash``, the
+        root carried inside the proof. That shows only that the proof is consistent with
+        itself: whoever made the proof also chose that root. Pass the published root.
+
+        Malformed input gives ``False``, never an exception.
+        """
+        return _verify_legacy(self, expected_root)
 
 
 class MerkleTree:
@@ -102,8 +128,7 @@ class MerkleTree:
                 left = current_level[i]
                 right = current_level[i + 1] if i + 1 < len(current_level) else current_level[i]
                 # 内部ノードの domain separator
-                node_input = f"NODE:".encode() + bytes.fromhex(left) + bytes.fromhex(right)
-                next_level.append(sha256_hex(node_input))
+                next_level.append(_node_hash(left, right))
                 i += 2
             levels.append(next_level)
             current_level = next_level
@@ -125,9 +150,7 @@ class MerkleTree:
     def proof_for(self, account_id: str) -> MerkleProof:
         """指定アカウントについてMerkle Proofを生成する。
 
-        内部ノードの domain separator が NODE: なのに対し、proof verification側でも
-        同じ式で計算しないと一致しない。verify() のロジックは hash_pair を使うが、
-        これは現状 NODE: prefix を使わない単純連結。verify()側を NODE: 付きに合わせる。
+        The proof is checked with ``MerkleProof.verify(expected_root=...)``.
         """
         # account_idを持つリーフを探す
         leaf_index = None
@@ -162,14 +185,53 @@ class MerkleTree:
         )
 
 
-# domain separator問題を統一するため、verify_with_node_prefix を別関数で提供する
-def verify_proof_with_node_prefix(proof: MerkleProof) -> bool:
-    """NODE: prefixを使った検証。MerkleTreeの内部実装に合わせた版。"""
-    current = proof.leaf.hash_hex
-    for step in proof.steps:
+def _verify_legacy(proof: object, expected_root: object = None) -> bool:
+    """The one verification routine of the legacy tree.
+
+    Recomputes the root from the leaf and the path with the tree's own node hash and compares
+    it with ``expected_root``, or with the proof's own ``root_hash`` when none is given.
+    Returns ``False`` for anything malformed: a sibling hash or root that is not exactly 64
+    lower-case hexadecimal characters, an ``is_left`` that is not a ``bool``, more than 64
+    steps, or an object that is not a proof at all.
+    """
+    if not isinstance(proof, MerkleProof):
+        return False
+    target = proof.root_hash if expected_root is None else expected_root
+    if not _is_hash(target):
+        return False
+    steps = proof.steps
+    if not isinstance(steps, (tuple, list)) or len(steps) > _MAX_STEPS:
+        return False
+    if not isinstance(proof.leaf, MerkleLeaf):
+        return False
+    try:
+        current = proof.leaf.hash_hex
+    except (UnicodeError, ValueError, TypeError):
+        return False
+    for step in steps:
+        if not isinstance(step, MerkleProofStep):
+            return False
+        if type(step.is_left) is not bool or not _is_hash(step.sibling_hash):
+            return False
         if step.is_left:
-            node_input = b"NODE:" + bytes.fromhex(step.sibling_hash) + bytes.fromhex(current)
+            current = _node_hash(step.sibling_hash, current)
         else:
-            node_input = b"NODE:" + bytes.fromhex(current) + bytes.fromhex(step.sibling_hash)
-        current = sha256_hex(node_input)
-    return current == proof.root_hash
+            current = _node_hash(current, step.sibling_hash)
+    return current == target
+
+
+def verify_proof_with_node_prefix(proof: MerkleProof) -> bool:
+    """Another name for ``proof.verify()``: the one legacy verifier, without an expected root.
+
+    Kept because published guides and examples call it. It compares with the root carried in
+    the proof, so the caller must still compare ``proof.root_hash`` with the published root;
+    ``proof.verify(expected_root=published_root)`` does both. Calling it emits a
+    ``PendingDeprecationWarning`` that names that replacement.
+    """
+    warnings.warn(
+        "verify_proof_with_node_prefix(proof) will be deprecated; use "
+        "proof.verify(expected_root=published_root), which also compares the published root",
+        PendingDeprecationWarning,
+        stacklevel=2,
+    )
+    return _verify_legacy(proof, None)

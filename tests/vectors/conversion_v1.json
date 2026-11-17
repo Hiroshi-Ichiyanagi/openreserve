@@ -1,0 +1,1666 @@
+{
+ "batch_totals": [
+  {
+   "declaration_case": "precedent-direction-six-figures",
+   "magnitudes": [
+    "10000",
+    "1",
+    "2",
+    "97",
+    "98"
+   ],
+   "totals": {
+    "converted_total": "5215",
+    "count": "5",
+    "exact_total": {
+     "den": "195583",
+     "num": "1019800000"
+    },
+    "reconciliation_difference": "1",
+    "rounded_exact_total": "5214",
+    "source_total": "10198",
+    "sum_of_residues": {
+     "den": "195583",
+     "num": "165345"
+    }
+   }
+  },
+  {
+   "declaration_case": "jpy0-to-fictional-w2",
+   "magnitudes": [
+    "300000",
+    "120000",
+    "55000"
+   ],
+   "totals": {
+    "converted_total": "322580",
+    "count": "3",
+    "exact_total": {
+     "den": "31",
+     "num": "10000000"
+    },
+    "reconciliation_difference": "-1",
+    "rounded_exact_total": "322581",
+    "source_total": "475000",
+    "sum_of_residues": {
+     "den": "31",
+     "num": "-20"
+    }
+   }
+  },
+  {
+   "declaration_case": "jpy0-to-fictional-w2",
+   "magnitudes": [
+    "60"
+   ],
+   "totals": {
+    "converted_total": "41",
+    "count": "1",
+    "exact_total": {
+     "den": "589",
+     "num": "24000"
+    },
+    "reconciliation_difference": "0",
+    "rounded_exact_total": "41",
+    "source_total": "60",
+    "sum_of_residues": {
+     "den": "589",
+     "num": "149"
+    }
+   }
+  },
+  {
+   "declaration_case": "jpy0-to-fictional-w0-zero-results",
+   "magnitudes": [
+    "73",
+    "74",
+    "147"
+   ],
+   "totals": {
+    "converted_total": "2",
+    "count": "3",
+    "exact_total": {
+     "den": "589",
+     "num": "1176"
+    },
+    "reconciliation_difference": "0",
+    "rounded_exact_total": "2",
+    "source_total": "294",
+    "sum_of_residues": {
+     "den": "589",
+     "num": "2"
+    }
+   }
+  }
+ ],
+ "cases": [
+  {
+   "conversions": [
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "0",
+     "y": "0",
+     "z": {
+      "den": "1",
+      "num": "0"
+     }
+    },
+    {
+     "e": {
+      "den": "195583",
+      "num": "95583"
+     },
+     "x": "1",
+     "y": "1",
+     "z": {
+      "den": "195583",
+      "num": "100000"
+     }
+    },
+    {
+     "e": {
+      "den": "195583",
+      "num": "-4417"
+     },
+     "x": "2",
+     "y": "1",
+     "z": {
+      "den": "195583",
+      "num": "200000"
+     }
+    },
+    {
+     "e": {
+      "den": "195583",
+      "num": "79150"
+     },
+     "x": "97",
+     "y": "50",
+     "z": {
+      "den": "195583",
+      "num": "9700000"
+     }
+    },
+    {
+     "e": {
+      "den": "195583",
+      "num": "-20850"
+     },
+     "x": "98",
+     "y": "50",
+     "z": {
+      "den": "195583",
+      "num": "9800000"
+     }
+    },
+    {
+     "e": {
+      "den": "195583",
+      "num": "15879"
+     },
+     "x": "10000",
+     "y": "5113",
+     "z": {
+      "den": "195583",
+      "num": "1000000000"
+     }
+    },
+    {
+     "e": {
+      "den": "195583",
+      "num": "-15879"
+     },
+     "x": "-10000",
+     "y": "-5113",
+     "z": {
+      "den": "195583",
+      "num": "-1000000000"
+     }
+    },
+    {
+     "e": {
+      "den": "195583",
+      "num": "50000"
+     },
+     "x": "97791",
+     "y": "50000",
+     "z": {
+      "den": "195583",
+      "num": "9779100000"
+     }
+    },
+    {
+     "e": {
+      "den": "195583",
+      "num": "-50000"
+     },
+     "x": "97792",
+     "y": "50000",
+     "z": {
+      "den": "195583",
+      "num": "9779200000"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "195583",
+     "y": "100000",
+     "z": {
+      "den": "1",
+      "num": "100000"
+     }
+    },
+    {
+     "e": {
+      "den": "195583",
+      "num": "73960"
+     },
+     "x": "100000000000",
+     "y": "51129188120",
+     "z": {
+      "den": "195583",
+      "num": "10000000000000000"
+     }
+    }
+   ],
+   "declaration": {
+    "cutoff_at": "1998-12-31T23:00:00.000000Z",
+    "declaration_id": "example/DEM-EUR",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "1.95583"
+    },
+    "rate_significant_figures": "6",
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "DEM",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "EUR",
+     "minor_units": "2"
+    }
+   },
+   "declaration_canonical_utf8_hex": "7b226375746f66665f6174223a22313939382d31322d33315432333a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a226578616d706c652f44454d2d455552222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a22534f555243455f5045525f544152474554222c2274657874223a22312e3935353833227d2c22726174655f7369676e69666963616e745f66696775726573223a2236222c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f415741595f46524f4d5f5a45524f222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a2244454d222c226d696e6f725f756e697473223a2232227d2c22746172676574223a7b22636f6465223a22455552222c226d696e6f725f756e697473223a2232227d7d",
+   "declaration_hash": "78c3e3309fbb37c03ebf2624761d231d35c92ef7d98667fca1ca0ef952e6ad90",
+   "factor": {
+    "den": "195583",
+    "num": "100000"
+   },
+   "name": "precedent-direction-six-figures",
+   "note": "rate quoted as source units per one target unit; converted by exact division"
+  },
+  {
+   "conversions": [
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "1",
+     "y": "1",
+     "z": {
+      "den": "2",
+      "num": "1"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "2",
+     "y": "1",
+     "z": {
+      "den": "1",
+      "num": "1"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "3",
+     "y": "2",
+     "z": {
+      "den": "2",
+      "num": "3"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "5",
+     "y": "3",
+     "z": {
+      "den": "2",
+      "num": "5"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "7",
+     "y": "4",
+     "z": {
+      "den": "2",
+      "num": "7"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-1",
+     "y": "-1",
+     "z": {
+      "den": "2",
+      "num": "-1"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "-2",
+     "y": "-1",
+     "z": {
+      "den": "1",
+      "num": "-1"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-3",
+     "y": "-2",
+     "z": {
+      "den": "2",
+      "num": "-3"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-5",
+     "y": "-3",
+     "z": {
+      "den": "2",
+      "num": "-5"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-7",
+     "y": "-4",
+     "z": {
+      "den": "2",
+      "num": "-7"
+     }
+    }
+   ],
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "example/ties",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "2"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "AAA",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "BBB",
+     "minor_units": "2"
+    }
+   },
+   "declaration_canonical_utf8_hex": "7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a226578616d706c652f74696573222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a22534f555243455f5045525f544152474554222c2274657874223a2232227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f415741595f46524f4d5f5a45524f222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a22414141222c226d696e6f725f756e697473223a2232227d2c22746172676574223a7b22636f6465223a22424242222c226d696e6f725f756e697473223a2232227d7d",
+   "declaration_hash": "be54b0af8dd5aef442c7a1bab342b326800a117ff463322838446aa10cc0197d",
+   "factor": {
+    "den": "2",
+    "num": "1"
+   },
+   "name": "ties-rate-2-half_away_from_zero",
+   "note": "odd x gives an exact tie"
+  },
+  {
+   "conversions": [
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "1",
+     "y": "1",
+     "z": {
+      "den": "2",
+      "num": "1"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "2",
+     "y": "1",
+     "z": {
+      "den": "1",
+      "num": "1"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "3",
+     "y": "2",
+     "z": {
+      "den": "2",
+      "num": "3"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "5",
+     "y": "3",
+     "z": {
+      "den": "2",
+      "num": "5"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "7",
+     "y": "4",
+     "z": {
+      "den": "2",
+      "num": "7"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-1",
+     "y": "-1",
+     "z": {
+      "den": "2",
+      "num": "-1"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "-2",
+     "y": "-1",
+     "z": {
+      "den": "1",
+      "num": "-1"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-3",
+     "y": "-2",
+     "z": {
+      "den": "2",
+      "num": "-3"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-5",
+     "y": "-3",
+     "z": {
+      "den": "2",
+      "num": "-5"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-7",
+     "y": "-4",
+     "z": {
+      "den": "2",
+      "num": "-7"
+     }
+    }
+   ],
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "example/ties",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "TARGET_PER_SOURCE",
+     "text": "0.5"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "AAA",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "BBB",
+     "minor_units": "2"
+    }
+   },
+   "declaration_canonical_utf8_hex": "7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a226578616d706c652f74696573222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a225441524745545f5045525f534f55524345222c2274657874223a22302e35227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f415741595f46524f4d5f5a45524f222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a22414141222c226d696e6f725f756e697473223a2232227d2c22746172676574223a7b22636f6465223a22424242222c226d696e6f725f756e697473223a2232227d7d",
+   "declaration_hash": "21f7a2579a7fe227945573e24da1351bb07d3c54efeff360a9832c5bc0c8ca7c",
+   "factor": {
+    "den": "2",
+    "num": "1"
+   },
+   "name": "ties-rate-0.5-target-per-source-half_away_from_zero",
+   "note": "same factor as rate 2 SOURCE_PER_TARGET, declared the other way round"
+  },
+  {
+   "conversions": [
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "1",
+     "y": "0",
+     "z": {
+      "den": "2",
+      "num": "1"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "2",
+     "y": "1",
+     "z": {
+      "den": "1",
+      "num": "1"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "3",
+     "y": "2",
+     "z": {
+      "den": "2",
+      "num": "3"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "5",
+     "y": "2",
+     "z": {
+      "den": "2",
+      "num": "5"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "7",
+     "y": "4",
+     "z": {
+      "den": "2",
+      "num": "7"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "-1",
+     "y": "0",
+     "z": {
+      "den": "2",
+      "num": "-1"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "-2",
+     "y": "-1",
+     "z": {
+      "den": "1",
+      "num": "-1"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-3",
+     "y": "-2",
+     "z": {
+      "den": "2",
+      "num": "-3"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "-5",
+     "y": "-2",
+     "z": {
+      "den": "2",
+      "num": "-5"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-7",
+     "y": "-4",
+     "z": {
+      "den": "2",
+      "num": "-7"
+     }
+    }
+   ],
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "example/ties",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "2"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_EVEN",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "AAA",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "BBB",
+     "minor_units": "2"
+    }
+   },
+   "declaration_canonical_utf8_hex": "7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a226578616d706c652f74696573222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a22534f555243455f5045525f544152474554222c2274657874223a2232227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f4556454e222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a22414141222c226d696e6f725f756e697473223a2232227d2c22746172676574223a7b22636f6465223a22424242222c226d696e6f725f756e697473223a2232227d7d",
+   "declaration_hash": "2c8b20d15b2365ff1aba730cc55e33fa7c537759494bdfda8f1a0cf58a771fd1",
+   "factor": {
+    "den": "2",
+    "num": "1"
+   },
+   "name": "ties-rate-2-half_even",
+   "note": "odd x gives an exact tie"
+  },
+  {
+   "conversions": [
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "1",
+     "y": "0",
+     "z": {
+      "den": "2",
+      "num": "1"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "2",
+     "y": "1",
+     "z": {
+      "den": "1",
+      "num": "1"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "3",
+     "y": "2",
+     "z": {
+      "den": "2",
+      "num": "3"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "5",
+     "y": "2",
+     "z": {
+      "den": "2",
+      "num": "5"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "7",
+     "y": "4",
+     "z": {
+      "den": "2",
+      "num": "7"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "-1",
+     "y": "0",
+     "z": {
+      "den": "2",
+      "num": "-1"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "-2",
+     "y": "-1",
+     "z": {
+      "den": "1",
+      "num": "-1"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-3",
+     "y": "-2",
+     "z": {
+      "den": "2",
+      "num": "-3"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "1"
+     },
+     "x": "-5",
+     "y": "-2",
+     "z": {
+      "den": "2",
+      "num": "-5"
+     }
+    },
+    {
+     "e": {
+      "den": "2",
+      "num": "-1"
+     },
+     "x": "-7",
+     "y": "-4",
+     "z": {
+      "den": "2",
+      "num": "-7"
+     }
+    }
+   ],
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "example/ties",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "TARGET_PER_SOURCE",
+     "text": "0.5"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_EVEN",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "AAA",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "BBB",
+     "minor_units": "2"
+    }
+   },
+   "declaration_canonical_utf8_hex": "7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a226578616d706c652f74696573222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a225441524745545f5045525f534f55524345222c2274657874223a22302e35227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f4556454e222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a22414141222c226d696e6f725f756e697473223a2232227d2c22746172676574223a7b22636f6465223a22424242222c226d696e6f725f756e697473223a2232227d7d",
+   "declaration_hash": "0a18d2013fe54712d42493998fc773e5843ebdc1daa79a9de5abe0c69fba132b",
+   "factor": {
+    "den": "2",
+    "num": "1"
+   },
+   "name": "ties-rate-0.5-target-per-source-half_even",
+   "note": "same factor as rate 2 SOURCE_PER_TARGET, declared the other way round"
+  },
+  {
+   "conversions": [
+    {
+     "e": {
+      "den": "589",
+      "num": "189"
+     },
+     "x": "1",
+     "y": "1",
+     "z": {
+      "den": "589",
+      "num": "400"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "100"
+     },
+     "x": "147",
+     "y": "100",
+     "z": {
+      "den": "589",
+      "num": "58800"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "289"
+     },
+     "x": "148",
+     "y": "101",
+     "z": {
+      "den": "589",
+      "num": "59200"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "149"
+     },
+     "x": "60",
+     "y": "41",
+     "z": {
+      "den": "589",
+      "num": "24000"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "-149"
+     },
+     "x": "-60",
+     "y": "-41",
+     "z": {
+      "den": "589",
+      "num": "-24000"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "143"
+     },
+     "x": "15000",
+     "y": "10187",
+     "z": {
+      "den": "589",
+      "num": "6000000"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "-261"
+     },
+     "x": "55000",
+     "y": "37351",
+     "z": {
+      "den": "589",
+      "num": "22000000"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "-34"
+     },
+     "x": "120000",
+     "y": "81494",
+     "z": {
+      "den": "589",
+      "num": "48000000"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "-85"
+     },
+     "x": "300000",
+     "y": "203735",
+     "z": {
+      "den": "589",
+      "num": "120000000"
+     }
+    }
+   ],
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "fictional-changeover/JPY",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "147.25"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "JPY",
+     "minor_units": "0"
+    },
+    "target": {
+     "code": "FICTIONAL_W",
+     "minor_units": "2"
+    }
+   },
+   "declaration_canonical_utf8_hex": "7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a2266696374696f6e616c2d6368616e67656f7665722f4a5059222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a22534f555243455f5045525f544152474554222c2274657874223a223134372e3235227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f415741595f46524f4d5f5a45524f222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a224a5059222c226d696e6f725f756e697473223a2230227d2c22746172676574223a7b22636f6465223a2246494354494f4e414c5f57222c226d696e6f725f756e697473223a2232227d7d",
+   "declaration_hash": "2903fab753858e6aa11a8f22f4553679a354b709f352e0c6922d87e4a148f7cd",
+   "factor": {
+    "den": "589",
+    "num": "400"
+   },
+   "name": "jpy0-to-fictional-w2",
+   "note": ""
+  },
+  {
+   "conversions": [
+    {
+     "e": {
+      "den": "25",
+      "num": "8"
+     },
+     "x": "1000000000000000000",
+     "y": "1",
+     "z": {
+      "den": "25",
+      "num": "17"
+     }
+    },
+    {
+     "e": {
+      "den": "5",
+      "num": "1"
+     },
+     "x": "10000000000000000000",
+     "y": "7",
+     "z": {
+      "den": "5",
+      "num": "34"
+     }
+    },
+    {
+     "e": {
+      "den": "25000000000000000000",
+      "num": "-12499999999999999991"
+     },
+     "x": "735294117647058823",
+     "y": "0",
+     "z": {
+      "den": "25000000000000000000",
+      "num": "12499999999999999991"
+     }
+    },
+    {
+     "e": {
+      "den": "3125000000000000000",
+      "num": "1562499999999999999"
+     },
+     "x": "735294117647058824",
+     "y": "1",
+     "z": {
+      "den": "3125000000000000000",
+      "num": "1562500000000000001"
+     }
+    },
+    {
+     "e": {
+      "den": "25000000000000000000",
+      "num": "12499999999999999991"
+     },
+     "x": "-735294117647058823",
+     "y": "0",
+     "z": {
+      "den": "25000000000000000000",
+      "num": "-12499999999999999991"
+     }
+    },
+    {
+     "e": {
+      "den": "3125000000000000000",
+      "num": "-1562499999999999999"
+     },
+     "x": "-735294117647058824",
+     "y": "-1",
+     "z": {
+      "den": "3125000000000000000",
+      "num": "-1562500000000000001"
+     }
+    },
+    {
+     "e": {
+      "den": "25000000000000000000",
+      "num": "-17"
+     },
+     "x": "100000000000000000001",
+     "y": "68",
+     "z": {
+      "den": "25000000000000000000",
+      "num": "1700000000000000000017"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "1000000000000000000000000000000",
+     "y": "680000000000",
+     "z": {
+      "den": "1",
+      "num": "680000000000"
+     }
+    }
+   ],
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "fictional-changeover/JPYC",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "TARGET_PER_SOURCE",
+     "text": "0.0068"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "JPYC",
+     "minor_units": "18"
+    },
+    "target": {
+     "code": "FICTIONAL_W",
+     "minor_units": "2"
+    }
+   },
+   "declaration_canonical_utf8_hex": "7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a2266696374696f6e616c2d6368616e67656f7665722f4a505943222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a225441524745545f5045525f534f55524345222c2274657874223a22302e30303638227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f415741595f46524f4d5f5a45524f222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a224a505943222c226d696e6f725f756e697473223a223138227d2c22746172676574223a7b22636f6465223a2246494354494f4e414c5f57222c226d696e6f725f756e697473223a2232227d7d",
+   "declaration_hash": "6ca7493e0bb30c29d88c9b109032bb0cd1125189f997952319c5d14c5ee821d0",
+   "factor": {
+    "den": "25000000000000000000",
+    "num": "17"
+   },
+   "name": "jpyc18-to-fictional-w2",
+   "note": ""
+  },
+  {
+   "conversions": [
+    {
+     "e": {
+      "den": "589",
+      "num": "-4"
+     },
+     "x": "1",
+     "y": "0",
+     "z": {
+      "den": "589",
+      "num": "4"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "-292"
+     },
+     "x": "73",
+     "y": "0",
+     "z": {
+      "den": "589",
+      "num": "292"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "293"
+     },
+     "x": "74",
+     "y": "1",
+     "z": {
+      "den": "589",
+      "num": "296"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "1"
+     },
+     "x": "147",
+     "y": "1",
+     "z": {
+      "den": "589",
+      "num": "588"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "292"
+     },
+     "x": "-73",
+     "y": "0",
+     "z": {
+      "den": "589",
+      "num": "-292"
+     }
+    },
+    {
+     "e": {
+      "den": "589",
+      "num": "-293"
+     },
+     "x": "-74",
+     "y": "-1",
+     "z": {
+      "den": "589",
+      "num": "-296"
+     }
+    }
+   ],
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "fictional-changeover/JPY-0",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "147.25"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "JPY",
+     "minor_units": "0"
+    },
+    "target": {
+     "code": "FICTIONAL_W",
+     "minor_units": "0"
+    }
+   },
+   "declaration_canonical_utf8_hex": "7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a2266696374696f6e616c2d6368616e67656f7665722f4a50592d30222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a22534f555243455f5045525f544152474554222c2274657874223a223134372e3235227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f415741595f46524f4d5f5a45524f222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a224a5059222c226d696e6f725f756e697473223a2230227d2c22746172676574223a7b22636f6465223a2246494354494f4e414c5f57222c226d696e6f725f756e697473223a2230227d7d",
+   "declaration_hash": "834bd278322361757fa07ceb545969f64df837a8cfea81081d3b579d2955e4ab",
+   "factor": {
+    "den": "589",
+    "num": "4"
+   },
+   "name": "jpy0-to-fictional-w0-zero-results",
+   "note": ""
+  },
+  {
+   "conversions": [
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "1",
+     "y": "8000000000000000",
+     "z": {
+      "den": "1",
+      "num": "8000000000000000"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "100",
+     "y": "800000000000000000",
+     "z": {
+      "den": "1",
+      "num": "800000000000000000"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "12345",
+     "y": "98760000000000000000",
+     "z": {
+      "den": "1",
+      "num": "98760000000000000000"
+     }
+    },
+    {
+     "e": {
+      "den": "1",
+      "num": "0"
+     },
+     "x": "-1",
+     "y": "-8000000000000000",
+     "z": {
+      "den": "1",
+      "num": "-8000000000000000"
+     }
+    }
+   ],
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "fictional-changeover/USD",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "1.25"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_EVEN",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "USD",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "FICTIONAL_W",
+     "minor_units": "18"
+    }
+   },
+   "declaration_canonical_utf8_hex": "7b226375746f66665f6174223a22323039392d31322d33315431353a30303a30302e3030303030305a222c226465636c61726174696f6e5f6964223a2266696374696f6e616c2d6368616e67656f7665722f555344222c22666f726d6174223a226f70656e726573657276652e636f6e76657273696f6e2e6465636c61726174696f6e2f31222c2272617465223a7b2271756f746174696f6e223a22534f555243455f5045525f544152474554222c2274657874223a22312e3235227d2c22726174655f7369676e69666963616e745f66696775726573223a6e756c6c2c227265666572656e63655f646f63756d656e745f736861323536223a6e756c6c2c22726f756e64696e67223a7b226c6576656c223a224143434f554e54222c226d6f6465223a2248414c465f4556454e222c227175616e74756d5f6d696e6f725f756e697473223a2231227d2c22736f75726365223a7b22636f6465223a22555344222c226d696e6f725f756e697473223a2232227d2c22746172676574223a7b22636f6465223a2246494354494f4e414c5f57222c226d696e6f725f756e697473223a223138227d7d",
+   "declaration_hash": "fe215efd348d473db7b2f6b88faeb31c3a8873eddd17928290293178b67a5b78",
+   "factor": {
+    "den": "1",
+    "num": "8000000000000000"
+   },
+   "name": "usd2-to-fictional-w18",
+   "note": ""
+  }
+ ],
+ "declarations_refused": [
+  {
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "x",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "1.9558"
+    },
+    "rate_significant_figures": "6",
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "DEM",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "EUR",
+     "minor_units": "2"
+    }
+   },
+   "why": "significant-figure rule not met"
+  },
+  {
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "x",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "EUR_PER_DEM",
+     "text": "1.95583"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "DEM",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "EUR",
+     "minor_units": "2"
+    }
+   },
+   "why": "unknown quotation"
+  },
+  {
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "x",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "1.95583"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_UP",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "DEM",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "EUR",
+     "minor_units": "2"
+    }
+   },
+   "why": "unknown rounding mode"
+  },
+  {
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "x",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "1"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "DEM",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "DEM",
+     "minor_units": "2"
+    }
+   },
+   "why": "same source and target"
+  },
+  {
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "x",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": 1.95583
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "DEM",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "EUR",
+     "minor_units": "2"
+    }
+   },
+   "why": "rate is a JSON number"
+  },
+  {
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "x",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "1.95583"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "ACCOUNT",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "5"
+    },
+    "source": {
+     "code": "DEM",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "EUR",
+     "minor_units": "2"
+    }
+   },
+   "why": "quantum other than 1"
+  },
+  {
+   "declaration": {
+    "cutoff_at": "2099-12-31T15:00:00.000000Z",
+    "declaration_id": "x",
+    "format": "openreserve.conversion.declaration/1",
+    "rate": {
+     "quotation": "SOURCE_PER_TARGET",
+     "text": "1.95583"
+    },
+    "rate_significant_figures": null,
+    "reference_document_sha256": null,
+    "rounding": {
+     "level": "HOLDER",
+     "mode": "HALF_AWAY_FROM_ZERO",
+     "quantum_minor_units": "1"
+    },
+    "source": {
+     "code": "DEM",
+     "minor_units": "2"
+    },
+    "target": {
+     "code": "EUR",
+     "minor_units": "2"
+    }
+   },
+   "why": "level other than ACCOUNT"
+  }
+ ],
+ "inverse_rate_illustration": {
+  "declared": "1.95583 (source per target)",
+  "difference_minor_units": "11880",
+  "inverse_rounded_to_six_significant_figures": "0.511292",
+  "x": "100000000000",
+  "y_exact_division": "51129188120",
+  "y_via_rounded_inverse": "51129200000"
+ },
+ "rate_text_invalid": [
+  "",
+  "0",
+  "0.000",
+  "1.",
+  ".5",
+  "+1",
+  "-1",
+  " 1",
+  "1 ",
+  "1\n",
+  "01.5",
+  "1,5",
+  "1e3",
+  "1E3",
+  "1_0",
+  "0x10",
+  "1/2",
+  "１.５",
+  "NaN",
+  "inf"
+ ],
+ "rate_text_valid": [
+  {
+   "den": "100000",
+   "num": "195583",
+   "significant_figures": "6",
+   "text": "1.95583"
+  },
+  {
+   "den": "4",
+   "num": "1363",
+   "significant_figures": "6",
+   "text": "340.750"
+  },
+  {
+   "den": "250000",
+   "num": "196891",
+   "significant_figures": "6",
+   "text": "0.787564"
+  },
+  {
+   "den": "100",
+   "num": "193627",
+   "significant_figures": "6",
+   "text": "1936.27"
+  },
+  {
+   "den": "10000",
+   "num": "403399",
+   "significant_figures": "6",
+   "text": "40.3399"
+  },
+  {
+   "den": "10",
+   "num": "1",
+   "significant_figures": "1",
+   "text": "0.1"
+  },
+  {
+   "den": "1",
+   "num": "100",
+   "significant_figures": "3",
+   "text": "100"
+  },
+  {
+   "den": "625",
+   "num": "4",
+   "significant_figures": "2",
+   "text": "0.0064"
+  },
+  {
+   "den": "4",
+   "num": "589",
+   "significant_figures": "5",
+   "text": "147.25"
+  },
+  {
+   "den": "1",
+   "num": "2",
+   "significant_figures": "1",
+   "text": "2"
+  },
+  {
+   "den": "2",
+   "num": "1",
+   "significant_figures": "1",
+   "text": "0.5"
+  },
+  {
+   "den": "4",
+   "num": "5",
+   "significant_figures": "3",
+   "text": "1.25"
+  },
+  {
+   "den": "1000000",
+   "num": "1",
+   "significant_figures": "1",
+   "text": "0.000001"
+  }
+ ],
+ "rate_values_refused": [
+  "float 1.95583",
+  "int 2",
+  "Decimal('1.95583')",
+  "Fraction(195583, 100000)",
+  "None"
+ ]
+}

@@ -1,0 +1,439 @@
+{
+ "accounts": [
+  {
+   "account_id": "acct-platform-jpy",
+   "account_type": "PLATFORM",
+   "currency": "JPY",
+   "label": "platform"
+  },
+  {
+   "account_id": "acct-reserve-jpy",
+   "account_type": "RESERVE",
+   "currency": "JPY",
+   "label": "reserve"
+  },
+  {
+   "account_id": "acct-alice",
+   "account_type": "USER",
+   "currency": "JPY",
+   "label": "alice"
+  },
+  {
+   "account_id": "acct-bob",
+   "account_type": "USER",
+   "currency": "JPY",
+   "label": "bob"
+  },
+  {
+   "account_id": "acct-carol",
+   "account_type": "USER",
+   "currency": "JPY",
+   "label": "carol"
+  },
+  {
+   "account_id": "acct-dave",
+   "account_type": "USER",
+   "currency": "JPY",
+   "label": "dave"
+  },
+  {
+   "account_id": "acct-erin",
+   "account_type": "USER",
+   "currency": "JPY",
+   "label": "erin"
+  },
+  {
+   "account_id": "acct-clearing-jpy",
+   "account_type": "CLEARING",
+   "currency": "JPY",
+   "label": "conversion-clearing-jpy"
+  },
+  {
+   "account_id": "acct-platform-usd",
+   "account_type": "PLATFORM",
+   "currency": "USD",
+   "label": "platform"
+  },
+  {
+   "account_id": "acct-reserve-usd",
+   "account_type": "RESERVE",
+   "currency": "USD",
+   "label": "reserve"
+  },
+  {
+   "account_id": "acct-alice-usd",
+   "account_type": "USER",
+   "currency": "USD",
+   "label": "alice"
+  },
+  {
+   "account_id": "acct-bob-usd",
+   "account_type": "USER",
+   "currency": "USD",
+   "label": "bob"
+  },
+  {
+   "account_id": "acct-carol-usd",
+   "account_type": "USER",
+   "currency": "USD",
+   "label": "carol"
+  },
+  {
+   "account_id": "acct-dave-usd",
+   "account_type": "USER",
+   "currency": "USD",
+   "label": "dave"
+  },
+  {
+   "account_id": "acct-erin-usd",
+   "account_type": "USER",
+   "currency": "USD",
+   "label": "erin"
+  },
+  {
+   "account_id": "acct-clearing-usd",
+   "account_type": "CLEARING",
+   "currency": "USD",
+   "label": "conversion-clearing-usd"
+  },
+  {
+   "account_id": "acct-residue-usd",
+   "account_type": "FX_GAIN_LOSS",
+   "currency": "USD",
+   "label": "conversion-rounding-residue"
+  }
+ ],
+ "conversion_pairs": [
+  [
+   "acct-platform-jpy",
+   "acct-platform-usd"
+  ],
+  [
+   "acct-reserve-jpy",
+   "acct-reserve-usd"
+  ],
+  [
+   "acct-alice",
+   "acct-alice-usd"
+  ],
+  [
+   "acct-bob",
+   "acct-bob-usd"
+  ],
+  [
+   "acct-carol",
+   "acct-carol-usd"
+  ],
+  [
+   "acct-dave",
+   "acct-dave-usd"
+  ],
+  [
+   "acct-erin",
+   "acct-erin-usd"
+  ]
+ ],
+ "declaration": {
+  "cutoff_at": "2026-06-30T15:00:00.000000Z",
+  "declaration_id": "test-fixture/stand-in-currencies/not-a-real-rate",
+  "format": "openreserve.conversion.declaration/1",
+  "rate": {
+   "quotation": "SOURCE_PER_TARGET",
+   "text": "9"
+  },
+  "rate_significant_figures": null,
+  "reference_document_sha256": null,
+  "rounding": {
+   "level": "ACCOUNT",
+   "mode": "HALF_AWAY_FROM_ZERO",
+   "quantum_minor_units": "1"
+  },
+  "source": {
+   "code": "JPY",
+   "minor_units": "0"
+  },
+  "target": {
+   "code": "USD",
+   "minor_units": "2"
+  }
+ },
+ "declaration_hash": "7a42409538840cca06eeec89655c1c89ea7225c0dcb85fc52875ae862bca579b",
+ "effective_at": "2026-06-30T15:00:01.000000Z",
+ "expected_clearing_target_balance_before_closing": "1",
+ "expected_closing_transaction_id": "convres_357be2e35703cc148a8222e98839e949451a0e29040421c7f469c60db399c42c",
+ "expected_conversion_entries": {
+  "acct-alice": [
+   [
+    "acct-alice",
+    "-300000",
+    "JPY"
+   ],
+   [
+    "acct-clearing-jpy",
+    "300000",
+    "JPY"
+   ],
+   [
+    "acct-clearing-usd",
+    "-3333333",
+    "USD"
+   ],
+   [
+    "acct-alice-usd",
+    "3333333",
+    "USD"
+   ]
+  ],
+  "acct-bob": [
+   [
+    "acct-bob",
+    "-120000",
+    "JPY"
+   ],
+   [
+    "acct-clearing-jpy",
+    "120000",
+    "JPY"
+   ],
+   [
+    "acct-clearing-usd",
+    "-1333333",
+    "USD"
+   ],
+   [
+    "acct-bob-usd",
+    "1333333",
+    "USD"
+   ]
+  ],
+  "acct-carol": [
+   [
+    "acct-carol",
+    "-55000",
+    "JPY"
+   ],
+   [
+    "acct-clearing-jpy",
+    "55000",
+    "JPY"
+   ],
+   [
+    "acct-clearing-usd",
+    "-611111",
+    "USD"
+   ],
+   [
+    "acct-carol-usd",
+    "611111",
+    "USD"
+   ]
+  ],
+  "acct-dave": [
+   [
+    "acct-dave",
+    "60",
+    "JPY"
+   ],
+   [
+    "acct-clearing-jpy",
+    "-60",
+    "JPY"
+   ],
+   [
+    "acct-clearing-usd",
+    "667",
+    "USD"
+   ],
+   [
+    "acct-dave-usd",
+    "-667",
+    "USD"
+   ]
+  ],
+  "acct-erin": null,
+  "acct-platform-jpy": [
+   [
+    "acct-platform-jpy",
+    "1474940",
+    "JPY"
+   ],
+   [
+    "acct-clearing-jpy",
+    "-1474940",
+    "JPY"
+   ],
+   [
+    "acct-clearing-usd",
+    "16388222",
+    "USD"
+   ],
+   [
+    "acct-platform-usd",
+    "-16388222",
+    "USD"
+   ]
+  ],
+  "acct-reserve-jpy": [
+   [
+    "acct-reserve-jpy",
+    "-1000000",
+    "JPY"
+   ],
+   [
+    "acct-clearing-jpy",
+    "1000000",
+    "JPY"
+   ],
+   [
+    "acct-clearing-usd",
+    "-11111111",
+    "USD"
+   ],
+   [
+    "acct-reserve-usd",
+    "11111111",
+    "USD"
+   ]
+  ]
+ },
+ "expected_conversion_transaction_ids": {
+  "acct-alice": "conv_c3bee214bdb29cf924a162112e5bffa79b79c3a258ee048a5b4b6d21852ece16",
+  "acct-bob": "conv_4a86136181e2736c49076980551ebb4a7693793107161f5d5e725b2be0a0e448",
+  "acct-carol": "conv_46a05a6a4660c8a7704d2998f16049fc5af987e503f112f2de08b7d6f51b587e",
+  "acct-dave": "conv_b1d6afc4ff1bb12589718c505ec9589e49a2dae92f5ca393f015bd92bbb11e7e",
+  "acct-erin": "conv_0072f3f2cae7132f78502c227058d36748f2f1811177df5b1264b8491d058a30",
+  "acct-platform-jpy": "conv_646c532144c2a7e5d99c9df143bdba4f1f36eeee99553582fb3ee7dd28781251",
+  "acct-reserve-jpy": "conv_ab10f098514997720bdbe662354b907b6e5cf646d1dd92bdf743851739ab860a"
+ },
+ "expected_manifest": {
+  "accounts": {
+   "clearing_source": "acct-clearing-jpy",
+   "clearing_target": "acct-clearing-usd",
+   "residue": "acct-residue-usd"
+  },
+  "declaration": {
+   "cutoff_at": "2026-06-30T15:00:00.000000Z",
+   "declaration_id": "test-fixture/stand-in-currencies/not-a-real-rate",
+   "format": "openreserve.conversion.declaration/1",
+   "rate": {
+    "quotation": "SOURCE_PER_TARGET",
+    "text": "9"
+   },
+   "rate_significant_figures": null,
+   "reference_document_sha256": null,
+   "rounding": {
+    "level": "ACCOUNT",
+    "mode": "HALF_AWAY_FROM_ZERO",
+    "quantum_minor_units": "1"
+   },
+   "source": {
+    "code": "JPY",
+    "minor_units": "0"
+   },
+   "target": {
+    "code": "USD",
+    "minor_units": "2"
+   }
+  },
+  "declaration_hash": "7a42409538840cca06eeec89655c1c89ea7225c0dcb85fc52875ae862bca579b",
+  "effective_at": "2026-06-30T15:00:01.000000Z",
+  "format": "openreserve.conversion.manifest/1",
+  "institution_id": "example-institution",
+  "ledger_closing": {
+   "bearer": "INSTITUTION",
+   "residue_account_change": "1"
+  },
+  "liabilities": {
+   "conversion": {
+    "leaf_count": "3",
+    "root": "08e1c0d40b1372a55298e447813a311141bdbf46351b2948da0e7f2a17ac0af4",
+    "total": "5277777"
+   },
+   "converted_nonzero_count": "3",
+   "exact_total": {
+    "den": "9",
+    "num": "47500000"
+   },
+   "pre": {
+    "leaf_count": "3",
+    "root": "fd5d7dd666533f0c18def2020fee0eb211dd4c67b84a8bdd79d190832250bdb0",
+    "total": "475000"
+   },
+   "reconciliation_difference": "-1",
+   "rounded_exact_total": "5277778",
+   "sum_of_residues": {
+    "den": "9",
+    "num": "-7"
+   }
+  },
+  "post": {
+   "liabilities": {
+    "leaf_count": "3",
+    "root": "66940e3fb75c28bf49852b4ee98fdc1fa0522bc5b4148d13ca48386412b3bcf5",
+    "total": "5277777"
+   },
+   "receivables": {
+    "leaf_count": "1",
+    "root": "022522c830b52b9ec99ebf8213b7254b9887ea8a6d62a6f6f368d0dbf58317c4",
+    "total": "667"
+   },
+   "scope": "CONVERSION_ONLY"
+  },
+  "receivables": {
+   "conversion": {
+    "leaf_count": "1",
+    "root": "6e352a433561f05480644ce933ecc38b42eaf61ac7aadbb0b136d56d4b4d02b9",
+    "total": "667"
+   },
+   "converted_nonzero_count": "1",
+   "exact_total": {
+    "den": "3",
+    "num": "2000"
+   },
+   "pre": {
+    "leaf_count": "1",
+    "root": "8482440da7140de6b084d4dbebd81f32e4e9fff845fc00033f2ef3c4970f35dd",
+    "total": "60"
+   },
+   "reconciliation_difference": "0",
+   "rounded_exact_total": "667",
+   "sum_of_residues": {
+    "den": "3",
+    "num": "1"
+   }
+  }
+ },
+ "expected_manifest_hash": "aced3b5d7dba19e83eb8b1e8fba2b85441864dacbf53c501d22d6c91fb5067e4",
+ "expected_residue_account_change": "1",
+ "funding_instant": "2026-01-01T00:00:00.000000Z",
+ "funding_transfers_jpy": [
+  [
+   "acct-platform-jpy",
+   "acct-reserve-jpy",
+   "1000000"
+  ],
+  [
+   "acct-platform-jpy",
+   "acct-alice",
+   "300000"
+  ],
+  [
+   "acct-platform-jpy",
+   "acct-bob",
+   "120000"
+  ],
+  [
+   "acct-platform-jpy",
+   "acct-carol",
+   "55000"
+  ],
+  [
+   "acct-dave",
+   "acct-platform-jpy",
+   "60"
+  ]
+ ],
+ "institution_id": "example-institution",
+ "note": "stand-in currencies and a rate that is not a real rate: the built-in ledger currencies are a closed set, so a ledger-level test cannot use a fictional code",
+ "salt_key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+}

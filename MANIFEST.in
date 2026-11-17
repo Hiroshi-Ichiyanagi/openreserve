@@ -1,0 +1,5 @@
+# The source distribution ships the tests (setuptools adds tests/test*.py by default).
+# They read the vectors in tests/vectors/, and conftest.py sets their warning filter,
+# so both are shipped too and the tests run from the unpacked archive.
+include conftest.py
+recursive-include tests/vectors *.json *.py

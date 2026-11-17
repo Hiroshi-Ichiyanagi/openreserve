@@ -1,7 +1,35 @@
 """Append-only double-entry ledger — substrate of the verification core."""
 
+from openreserve.core.currencies import (
+    DEFAULT_REGISTRY,
+    CurrencyRegistry,
+    CurrencyRegistryError,
+    CurrencySpec,
+    CurrencySpecError,
+)
+from openreserve.core.exact import (
+    AMOUNT_MAX,
+    INSTANT_MAX,
+    ExactValueError,
+    NaiveDatetimeError,
+    amount_from_text,
+    amount_to_text,
+    amount_to_u128,
+    canonical_json,
+    instant_from_stored_text,
+    instant_from_text,
+    instant_to_text,
+    require_aware,
+    sha256_hex,
+)
 from openreserve.core.ledger import Ledger, TransactionBuilder
-from openreserve.core.storage import LedgerStorage, SQLiteLedgerStorage
+from openreserve.core.migration import MigrationError, migrate_ledger_database
+from openreserve.core.storage import (
+    SCHEMA_VERSION,
+    LedgerStorage,
+    SchemaVersionError,
+    SQLiteLedgerStorage,
+)
 from openreserve.core.types import (
     Account,
     ComplianceDecision,
@@ -17,19 +45,41 @@ from openreserve.core.types import (
 )
 
 __all__ = [
+    "AMOUNT_MAX",
+    "DEFAULT_REGISTRY",
+    "INSTANT_MAX",
     "Account",
     "ComplianceDecision",
     "Currency",
     "CurrencyMismatchError",
+    "CurrencyRegistry",
+    "CurrencyRegistryError",
+    "CurrencySpec",
+    "CurrencySpecError",
     "Entry",
+    "ExactValueError",
     "IntegrityError",
     "Ledger",
     "LedgerStorage",
+    "MigrationError",
     "Money",
+    "NaiveDatetimeError",
     "OwnerType",
+    "SCHEMA_VERSION",
     "SQLiteLedgerStorage",
+    "SchemaVersionError",
     "Transaction",
     "TransactionBuilder",
     "TransactionStatus",
     "UnbalancedTransactionError",
+    "amount_from_text",
+    "amount_to_text",
+    "amount_to_u128",
+    "canonical_json",
+    "instant_from_stored_text",
+    "instant_from_text",
+    "instant_to_text",
+    "migrate_ledger_database",
+    "require_aware",
+    "sha256_hex",
 ]

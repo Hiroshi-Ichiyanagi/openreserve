@@ -1,0 +1,351 @@
+{
+ "cases": [
+  {
+   "leaves": [
+    {
+     "account_id": "alice",
+     "balance_cents": "300000",
+     "currency_code": "JPY",
+     "leaf_hash": "0654bedb45fcc90a73882fbaef3832269051d794ba4780fcc7cc192f2c65dd4b"
+    }
+   ],
+   "name": "one",
+   "proofs": [
+    {
+     "index": "0",
+     "steps": []
+    }
+   ],
+   "root": "0654bedb45fcc90a73882fbaef3832269051d794ba4780fcc7cc192f2c65dd4b"
+  },
+  {
+   "leaves": [
+    {
+     "account_id": "alice",
+     "balance_cents": "300000",
+     "currency_code": "JPY",
+     "leaf_hash": "0654bedb45fcc90a73882fbaef3832269051d794ba4780fcc7cc192f2c65dd4b"
+    },
+    {
+     "account_id": "bob",
+     "balance_cents": "120000",
+     "currency_code": "JPY",
+     "leaf_hash": "baeab18c09988ead04eefd65f704f607bb03c087f423cfe021575978cd5004fb"
+    }
+   ],
+   "name": "two",
+   "proofs": [
+    {
+     "index": "0",
+     "steps": [
+      {
+       "is_left": false,
+       "sibling_hash": "baeab18c09988ead04eefd65f704f607bb03c087f423cfe021575978cd5004fb"
+      }
+     ]
+    },
+    {
+     "index": "1",
+     "steps": [
+      {
+       "is_left": true,
+       "sibling_hash": "0654bedb45fcc90a73882fbaef3832269051d794ba4780fcc7cc192f2c65dd4b"
+      }
+     ]
+    }
+   ],
+   "root": "de6dcbd79f37e74e0b42f15bc07cc3aa14f2cf5d0878781ac58775e11e5837cd"
+  },
+  {
+   "leaves": [
+    {
+     "account_id": "alice",
+     "balance_cents": "300000",
+     "currency_code": "JPY",
+     "leaf_hash": "0654bedb45fcc90a73882fbaef3832269051d794ba4780fcc7cc192f2c65dd4b"
+    },
+    {
+     "account_id": "bob",
+     "balance_cents": "120000",
+     "currency_code": "JPY",
+     "leaf_hash": "baeab18c09988ead04eefd65f704f607bb03c087f423cfe021575978cd5004fb"
+    },
+    {
+     "account_id": "carol",
+     "balance_cents": "55000",
+     "currency_code": "JPY",
+     "leaf_hash": "54e0b1e7d4437f85c4519bf914032827a1d00013c1ba94725ded1dea1e66e990"
+    }
+   ],
+   "name": "abc",
+   "proofs": [
+    {
+     "index": "0",
+     "steps": [
+      {
+       "is_left": false,
+       "sibling_hash": "baeab18c09988ead04eefd65f704f607bb03c087f423cfe021575978cd5004fb"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "baf43abd4485a091891a9a99f80dcffb3fb23f29bdd1cd911449cce3e8cd26a9"
+      }
+     ]
+    },
+    {
+     "index": "1",
+     "steps": [
+      {
+       "is_left": true,
+       "sibling_hash": "0654bedb45fcc90a73882fbaef3832269051d794ba4780fcc7cc192f2c65dd4b"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "baf43abd4485a091891a9a99f80dcffb3fb23f29bdd1cd911449cce3e8cd26a9"
+      }
+     ]
+    },
+    {
+     "index": "2",
+     "steps": [
+      {
+       "is_left": false,
+       "sibling_hash": "54e0b1e7d4437f85c4519bf914032827a1d00013c1ba94725ded1dea1e66e990"
+      },
+      {
+       "is_left": true,
+       "sibling_hash": "de6dcbd79f37e74e0b42f15bc07cc3aa14f2cf5d0878781ac58775e11e5837cd"
+      }
+     ]
+    }
+   ],
+   "root": "746446bf3f90b11cf1311d7b2e3193c81c3cb0d4dce4ef8416c85ae62cdf215c"
+  },
+  {
+   "leaves": [
+    {
+     "account_id": "alice",
+     "balance_cents": "300000",
+     "currency_code": "JPY",
+     "leaf_hash": "0654bedb45fcc90a73882fbaef3832269051d794ba4780fcc7cc192f2c65dd4b"
+    },
+    {
+     "account_id": "bob",
+     "balance_cents": "120000",
+     "currency_code": "JPY",
+     "leaf_hash": "baeab18c09988ead04eefd65f704f607bb03c087f423cfe021575978cd5004fb"
+    },
+    {
+     "account_id": "carol",
+     "balance_cents": "55000",
+     "currency_code": "JPY",
+     "leaf_hash": "54e0b1e7d4437f85c4519bf914032827a1d00013c1ba94725ded1dea1e66e990"
+    },
+    {
+     "account_id": "carol",
+     "balance_cents": "55000",
+     "currency_code": "JPY",
+     "leaf_hash": "54e0b1e7d4437f85c4519bf914032827a1d00013c1ba94725ded1dea1e66e990"
+    }
+   ],
+   "name": "abcc (same root as abc: the documented legacy ambiguity)",
+   "proofs": [
+    {
+     "index": "0",
+     "steps": [
+      {
+       "is_left": false,
+       "sibling_hash": "baeab18c09988ead04eefd65f704f607bb03c087f423cfe021575978cd5004fb"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "baf43abd4485a091891a9a99f80dcffb3fb23f29bdd1cd911449cce3e8cd26a9"
+      }
+     ]
+    },
+    {
+     "index": "1",
+     "steps": [
+      {
+       "is_left": true,
+       "sibling_hash": "0654bedb45fcc90a73882fbaef3832269051d794ba4780fcc7cc192f2c65dd4b"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "baf43abd4485a091891a9a99f80dcffb3fb23f29bdd1cd911449cce3e8cd26a9"
+      }
+     ]
+    },
+    {
+     "index": "2",
+     "steps": [
+      {
+       "is_left": false,
+       "sibling_hash": "54e0b1e7d4437f85c4519bf914032827a1d00013c1ba94725ded1dea1e66e990"
+      },
+      {
+       "is_left": true,
+       "sibling_hash": "de6dcbd79f37e74e0b42f15bc07cc3aa14f2cf5d0878781ac58775e11e5837cd"
+      }
+     ]
+    },
+    {
+     "index": "3",
+     "steps": [
+      {
+       "is_left": true,
+       "sibling_hash": "54e0b1e7d4437f85c4519bf914032827a1d00013c1ba94725ded1dea1e66e990"
+      },
+      {
+       "is_left": true,
+       "sibling_hash": "de6dcbd79f37e74e0b42f15bc07cc3aa14f2cf5d0878781ac58775e11e5837cd"
+      }
+     ]
+    }
+   ],
+   "root": "746446bf3f90b11cf1311d7b2e3193c81c3cb0d4dce4ef8416c85ae62cdf215c"
+  },
+  {
+   "leaves": [
+    {
+     "account_id": "bid:s0",
+     "balance_cents": "5",
+     "currency_code": "USDC",
+     "leaf_hash": "1c081876c37d1e0ac061ea2bc1a58cb3f6a26dd764017d4951804599cd9103b3"
+    },
+    {
+     "account_id": "bid:s1",
+     "balance_cents": "-3",
+     "currency_code": "USDC",
+     "leaf_hash": "28749d8a43d84255793b21831d0fefc723ed6da32263a9e746fed297c659dd0c"
+    },
+    {
+     "account_id": "bid:s2",
+     "balance_cents": "0",
+     "currency_code": "USDC",
+     "leaf_hash": "d523e1af5411a416a276ebcd85ea012c1149deef763b67d8fb304b6111f66a78"
+    },
+    {
+     "account_id": "bid:s3",
+     "balance_cents": "9223372036854775808",
+     "currency_code": "USDC",
+     "leaf_hash": "f6e3c03621460d37dacf7a6d98544bb2f02ef785a3d631ab22e53ff7e15378ec"
+    },
+    {
+     "account_id": "bid:s4",
+     "balance_cents": "1000000000000000000000000000000",
+     "currency_code": "USDC",
+     "leaf_hash": "c839110442636e12a01daf3c08a4d3a1ca685185345b775f0893ee549110535b"
+    }
+   ],
+   "name": "five-mixed",
+   "proofs": [
+    {
+     "index": "0",
+     "steps": [
+      {
+       "is_left": false,
+       "sibling_hash": "28749d8a43d84255793b21831d0fefc723ed6da32263a9e746fed297c659dd0c"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "7eb85e6e7476ffa75d93749e40e8d7904aa392c5774b8f4e5596efae69f2be93"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "6e4dfcda4bbf52bc970dcc780cd0cf694c8b22c082901e7d27d9c614153f9092"
+      }
+     ]
+    },
+    {
+     "index": "1",
+     "steps": [
+      {
+       "is_left": true,
+       "sibling_hash": "1c081876c37d1e0ac061ea2bc1a58cb3f6a26dd764017d4951804599cd9103b3"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "7eb85e6e7476ffa75d93749e40e8d7904aa392c5774b8f4e5596efae69f2be93"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "6e4dfcda4bbf52bc970dcc780cd0cf694c8b22c082901e7d27d9c614153f9092"
+      }
+     ]
+    },
+    {
+     "index": "2",
+     "steps": [
+      {
+       "is_left": false,
+       "sibling_hash": "f6e3c03621460d37dacf7a6d98544bb2f02ef785a3d631ab22e53ff7e15378ec"
+      },
+      {
+       "is_left": true,
+       "sibling_hash": "e61f62e95578e629b23ae3fd7bd372970d020012fc2bf655891518c07214c19d"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "6e4dfcda4bbf52bc970dcc780cd0cf694c8b22c082901e7d27d9c614153f9092"
+      }
+     ]
+    },
+    {
+     "index": "3",
+     "steps": [
+      {
+       "is_left": true,
+       "sibling_hash": "d523e1af5411a416a276ebcd85ea012c1149deef763b67d8fb304b6111f66a78"
+      },
+      {
+       "is_left": true,
+       "sibling_hash": "e61f62e95578e629b23ae3fd7bd372970d020012fc2bf655891518c07214c19d"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "6e4dfcda4bbf52bc970dcc780cd0cf694c8b22c082901e7d27d9c614153f9092"
+      }
+     ]
+    },
+    {
+     "index": "4",
+     "steps": [
+      {
+       "is_left": false,
+       "sibling_hash": "c839110442636e12a01daf3c08a4d3a1ca685185345b775f0893ee549110535b"
+      },
+      {
+       "is_left": false,
+       "sibling_hash": "34799b0ec23377e5acff74fc5bd3b6babc249e1c7665a3e45dd912049d5edf9d"
+      },
+      {
+       "is_left": true,
+       "sibling_hash": "2f2a74d57f97eb3a6ea765e948ef5100078f83d9b1b7ad6675509aaa7f2e6c4b"
+      }
+     ]
+    }
+   ],
+   "root": "412b35586144b38c9d53e9b58184ac82c959e0fcf42fbb5f89ed4ce51c23bb95"
+  },
+  {
+   "leaves": [
+    {
+     "account_id": "__empty__",
+     "balance_cents": "0",
+     "currency_code": "JPY",
+     "leaf_hash": "62d32face721021db81a4f51cd92801934df71977a317ba6f5781b62b5792e8b"
+    }
+   ],
+   "name": "empty-sentinel",
+   "proofs": [
+    {
+     "index": "0",
+     "steps": []
+    }
+   ],
+   "root": "62d32face721021db81a4f51cd92801934df71977a317ba6f5781b62b5792e8b"
+  }
+ ],
+ "note": "legacy hash-only tree of 0.1.x: leaf = SHA-256('LEAF:<id>:<balance>:<currency>'), node = SHA-256('NODE:' + left + right), odd last node paired with itself"
+}
