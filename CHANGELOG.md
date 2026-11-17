@@ -94,6 +94,9 @@ APIs may change while the project is pre-1.0.
 - `Money` refuses `bool` amounts.
 - The legacy Merkle tree's bytes are unchanged, so roots of the intent and execution artifacts
   and of legacy proofs without negative balances stay the same.
+- The source distribution also contains `tests/vectors/` and `conftest.py` (new
+  `MANIFEST.in`): the tests it ships read the vectors, and they run from the unpacked archive
+  as they do in the repository. The wheel still contains no tests.
 
 ### Fixed
 - `MerkleProof.verify()` rejected every genuine proof with at least one step.
